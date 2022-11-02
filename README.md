@@ -31,11 +31,12 @@ src="https://img.shields.io/badge/Deploy%20To%20Heroku-red?style=flat&logo=herok
 
 ```
 This Bot is Created by HyperXling, If your kanging this without fork at least give a credit to get a smile of my hard work. 
+-HyperQi
 - EmikoRobot
 - SaitamaRobot 
 - WilliamButcherBot
-- HyperQi
 ```
+
 
 ### Support
 <p>
