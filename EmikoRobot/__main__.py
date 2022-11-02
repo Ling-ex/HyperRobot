@@ -448,8 +448,8 @@ def emiko_about_callback(update, context):
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="sena-ex", url="https://t.me/excute7"),
-                    InlineKeyboardButton(text="TheHamkerCat", url="https://t.me/AndaSiiapaa"),
+                    InlineKeyboardButton(text="LingTamvan", url="https://t.me/excute7"),
+                    InlineKeyboardButton(text="Assistant", url="https://t.me/AndaSiiapaa"),
 
 
 
