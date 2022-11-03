@@ -400,7 +400,7 @@ def emiko_about_callback(update, context):
                  [
                     InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ", callback_data="emiko_back"),
                  ]
-                ]
+                 ]
             ),
         )
 
