@@ -83,13 +83,13 @@ def get_readable_time(seconds: int) -> str:
 
 PM_START_TEXT = """
 *Hello {} !*
-✪ I'm an Hyper management bot [✨](https://telegra.ph/file/554a2a42a50326a0cc482.jpg)
-────────────────────────
-☠ ꜱᴀʏᴀ ᴀᴅᴀʟᴀʜ ʙᴏᴛ ᴛᴇᴍᴀ ᴡɪʙᴜ ʏᴀɴɢ ᴅɪʀᴀɴᴄᴀɴɢ ᴜɴᴛᴜᴋ ᴍᴇᴍʙᴀɴᴛᴜ ᴍᴇɴɢᴇʟᴏʟᴀ ᴅᴀɴ ᴍᴇᴍᴜᴛᴀʀ ᴍᴜꜱɪᴋ ɢʀᴜᴘ ᴛᴇʟᴇɢʀᴀᴍ ᴀɴᴅᴀ ᴅᴇɴɢᴀɴ ʙᴀɴʏᴀᴋ ꜰɪᴛᴜʀ.
+(https://telegra.ph/file/554a2a42a50326a0cc482.jpg)
+───────────────────────
+☠ ꜱᴀʏᴀ ᴀᴅᴀʟᴀʜ ʜʏᴘᴇʀ ʀᴏʙᴏᴛ ʏᴀɴɢ ᴅɪʀᴀɴᴄᴀɴɢ ᴜɴᴛᴜᴋ ᴍᴇᴍʙᴀɴᴛᴜ ᴍᴇɴɢᴇʟᴏʟᴀ ᴅᴀɴ ᴍᴇᴍᴜᴛᴀʀ ᴍᴜꜱɪᴋ ɢʀᴜᴘ ᴛᴇʟᴇɢʀᴀᴍ ᴀɴᴅᴀ ᴅᴇɴɢᴀɴ ʙᴀɴʏᴀᴋ ꜰɪᴛᴜʀ.
 
-☠ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ ʙʏ
+☠ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ ʙʏ 
 
-────────────────────────
+───────────────────────
 ✪ Hit /help to see my available commands.
 """
 
@@ -102,12 +102,20 @@ buttons = [
         InlineKeyboardButton(
             text="ᴛʀʏ ɪɴʟɪɴᴇ​​", switch_inline_query_current_chat=""
         ),
-        InlineKeyboardButton(text="ᴅᴏɴᴀᴛɪᴏɴ👌", callback_data="emiko_support"),
+
+    ],  
+    [
+
+
+
+        
+        InlineKeyboardButton(text="ᴅᴏɴᴀᴛɪᴏɴ👌", url="http://t.me/excute7"),
+        InlineKeyboardButton(text="ꜱᴜᴘᴘᴏʀᴛ🇮🇩", url="https://t.me/+k7GsvnQrWwkxN2M1"),
         
     ],
     [
         InlineKeyboardButton(
-            text="➗ Add Me To Your Group ➗", url=f"t.me/{bu}?startgroup=new"),
+            text="➗ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➗", url=f"t.me/{bu}?startgroup=new"),
     ],
 ]
 
@@ -202,7 +210,7 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ", callback_data="help_back")]]
+                        [[InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ", callback_data="emiko_")]]
                     ),
                 )
 
@@ -320,7 +328,7 @@ def help_button(update, context):
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
-                    [[InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ", callback_data="help_back")]]
+                    [[InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ", callback_data="emiko_")]]
                 ),
             )
 
