@@ -398,9 +398,9 @@ def emiko_about_callback(update, context):
                     InlineKeyboardButton(text="ᴍᴜꜱɪᴄᴘʟᴀʏᴇʀ", callback_data="source_"),
                  ],
                  [
-                    InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ", callback_data="emiko_back"),
+                    InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ", callback_data="source_back"),
                  ]
-                 ]
+                ]
             ),
         )
 
@@ -440,8 +440,8 @@ def emiko_about_callback(update, context):
             reply_markup=InlineKeyboardMarkup(
                 [
                  [
-                    InlineKeyboardButton(text="Support", url="t.me/AduanHyper"),
-                    InlineKeyboardButton(text="Updates", url="https://t.me/storyQi"),
+                    InlineKeyboardButton(text="ꜱᴜᴘᴘᴏʀᴛ", url="t.me/AduanHyper"),
+                    InlineKeyboardButton(text="ᴜᴘᴅᴀᴛᴇꜱ", url="https://t.me/storyQi"),
                  ],
                  [
                     InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ", callback_data="emiko_"),
