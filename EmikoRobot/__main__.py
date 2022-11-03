@@ -398,7 +398,7 @@ def emiko_about_callback(update, context):
                     InlineKeyboardButton(text="ᴍᴜꜱɪᴄᴘʟᴀʏᴇʀ", callback_data="source_"),
                  ],
                  [
-                    InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ", callback_data="emiko_"),
+                    InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ", callback_data="emiko_back"),
                  ]
                 ]
             ),
