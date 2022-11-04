@@ -99,23 +99,16 @@ buttons = [
     ],
     [
         InlineKeyboardButton(text="ᴀʙᴏᴜᴛ", callback_data="emiko_"),
-        InlineKeyboardButton(
-            text="ᴛʀʏ ɪɴʟɪɴᴇ​​", switch_inline_query_current_chat=""
-        ),
-
-    ],  
+        InlineKeyboardButton(text="ᴛʀʏ ɪɴʟɪɴᴇ​​", switch_inline_query_current_chat=""),
+    ],
     [
-
-
-
-        
         InlineKeyboardButton(text="ᴅᴏɴᴀᴛɪᴏɴ👌", url="http://t.me/excute7"),
         InlineKeyboardButton(text="ꜱᴜᴘᴘᴏʀᴛ🇮🇩", url="https://t.me/+k7GsvnQrWwkxN2M1"),
-        
     ],
     [
         InlineKeyboardButton(
-            text="➗ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➗", url=f"t.me/{bu}?startgroup=new"),
+            text="➗ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➗", url=f"t.me/{bu}?startgroup=new"
+        ),
     ],
 ]
 
@@ -234,7 +227,8 @@ def start(update: Update, context: CallbackContext):
                     escape_markdown(first_name),
                     escape_markdown(uptime),
                     sql.num_users(),
-                    sql.num_chats()),                        
+                    sql.num_chats(),
+                ),
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
@@ -243,8 +237,8 @@ def start(update: Update, context: CallbackContext):
     else:
         update.effective_message.reply_text(
             f"👋 Hi, I'm {dispatcher.bot.first_name}. Nice to meet You.",
-            parse_mode=ParseMode.HTML
-       )
+            parse_mode=ParseMode.HTML,
+        )
 
 
 def error_handler(update, context):
@@ -386,20 +380,30 @@ def emiko_about_callback(update, context):
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [
-                    InlineKeyboardButton(text="ᴀᴅᴍɪɴꜱ", callback_data="emiko_admin"),
-                    InlineKeyboardButton(text="ɴᴏᴛᴇꜱ", callback_data="emiko_notes"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="ꜱᴜᴘᴘᴏʀᴛ", callback_data="emiko_support"),
-                    InlineKeyboardButton(text="ᴄʀᴇᴅɪᴛꜱ", callback_data="emiko_credit"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="ᴍᴜꜱɪᴄᴘʟᴀʏᴇʀ", callback_data="source_"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ", callback_data="source_back"),
-                 ]
+                    [
+                        InlineKeyboardButton(
+                            text="ᴀᴅᴍɪɴꜱ", callback_data="emiko_admin"
+                        ),
+                        InlineKeyboardButton(text="ɴᴏᴛᴇꜱ", callback_data="emiko_notes"),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="ꜱᴜᴘᴘᴏʀᴛ", callback_data="emiko_support"
+                        ),
+                        InlineKeyboardButton(
+                            text="ᴄʀᴇᴅɪᴛꜱ", callback_data="emiko_credit"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="ᴍᴜꜱɪᴄᴘʟᴀʏᴇʀ", callback_data="source_"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(
+                            text="ɢᴏ ʙᴀᴄᴋ", callback_data="source_back"
+                        ),
+                    ],
                 ]
             ),
         )
@@ -439,18 +443,18 @@ def emiko_about_callback(update, context):
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [
-                    InlineKeyboardButton(text="ꜱᴜᴘᴘᴏʀᴛ", url="t.me/AduanHyper"),
-                    InlineKeyboardButton(text="ᴜᴘᴅᴀᴛᴇꜱ", url="https://t.me/storyQi"),
-                 ],
-                 [
-                    InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ", callback_data="emiko_"),
-                 
-                 ]
+                    [
+                        InlineKeyboardButton(text="ꜱᴜᴘᴘᴏʀᴛ", url="t.me/AduanHyper"),
+                        InlineKeyboardButton(
+                            text="ᴜᴘᴅᴀᴛᴇꜱ", url="https://t.me/storyQi"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ", callback_data="emiko_"),
+                    ],
                 ]
             ),
         )
-
 
     elif query.data == "emiko_credit":
         query.message.edit_text(
@@ -459,32 +463,21 @@ def emiko_about_callback(update, context):
             parse_mode=ParseMode.MARKDOWN,
             reply_markup=InlineKeyboardMarkup(
                 [
-                 [
-                    InlineKeyboardButton(text="zøɴӄɛʏ ᴅ ʟɪɴɢ", url="https://t.me/excute7"),
-                    InlineKeyboardButton(text="ʜʏᴘᴇʀ", url="https://t.me/AndaSiiapaa"),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                 ],
-                 [
-                    InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ", callback_data="emiko_"),
-                 ]
+                    [
+                        InlineKeyboardButton(
+                            text="zøɴӄɛʏ ᴅ ʟɪɴɢ", url="https://t.me/excute7"
+                        ),
+                        InlineKeyboardButton(
+                            text="ʜʏᴘᴇʀ", url="https://t.me/AndaSiiapaa"
+                        ),
+                    ],
+                    [
+                        InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ", callback_data="emiko_"),
+                    ],
                 ]
             ),
         )
+
 
 def Source_about_callback(update, context):
     query = update.callback_query
@@ -504,27 +497,25 @@ def Source_about_callback(update, context):
             parse_mode=ParseMode.MARKDOWN,
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
-                [
-                 [
-                    InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ", callback_data="emiko_")
-                 ]
-                ]
+                [[InlineKeyboardButton(text="ɢᴏ ʙᴀᴄᴋ", callback_data="emiko_")]]
             ),
         )
     elif query.data == "source_back":
         first_name = update.effective_user.first_name
         uptime = get_readable_time((time.time() - StartTime))
         query.message.edit_text(
-                PM_START_TEXT.format(
-                    escape_markdown(first_name),
-                    escape_markdown(uptime),
-                    sql.num_users(),
-                    sql.num_chats()),
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-                disable_web_page_preview=False,
+            PM_START_TEXT.format(
+                escape_markdown(first_name),
+                escape_markdown(uptime),
+                sql.num_users(),
+                sql.num_chats(),
+            ),
+            reply_markup=InlineKeyboardMarkup(buttons),
+            parse_mode=ParseMode.MARKDOWN,
+            timeout=60,
+            disable_web_page_preview=False,
         )
+
 
 def get_help(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
@@ -797,9 +788,9 @@ def main():
     if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
             dispatcher.bot.sendMessage(
-                f"@{SUPPORT_CHAT}", 
+                f"@{SUPPORT_CHAT}",
                 "👋 Hi, HyperRobot Aktif.",
-                parse_mode=ParseMode.MARKDOWN
+                parse_mode=ParseMode.MARKDOWN,
             )
         except Unauthorized:
             LOGGER.warning(
