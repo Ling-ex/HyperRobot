@@ -3,7 +3,7 @@ import json
 import os
 
 def get_user_list(config, key):
-    with open("{}/EmikoRobot/{}".format(os.getcwd(), config), "r") as json_file:
+    with open("{}/HyperRobot/{}".format(os.getcwd(), config), "r") as json_file:
         return json.load(json_file)[key]
 
 # Create a new config.py or rename this to config.py file in same dir and import, then extend this class.
@@ -13,12 +13,12 @@ class Config(object):
     # Login to https://my.telegram.org and fill in these slots with the details given by it
 
     API_ID = 123456  # integer value, dont use ""
-    API_HASH = "awoo"
+    API_HASH = "kamu nanya"
     TOKEN = "BOT_TOKEN"  # This var used to be API_KEY but it is now TOKEN, adjust accordingly.
     OWNER_ID = 1606221784  # If you dont know, run the bot and do /id in your private chat with it, also an integer
     OPENWEATHERMAP_ID = 22322
     OWNER_USERNAME = "Scotchers"
-    BOT_USERNAME = "EmiexRobot"
+    BOT_USERNAME = "HyperRobot"
     SUPPORT_CHAT = "FumikaSupportGroup"  # Your own group for support, do not add the @
     JOIN_LOGGER = (
         -1001748076180
@@ -78,12 +78,12 @@ class Config(object):
     HEROKU_API_KEY = "YES"
     REM_BG_API_KEY = "yahoo"
     LASTFM_API_KEY = "yeah"
-    CF_API_KEY = "jk"
+    CF_API_KEY = "kamu bertanya"
     BL_CHATS = []  # List of groups that you want blacklisted.
     SESSION_STRING = "12342"
     STRING_SESSION = "kontol"
     MONGO_PORT = 27017
-    MONGO_DB = "Emiko"
+    MONGO_DB = "Hyper"
 
 class Production(Config):
     LOGGER = True
