@@ -1,17 +1,17 @@
 # Config files, logs and stuff
-EmikoRobot/modules/helper_funcs/temp.txt
-EmikoRobot/elevated_users.json
-EmikoRobot/config.py
-EmikoRobot/config.ini
+HyperRobot/modules/helper_funcs/temp.txt
+HyperRobot/elevated_users.json
+HyperRobot/config.py
+HyperRobot/config.ini
 log.txt
 kangsticker.png
 updates.txt
 start_service.bat
 
 # Session files
-EmikoRobot/*.session
-EmikoRobot/*.session-journal
-Emiko.session-journal
+HyperRobot/*.session
+HyperRobot/*.session-journal
+Hyper.session-journal
 *.session
 
 # Byte-compiled / optimized / DLL files
