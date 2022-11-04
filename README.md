@@ -19,23 +19,20 @@
 
 ### TUTORIAL
 
-- First fork this repository.
-- Then change the deploy link bellow.
-- This step must be doing because mine link is violates the salesforce acceptable use.
-- You can just change the name of github on deploy link and done, the repos able to deploy on heroku.
-- Full Tutorial - [![Full Tutorial](https://img.shields.io/badge/Watch%20Now-blue)](https://youtu.be/GMaYMYhf_Vk)
+- Pertama garpu/ fork repositori ini.
+- Kemudian ubah tautan penyebaran di bawah ini.
+- Langkah ini harus dilakukan karena tautan tambang melanggar penggunaan yang dapat diterima oleh tenaga penjualan.
+- Anda cukup mengubah nama github pada tautan penyebaran dan selesai, repo dapat digunakan di heroku.
 
-<p align="center"><a href="https://dashboard.heroku.com/new?template=https://github.com/Ling-xy/EmikoRobot"> <img 
+<p align="center"><a href="https://dashboard.heroku.com/new?template=https://github.com/Ling-xy/HyperRobot"> <img 
 src="https://img.shields.io/badge/Deploy%20To%20Heroku-red?style=flat&logo=heroku" width="210" height="34.45" /></a></p>
 
 
 ```
-This Bot is Created by HyperXling, If your kanging this without fork at least give a credit to get a smile of my hard work. 
+This Bot is Created by HyperQi, If your kanging this without fork at least give a credit to get a smile of my hard work. 
 - HyperQi
-- EmikoRobot
-- SaitamaRobot 
-- WilliamButcherBot
 ```
+
 
 
 ### Support
@@ -43,8 +40,6 @@ This Bot is Created by HyperXling, If your kanging this without fork at least gi
 <a href="https://t.me/excute7"> <img src="https://img.shields.io/badge/Ling-xy-blue?&logo=telegram" alt="Ling on Telegram" /> </a><br>
 <a href="https://t.me/HyperQi"> <img src="https://img.shields.io/badge/Update-Chat-blue?&logo=telegram" alt="Update Chat" /> </a><br>
 <a href="https://t.me/storyQi"> <img src="https://img.shields.io/badge/Support-Channel-blue?&logo=telegram" alt="Channel Chat" /> </a><br>
-<a href="https://t.me/EmikoSupport"> <img src="https://img.shields.io/badge/Update-Chat-blue?&logo=telegram" alt="Update Channel" /> </a><br>
-<a href="https://t.me/KennedyProject"> <img src="https://img.shields.io/badge/Update-Channel-blue?&logo=telegram" alt="Channel Channel" /> </a><br>
 </p>
 
 
@@ -52,7 +47,7 @@ This Bot is Created by HyperXling, If your kanging this without fork at least gi
 ## Credit 
 
 ```
-It's useless to give credit because YOU won't care.
+Tidak ada gunanya memberi pujian karena ANDA tidak akan peduli.
 ```
 
 
