@@ -1,16 +1,16 @@
 {
-      "name": "Emiko Robot",
-      "description": "A Powerful Telegram group management bot with anime theme.",
+      "name": "Hyper Robot",
+      "description": "Bot manajemen grup Telegram yang Kuat Dan tahan lama selama dyno lu masih cukup.",
       "keywords": [
          "telegram",
          "advance",
          "group",
          "manager",
-         "emikorobot"
+         "hyperrobot"
       ],
     
-   "logo":    "https://telegra.ph/file/35e56ba7eace7332356ad.jpg",  
-   "repository": "https://github.com/kennedy-ex/https://github.com/kennedy-ex/EmikoRobot",
+   "logo":    "https://telegra.ph/file/554a2a42a50326a0cc482.jpg",  
+   "repository": "https://github.com/Ling-ex/https://github.com/Ling-ex/HyperRobot",
    "addons": [
           {
          "options": {
@@ -29,149 +29,149 @@
   ],  
    "env": {
       "TOKEN": {
-         "description": "Your bot token. Get one from @BotFather duh",
+         "description": "Token bot Anda. Dapatkan satu dari @BotFather",
          "required": true,
          "value": ""
       },
       "API_ID": {
-         "description": "Get API_ID from my.telegram.org, used for telethon based modules.",
+         "description": "Dapatkan API_ID dari my.telegram.org.",
          "required": true,
          "value": ""
       },
       "API_HASH": {
-         "description": "Get API_HASH from my.telegram.org, used for telethon based modules.",
+         "description": "Dapatkan API_HASH dari my.telegram.org.",
          "required": true,
          "value": ""
       },    
       "OWNER_ID": {
-         "description": "Your user ID as an integer.",
+         "description": "ID pengguna Anda sebagai bilangan bulat.",
          "required": true,
-         "value": "2088106582"
+         "value": "5050907047"
      },
       "STRING_SESSION": {
-         "description": "Fill with telethon string session.",
+         "description": "Isi dengan sesi string telethon.",
          "required": true,
          "value": "" 
       },
       "HEROKU_API_KEY": {
-        "description": "Your Heroku API key, get it from 'https://dashboard.heroku.com/account'",
+        "description": "Kunci API Heroku Anda, dapatkan dari 'https://dashboard.heroku.com/account'",
         "value": ""
       },
       "HEROKU_APP_NAME": {
-        "description": "Enter the Heroku app name here (Must an exact same name with your input above).",
+        "description": "Masukkan nama aplikasi Heroku di sini (Harus nama yang sama persis dengan input Anda di atas).",
         "required": false
       },
       "OWNER_USERNAME": {
-         "description": "Your username without the @",
-         "value": "excrybaby"
+         "description": "Nama pengguna Anda tanpa @",
+         "value": "excute7"
       },
       "SUPPORT_CHAT": {
-         "description": "Your Telegram support group chat username where your users will go and bother you with shit But be like: MyGroupChatUsernameBlah. If this ever points to masha support than consider you made an enemy.",
+         "description": "Nama pengguna obrolan grup dukungan Telegram Anda di mana pengguna Anda akan pergi dan mengganggu Anda dengan omong kosong Tapi jadilah seperti: MyGroupChatUsernameBlah. Jika ini menunjukkan dukungan masha daripada menganggap Anda membuat musuh.",
          "required": true,
-         "value": "emikosupport"
+         "value": "HyperSupportQ"
       },
       "MONGO_DB_URI": {
-         "description": "Required for database connections.",
+         "description": "Diperlukan untuk koneksi database.",
          "required": true,
          "value": ""
       },
      "EVENT_LOGS": {
-         "description": "Event logs channel to note down important bot level events, recommend to make this public. ex: '-123456'",
+         "description": "Saluran log peristiwa untuk mencatat peristiwa tingkat bot penting, merekomendasikan untuk membuat ini publik. ex: '-123456'",
          "required": true,
          "value": ""
       },
       "JOIN_LOGGER": {
-         "description": "A channel where bot will print who added it to what group, useful during debugging or spam handling.",
+         "description": "Saluran tempat bot akan mencetak siapa yang menambahkannya ke grup apa, berguna selama debugging atau penanganan spam.",
          "required": true,
          "value": ""
       },      
       "CASH_API_KEY": {
-         "description": "Required for currency converter. Get yours from https://www.alphavantage.co/support/#api-key",
+         "description": "Diperlukan untuk konverter mata uang. Dapatkan milik Anda dari https://www.alphavantage.co/support/#api-key",
          "required": true,
          "value": "-xyz"
       },
       "TIME_API_KEY": {
-         "description": "Required for timezone information. Get yours from https://timezonedb.com/api",
+         "description": "Diperlukan untuk informasi zona waktu. Dapatkan milikmu dari https://timezonedb.com/api",
          "required": true,
          "value": "-xyz"
      },
       "OPENWEATHERMAP_ID": {
-        "description": "Get your own API from https://api.openweathermap.org/data/2.5/weather",
+        "description": "Dapatkan API Anda sendiri dari https://api.openweathermap.org/data/2.5/weather",
         "value": "",
         "required": false
       },
       "DEV_USERS": {
-         "description": "ID of users who are Devs of your bot (can use /py etc.). If you are a noob and would come and bother Masha support then keep the current ID's here at they are and add yours.",
+         "description": "ID pengguna yang merupakan Pengembang bot Anda (dapat menggunakan /py dll.). Jika Anda seorang noob dan akan datang dan mengganggu dukungan Masha maka simpan ID saat ini di sini dan tambahkan milik Anda.",
          "required": false,
          "value": ""
      },
       "ERROR_LOG": {
-         "description": "ID of log for show error.",
+         "description": "ID log untuk kesalahan acara.",
          "required": false,
          "value": ""
      },
         "ARQ_API_KEY": {
-            "description": "Get this from @ARQRobot.",
+            "description": "Dapatkan ini dari @ARQRobot.",
             "required": true
         },
       "SPAMWATCH_API": {
-         "description": "Spamwatch API Token, Get one from @SpamWatchBot.",
+         "description": "Token API Spamwatch, Dapatkan satu dari @SpamWatchBot.",
          "required": false,
          "value": ""
       }, 
       "STRICT_GBAN": {
-         "description": "Enforce gbans across new groups as well as old groups. When a gbanned user talks, he will be banned.",
+         "description": "Sebuah ruang gbans di grup baru serta grup lama. Saat pengguna yang diblokir berbicara, dia akan diblokir.",
          "value": "True"
       },
       "DRAGONS": {
-         "description": "A space separated list of user IDs who you want to assign as sudo users.",
+         "description": "Daftar ID pengguna yang dipisahkan oleh spasi yang ingin Anda tetapkan sebagai pengguna sudo.",
          "required": false,
          "value": ""
       },
       "DEMONS": {
-         "description": "A space separated list of user IDs who you wanna assign as support users(gban perms only).",
+         "description": "Daftar ID pengguna yang dipisahkan spasi yang ingin Anda tetapkan sebagai pengguna dukungan (hanya izin gban).",
          "required": false,
          "value": ""
       },
       "TIGERS": {
-         "description": "A space separated list of user IDs who you wanna assign as tiger users.",
+         "description": "Daftar ID pengguna yang dipisahkan spasi yang ingin Anda tetapkan sebagai pengguna harimau.",
          "required": false,
          "value": ""
       },
       "WOLVES": {
-         "description": "A space separated list of user IDs who you want to assign as whitelisted - can't be banned with your bot.",
+         "description": "Daftar ID pengguna yang dipisahkan spasi yang ingin Anda tetapkan sebagai daftar putih - tidak dapat diblokir dengan bot Anda.",
          "required": false,
          "value": ""
       },
       "ENV": {
-         "description": "Setting this to ANYTHING will enable environment variables. Leave it as it is",
+         "description": "Menyetel ini ke ANYTHING akan mengaktifkan variabel lingkungan. Biarkan apa adanya",
          "value": "ANYTHING"
       },
       "NO_LOAD": {
-         "description": "Dont load these modules cause they shit, space separation",
+         "description": "Jangan memuat modul ini karena mereka sial, pemisahan ruang",
          "required": false,
          "value": "rss"
       }, 
       "BL_CHATS": {
-         "description": "List of chats you want blacklisted.",
+         "description": "Daftar obrolan yang ingin Anda daftar hitam.",
          "required": false,
          "value": ""
       },
       "ALLOW_EXCL": {
-         "description": "Set this to True if you want ! to be a command prefix along with /. Recommended is True",
+         "description": "Setel ini ke True jika Anda mau ! menjadi awalan perintah bersama dengan /. Direkomendasikan Benar",
          "value": "True"
       },
       "DONATION_LINK": {
-         "description": "Optional: link where you would like to receive donations. If you are a noob, better leave it linking to paul",
+         "description": "Opsional: tautan tempat Anda ingin menerima sumbangan. Jika Anda seorang noob, lebih baik tinggalkan tautan ke paul",
          "required": false,
-         "value": "https://www.paypal.me/PaulSonOfLars"
+         "value": "https://t.me/excute7"
       },
       "DEL_CMDS": {
-         "description": "Set this to True if you want to delete command messages from users who don't have the perms to run that command.",
+         "description": "Setel ini ke True jika Anda ingin menghapus pesan perintah dari pengguna yang tidak memiliki izin untuk menjalankan perintah itu.",
          "value": "True"
       },
       "WALL_API": {
-         "description": "Required for wallpaper. Get your's from https://wall.alphacoders.com/",
+         "description": "Diperlukan untuk wallpaper. Dapatkan milikmu dari https://wall.alphacoders.com/",
          "required": false,
          "value": ""
       }
