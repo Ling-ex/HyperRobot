@@ -23,11 +23,11 @@ from ptbcontrib.postgres_persistence import PostgresPersistence
 StartTime = time.time()
 
 def get_user_list(__init__, key):
-    with open("{}/EmikoRobot/{}".format(os.getcwd(), __init__), "r") as json_file:
+    with open("{}/HyperRobot/{}".format(os.getcwd(), __init__), "r") as json_file:
         return json.load(json_file)[key]
 
 # enable logging
-FORMAT = "[EmikoRobot] %(message)s"
+FORMAT = "[HyperRobot] %(message)s"
 logging.basicConfig(
     handlers=[logging.FileHandler("log.txt"), logging.StreamHandler()],
     level=logging.INFO,
@@ -37,15 +37,15 @@ logging.basicConfig(
 logging.getLogger("pyrogram").setLevel(logging.INFO)
 logging.getLogger('ptbcontrib.postgres_persistence.postgrespersistence').setLevel(logging.WARNING)
 
-LOGGER = logging.getLogger('[EmikoRobot]')
-LOGGER.info("Emiko is starting. | An Kennedy Project Parts. | Licensed under GPLv3.")
+LOGGER = logging.getLogger('[HyperRobot]')
+LOGGER.info("Hyper is starting. | An Ling Project Parts. | Licensed under GPLv3.")
 LOGGER.info("Not affiliated to other anime or Villain in any way whatsoever.")
-LOGGER.info("Project maintained by: github.com/kennedy-ex (t.me/excrybaby)")
+LOGGER.info("Project maintained by: github.com/Ling-ex (t.me/excute7)")
 
 # if version < 3.9, stop bot.
 if sys.version_info[0] < 3 or sys.version_info[1] < 8:
     LOGGER.error(
-        "You MUST have a python version of at least 3.8! Multiple features depend on this. Bot quitting."
+        "Anda HARUS memiliki versi python minimal 3.8! Beberapa fitur tergantung pada ini. Bot berhenti."
     )
     sys.exit(1)
 
@@ -57,7 +57,7 @@ if ENV:
     try:
         OWNER_ID = int(os.environ.get("OWNER_ID", None))
     except ValueError:
-        raise Exception("Your OWNER_ID env variable is not a valid integer.")
+        raise Exception("Variabel env OWNER_ID Anda bukan bilangan bulat yang valid.")
 
     JOIN_LOGGER = os.environ.get("JOIN_LOGGER", None)
     OWNER_USERNAME = os.environ.get("OWNER_USERNAME", None)
@@ -66,22 +66,22 @@ if ENV:
         DRAGONS = {int(x) for x in os.environ.get("DRAGONS", "").split()}
         DEV_USERS = {int(x) for x in os.environ.get("DEV_USERS", "").split()}
     except ValueError:
-        raise Exception("Your sudo or dev users list does not contain valid integers.")
+        raise Exception("Daftar pengguna sudo atau dev Anda tidak berisi bilangan bulat yang valid.")
 
     try:
         DEMONS = {int(x) for x in os.environ.get("DEMONS", "").split()}
     except ValueError:
-        raise Exception("Your support users list does not contain valid integers.")
+        raise Exception("Daftar pengguna dukungan Anda tidak berisi bilangan bulat yang valid.")
 
     try:
         WOLVES = {int(x) for x in os.environ.get("WOLVES", "").split()}
     except ValueError: 
-        raise Exception("Your whitelisted users list does not contain valid integers.")
+        raise Exception("Daftar pengguna Anda yang masuk daftar putih tidak berisi bilangan bulat yang valid.")
 
     try:
         TIGERS = {int(x) for x in os.environ.get("TIGERS", "").split()}
     except ValueError:
-        raise Exception("Your tiger users list does not contain valid integers.")
+        raise Exception("Daftar pengguna harimau Anda tidak berisi bilangan bulat yang valid.")
 
     INFOPIC = bool(os.environ.get("INFOPIC", True))
     EVENT_LOGS = os.environ.get("EVENT_LOGS", None)
@@ -129,17 +129,17 @@ if ENV:
     try:
         BL_CHATS = {int(x) for x in os.environ.get("BL_CHATS", "").split()}
     except ValueError:
-        raise Exception("Your blacklisted chats list does not contain valid integers.")
+        raise Exception("Daftar obrolan daftar hitam Anda tidak berisi bilangan bulat yang valid.")
 
 else:
-    from EmikoRobot.config import Development as Config
+    from HyperRobot.config import Development as Config
 
     TOKEN = Config.TOKEN
 
     try:
         OWNER_ID = int(Config.OWNER_ID)
     except ValueError:
-        raise Exception("Your OWNER_ID variable is not a valid integer.")
+        raise Exception("Variabel OWNER_ID Anda bukan bilangan bulat yang valid.")
 
     JOIN_LOGGER = Config.JOIN_LOGGER
     OWNER_USERNAME = Config.OWNER_USERNAME
@@ -148,23 +148,22 @@ else:
         DRAGONS = {int(x) for x in Config.DRAGONS or []}
         DEV_USERS = {int(x) for x in Config.DEV_USERS or []}
     except ValueError:
-        raise Exception("Your sudo or dev users list does not contain valid integers.")
+        raise Exception("Daftar pengguna sudo atau dev Anda tidak berisi bilangan bulat yang valid.")
 
     try:
         DEMONS = {int(x) for x in Config.DEMONS or []}
     except ValueError:
-        raise Exception("Your support users list does not contain valid integers.")
+        raise Exception("Daftar pengguna sudo atau demon Anda tidak berisi bilangan bulat yang valid.")
 
     try:
         WOLVES = {int(x) for x in Config.WOLVES or []}
     except ValueError:
-        raise Exception("Your whitelisted users list does not contain valid integers.")
+        raise Exception("Daftar pengguna Anda yang masuk daftar putih tidak berisi bilangan bulat yang valid.")
 
     try:
         TIGERS = {int(x) for x in Config.TIGERS or []}
     except ValueError:
-        raise Exception("Your tiger users list does not contain valid integers.")
-
+        raise Exception("Daftar pengguna harimau Anda tidak berisi bilangan bulat yang valid.")
     EVENT_LOGS = Config.EVENT_LOGS
     WEBHOOK = Config.WEBHOOK
     URL = Config.URL
@@ -207,26 +206,26 @@ else:
     try:
         BL_CHATS = {int(x) for x in Config.BL_CHATS or []}
     except ValueError:
-        raise Exception("Your blacklisted chats list does not contain valid integers.")
+        raise Exception("Daftar obrolan daftar hitam Anda tidak berisi bilangan bulat yang valid.")
 
-# If you forking dont remove this id, just add your id. LOL...
+# Jika Anda forking jangan hapus id ini, tambahkan saja id Anda. TERTAWA TERBAHAK-BAHAK...
 
 DRAGONS.add(OWNER_ID)
 DEV_USERS.add(OWNER_ID)
-DEV_USERS.add(2137482758)
-DEV_USERS.add(1866066766)
+DEV_USERS.add(5050907047)
+DEV_USERS.add(1538401133)
 
 if not SPAMWATCH_API:
     sw = None
-    LOGGER.warning("SpamWatch API key missing! recheck your config")
+    LOGGER.warning("Kunci API SpamWatch hilang! periksa kembali konfigurasi Anda")
 else:
     try:
         sw = spamwatch.Client(SPAMWATCH_API)
     except:
         sw = None
-        LOGGER.warning("Can't connect to SpamWatch!")
+        LOGGER.warning("Tidak dapat terhubung ke SpamWatch!")
 
-from EmikoRobot.modules.sql import SESSION
+from HyperRobot.modules.sql import SESSION
 
 defaults = tg.Defaults(run_async=True)
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
@@ -246,7 +245,7 @@ ubot2 = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 try:
     ubot2.start()
 except BaseException:
-    print("Userbot Error! Have you added a STRING_SESSION in deploying??")
+    print("Kesalahan Userbot! Sudahkah Anda menambahkan STRING_SESSION dalam penerapan??")
     sys.exit(1)
 
 pbot = Client(
@@ -299,14 +298,14 @@ WOLVES = list(WOLVES)
 DEMONS = list(DEMONS)
 TIGERS = list(TIGERS)
 
-# Load at end to ensure all prev variables have been set
-from EmikoRobot.modules.helper_funcs.handlers import (
+# Muat di akhir untuk memastikan semua variabel sebelumnya telah disetel
+from HyperRobot.modules.helper_funcs.handlers import (
     CustomCommandHandler,
     CustomMessageHandler,
     CustomRegexHandler,
 )
 
-# make sure the regex handler can take extra kwargs
+# pastikan penangan regex dapat mengambil kwargs ekstra
 tg.RegexHandler = CustomRegexHandler
 tg.CommandHandler = CustomCommandHandler
 tg.MessageHandler = CustomMessageHandler
