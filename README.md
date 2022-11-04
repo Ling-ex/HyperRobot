@@ -38,7 +38,7 @@ src="https://img.shields.io/badge/Deploy%20To%20Heroku-red?style=flat&logo=herok
 ### Support
 <p>
 <a href="https://t.me/excute7"> <img src="https://img.shields.io/badge/Ling-xy-blue?&logo=telegram" alt="Ling on Telegram" /> </a><br>
-<a href="https://t.me/HyperQi"> <img src="https://img.shields.io/badge/Update-Chat-blue?&logo=telegram" alt="Update Chat" /> </a><br>
+<a href="https://t.me/HyperSupportQ"> <img src="https://img.shields.io/badge/Update-Chat-blue?&logo=telegram" alt="Update Chat" /> </a><br>
 <a href="https://t.me/storyQi"> <img src="https://img.shields.io/badge/Support-Channel-blue?&logo=telegram" alt="Channel Chat" /> </a><br>
 </p>
 
