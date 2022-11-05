@@ -1,6 +1,6 @@
 import random
-from EmikoRobot.events import register
-from EmikoRobot import telethn
+from HyperRobot.events import register
+from HyperRobot import telethn
 
 APAKAH_STRING = ["Iya", 
                  "Tidak", 
