@@ -88,7 +88,7 @@ def add_blacklist(update, context):
     if len(words) > 1:
         text = words[1]
         to_blacklist = list(
-            {trigger.strip() untuk pemicu di text.split("\n") if trigger.strip()},
+            {trigger.strip() for triggers in text.split("\n") if trigger.strip()},
         )
         for trigger in to_blacklist:
             sql.add_to_blacklist(chat_id, trigger.lower())
