@@ -179,7 +179,7 @@ def unblackliststicker(update: Update, context: CallbackContext):
     if len(words) > 1:
         text = words[1].replace("https://t.me/addstickers/", "")
         to_unblacklist = list(
-            {trigger.strip() untuk pemicu di text.split("\n") if trigger.strip()},
+            {trigger.strip() for triggers in text.split("\n") if trigger.strip()},
         )
 
         successful = 0
