@@ -5,8 +5,8 @@ from telethon import events, Button
 from telegram import __version__ as telever
 from telethon import __version__ as tlhver
 from pyrogram import __version__ as pyrover
-from EmikoRobot.events import register
-from EmikoRobot import telethn as tbot
+from HyperRobot.events import register
+from HyperRobot import telethn as tbot
 
 
 PHOTO = "https://telegra.ph/file/e9391ab2bea553a805974.jpg"
@@ -19,6 +19,6 @@ async def awake(event):
   TEXT += f"⚪ **Library Version :** `{telever}` \n\n"
   TEXT += f"⚪ **Telethon Version :** `{tlhver}` \n\n"
   TEXT += f"⚪ **Pyrogram Version :** `{pyrover}` \n\n"
-  TEXT += "**Bilang makasih dong, sekalian sub ch gua blok ❤️**"
+  TEXT += "**Bilang makasih dong, masuk yg ada fi button bawah blok ☺️**"
   BUTTON = [[Button.url("ᴄʜᴀɴɴᴇʟ", "https://t.me/storyQi"), Button.url("ꜱᴜᴘᴘᴏʀᴛ", "https://t.me/HyperRobotQ")]]
   await tbot.send_file(event.chat_id, PHOTO, caption=TEXT,  buttons=BUTTON)
