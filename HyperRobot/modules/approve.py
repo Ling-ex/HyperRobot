@@ -1,11 +1,11 @@
 import html
-from EmikoRobot.modules.disable import DisableAbleCommandHandler
-from EmikoRobot import dispatcher, DRAGONS
-from EmikoRobot.modules.helper_funcs.extraction import extract_user
+from HyperRobot.modules.disable import DisableAbleCommandHandler
+from HyperRobot import dispatcher, DRAGONS
+from HyperRobot.modules.helper_funcs.extraction import extract_user
 from telegram.ext import CallbackContext, CallbackQueryHandler
-import EmikoRobot.modules.sql.approve_sql as sql
-from EmikoRobot.modules.helper_funcs.chat_status import user_admin
-from EmikoRobot.modules.log_channel import loggable
+import HyperRobot.modules.sql.approve_sql as sql
+from HyperRobot.modules.helper_funcs.chat_status import user_admin
+from HyperRobot.modules.log_channel import loggable
 from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, Update
 from telegram.utils.helpers import mention_html
 from telegram.error import BadRequest
@@ -22,7 +22,7 @@ def approve(update, context):
     user_id = extract_user(message, args)
     if not user_id:
         message.reply_text(
-            "I don't know who you're talking about, you're going to need to specify a user!",
+            "Saya tidak tahu siapa yang Anda bicarakan, Replay dulu bego TOLOL🗿!",
         )
         return ""
     try:
@@ -31,18 +31,18 @@ def approve(update, context):
         return ""
     if member.status in ("administrator", "creator"):
         message.reply_text(
-            "User is already admin - locks, blocklists, and antiflood already don't apply to them.",
+            "Pengguna sudah admin - locks, blocklists, dan anti banjir sudah tidak berlaku. Agak laen.",
         )
         return ""
     if sql.is_approved(message.chat_id, user_id):
         message.reply_text(
-            f"[{member.user['first_name']}](tg://user?id={member.user['id']}) is already approved in {chat_title}",
+            f"[{member.user['first_name']}](tg://user?id={member.user['id']}) sudah disetujui di {chat_title}",
             parse_mode=ParseMode.MARKDOWN,
         )
         return ""
     sql.approve(message.chat_id, user_id)
     message.reply_text(
-        f"[{member.user['first_name']}](tg://user?id={member.user['id']}) has been approved in {chat_title}! They will now be ignored by automated admin actions like locks, blocklists, and antiflood.",
+        f"[{member.user['first_name']}](tg://user?id={member.user['id']}) telah disetujui di {chat_title}! Mereka sekarang akan diabaikan oleh tindakan admin otomatis seperti locks, blocklists, dan antiflood.",
         parse_mode=ParseMode.MARKDOWN,
     )
     log_message = (
@@ -66,7 +66,7 @@ def disapprove(update, context):
     user_id = extract_user(message, args)
     if not user_id:
         message.reply_text(
-            "I don't know who you're talking about, you're going to need to specify a user!",
+            "Saya tidak tahu siapa yang Anda bicarakan, Replay dulu TOLOL🗿!",
         )
         return ""
     try:
@@ -74,14 +74,14 @@ def disapprove(update, context):
     except BadRequest:
         return ""
     if member.status in ("administrator", "creator"):
-        message.reply_text("This user is an admin, they can't be unapproved.")
+        message.reply_text("Pengguna ini adalah admin, mereka tidak dapat ditolak kecuali di bunuh hhe.")
         return ""
     if not sql.is_approved(message.chat_id, user_id):
-        message.reply_text(f"{member.user['first_name']} isn't approved yet!")
+        message.reply_text(f"{member.user['first_name']} belum disetujui!")
         return ""
     sql.disapprove(message.chat_id, user_id)
     message.reply_text(
-        f"{member.user['first_name']} is no longer approved in {chat_title}.",
+        f"{member.user['first_name']} tidak lagi disetujui di, mampus lo🤣 {chat_title}.",
     )
     log_message = (
         f"<b>{html.escape(chat.title)}:</b>\n"
@@ -98,13 +98,13 @@ def approved(update, context):
     message = update.effective_message
     chat_title = message.chat.title
     chat = update.effective_chat
-    msg = "The following users are approved.\n"
+    msg = "Pengguna berikut disetujui.\n"
     approved_users = sql.list_approved(message.chat_id)
     for i in approved_users:
         member = chat.get_member(int(i.user_id))
         msg += f"- `{i.user_id}`: {member.user['first_name']}\n"
     if msg.endswith("approved.\n"):
-        message.reply_text(f"No users are approved in {chat_title}.")
+        message.reply_text(f"Tidak ada pengguna yang disetujui tolol di {chat_title}.")
         return ""
     message.reply_text(msg, parse_mode=ParseMode.MARKDOWN)
 
@@ -118,16 +118,16 @@ def approval(update, context):
     member = chat.get_member(int(user_id))
     if not user_id:
         message.reply_text(
-            "I don't know who you're talking about, you're going to need to specify a user!",
+            "Siapa yang mau lu approve tolol, ya minimal replay dulu tolol😅!",
         )
         return ""
     if sql.is_approved(message.chat_id, user_id):
         message.reply_text(
-            f"{member.user['first_name']} is an approved user. Locks, antiflood, and blocklists won't apply to them.",
+            f"{member.user['first_name']} adalah pengguna yang disetujui. Locks, antiflood, and blocklists tidak akan berlaku untuk mereka.",
         )
     else:
         message.reply_text(
-            f"{member.user['first_name']} is not an approved user. They are affected by normal commands.",
+            f"{member.user['first_name']} bukan pengguna yang disetujui. Mereka dipengaruhi oleh perintah normal.",
         )
 
 
@@ -137,7 +137,7 @@ def unapproveall(update: Update, context: CallbackContext):
     member = chat.get_member(user.id)
     if member.status != "creator" and user.id not in DRAGONS:
         update.effective_message.reply_text(
-            "Only the chat owner can unapprove all users at once.",
+            "Hanya pemilik obrolan yang dapat membatalkan persetujuan semua pengguna sekaligus, emng lu own nya🗿.",
         )
     else:
         buttons = InlineKeyboardMarkup(
@@ -157,7 +157,7 @@ def unapproveall(update: Update, context: CallbackContext):
             ],
         )
         update.effective_message.reply_text(
-            f"Are you sure you would like to unapprove ALL users in {chat.title}? This action cannot be undone.",
+            f"Apakah Anda yakin ingin membatalkan persetujuan SEMUA pengguna di {chat.title}? This action cannot be undone.",
             reply_markup=buttons,
             parse_mode=ParseMode.MARKDOWN,
         )
@@ -178,32 +178,32 @@ def unapproveall_btn(update: Update, context: CallbackContext):
             return
 
         if member.status == "administrator":
-            query.answer("Only owner of the chat can do this.")
+            query.answer("Hanya pemilik obrolan yang dapat melakukan ini.")
 
         if member.status == "member":
-            query.answer("You need to be admin to do this.")
+            query.answer("Anda harus menjadi admin untuk melakukan ini haha so soan.")
     elif query.data == "unapproveall_cancel":
         if member.status == "creator" or query.from_user.id in DRAGONS:
-            message.edit_text("Removing of all approved users has been cancelled.")
+            message.edit_text("Penghapusan semua pengguna yang disetujui telah dibatalkan.")
             return ""
         if member.status == "administrator":
-            query.answer("Only owner of the chat can do this.")
+            query.answer("Hanya pemilik obrolan yang dapat melakukan ini, bukan own mah diam aja om/tante.")
         if member.status == "member":
-            query.answer("You need to be admin to do this.")
+            query.answer("Anda harus menjadi admin untuk melakukan ini haha so soan.")
 
 
 __help__ = """
-Sometimes, you might trust a user not to send unwanted content.
-Maybe not enough to make them admin, but you might be ok with locks, blacklists, and antiflood not applying to them.
+Terkadang, Anda mungkin memercayai pengguna untuk tidak mengirim konten yang tidak diinginkan.
+Mungkin tidak cukup untuk menjadikannya admin, tetapi Anda mungkin baik-baik saja dengan locks, blacklists, and antiflood tidak berlaku untuk mereka.
 
-That's what approvals are for - approve of trustworthy users to allow them to send
+Untuk itulah persetujuan - setujui pengguna yang dapat dipercaya untuk memungkinkan mereka mengirim
 
-*Admin commands:*
-❂ /approval*:* Check a user's approval status in this chat.
-❂ /approve*:* Approve of a user. Locks, blacklists, and antiflood won't apply to them anymore.
-❂ /unapprove*:* Unapprove of a user. They will now be subject to locks, blacklists, and antiflood again.
-❂ /approved*:* List all approved users.
-❂ /unapproveall*:* Unapprove *ALL* users in a chat. This cannot be undone.
+*Perintah admin:*
+❂ /approval*:* Periksa status persetujuan pengguna di obrolan ini.
+❂ /approve*:* Menyetujui pengguna. Locks, blacklists, dan antiflood tidak akan berlaku untuk mereka lagi.
+❂ /unapprove*:* Tidak menyetujui pengguna. Mereka sekarang akan tunduk pada locks, blacklists, dan antiflood lagi.
+❂ /approved*:* Daftar semua pengguna yang disetujui.
+❂ /unapproveall*:* Batalkan persetujuan *SEMUA* pengguna dalam obrolan. Ini tidak dapat dibatalkan.
 """
 
 APPROVE = DisableAbleCommandHandler("approve", approve, run_async=True)
