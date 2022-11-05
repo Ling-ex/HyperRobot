@@ -4,9 +4,9 @@ import html
 import random
 import time
 
-from EmikoRobot import dispatcher
-from EmikoRobot.modules.disable import DisableAbleCommandHandler
-from EmikoRobot.modules.helper_funcs.chat_status import (is_user_admin)
+from HyperRobot import dispatcher
+from HyperRobot.modules.disable import DisableAbleCommandHandler
+from HyperRobot.modules.helper_funcs.chat_status import (is_user_admin)
 from telegram.ext import CallbackContext, CommandHandler, Filters, run_async, CallbackQueryHandler
 from telegram import ParseMode, Update, InlineKeyboardMarkup, InlineKeyboardButton, replymarkup, ChatPermissions
 from telegram.error import BadRequest
@@ -27,10 +27,10 @@ def anime_quote():
 def quotes(update: Update, context: CallbackContext):
     message = update.effective_message
     quote, character, anime = anime_quote()
-    msg = f"<i>❝{quote}❞</i>\n\n<b>{character} from {anime}</b>"
+    msg = f"<i>❝{quote}❞</i>\n\n<b>{character} dari {anime}</b>"
     keyboard = InlineKeyboardMarkup([[
         InlineKeyboardButton(
-            text="Change🔁",
+            text="Mengubah🔁",
             callback_data="change_quote")]])
     message.reply_text(
         msg,
@@ -43,10 +43,10 @@ def change_quote(update: Update, context: CallbackContext):
     chat = update.effective_chat
     message = update.effective_message
     quote, character, anime = anime_quote()
-    msg = f"<i>❝{quote}❞</i>\n\n<b>{character} from {anime}</b>"
+    msg = f"<i>❝{quote}❞</i>\n\n<b>{character} dari {anime}</b>"
     keyboard = InlineKeyboardMarkup([[
         InlineKeyboardButton(
-            text="Change🔁",
+            text="Mengubah🔁",
             callback_data="quote_change")]])
     message.edit_text(msg, reply_markup=keyboard,
                       parse_mode=ParseMode.HTML)
