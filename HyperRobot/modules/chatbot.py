@@ -61,7 +61,7 @@ async def hmm(_, message):
             return
         await lel.edit(f"Hyper AI Diaktifkan oleh {message.from_user.mention()} untuk pengguna di {message.chat.title}")
 
-    elif status == "OFF" or status == "off" atau status == "Off":
+    elif status == "OFF" or status == "off" or status == "Off":
         lel = await edit_or_reply(message, "`Pengolahan...`")
         Escobar = remove_chat(int(message.chat.id))
         if not Escobar:
