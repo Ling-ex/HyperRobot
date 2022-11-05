@@ -2,10 +2,10 @@ from os import remove
 
 from pyrogram import filters
 
-from EmikoRobot import pbot, arq, BOT_USERNAME as bn
-from EmikoRobot.utils.errors import capture_err
-from EmikoRobot.utils.permissions import adminsOnly
-from EmikoRobot.ex_plugins.dbfunctions import is_nsfw_on, nsfw_off, nsfw_on
+from HyperRobot import pbot, arq, BOT_USERNAME as bn
+from HyperRobot.utils.errors import capture_err
+from HyperRobot.utils.permissions import adminsOnly
+from HyperRobot.ex_plugins.dbfunctions import is_nsfw_on, nsfw_off, nsfw_on
 
 __mod_name__ = "Anti-NSFW​"
 
@@ -81,7 +81,7 @@ async def detect_nsfw(_, message):
         return
     await message.reply_text(
         f"""
-**NSFW Image Detected & Deleted Successfully!
+**NSFW Gambar Terdeteksi dan Berhasil Dihapus!
 ————————————————————**
 **User:** {message.from_user.mention} [`{message.from_user.id}`]
 **Safe:** `{results.neutral} %`
@@ -90,7 +90,7 @@ async def detect_nsfw(_, message):
 **Hentai:** `{results.hentai} %`
 **Drawings:** `{results.drawings} %`
 **————————————————————**
-__Use `/antinsfw off` to disable this.__
+__Gunakan `/antinsfw off` untuk menonaktifkan this.__
 """
     )
 
@@ -100,7 +100,7 @@ __Use `/antinsfw off` to disable this.__
 async def nsfw_scan_command(_, message):
     if not message.reply_to_message:
         await message.reply_text(
-            "`Reply to an image/document/sticker/animation to scan it.`"
+            "`Reply ke sebuah image/document/sticker/animation untuk memindainya.`"
         )
         return
     reply = message.reply_to_message
@@ -112,13 +112,13 @@ async def nsfw_scan_command(_, message):
         and not reply.video
     ):
         await message.reply_text(
-            "Reply to an image/document/sticker/animation to scan it."
+            "Reply ke sebuah image/document/sticker/animation untuk memindainya."
         )
         return
-    m = await message.reply_text("`Scanning...`")
+    m = await message.reply_text("`Pemindaian...`")
     file_id = await get_file_id_from_message(reply)
     if not file_id:
-        return await m.edit("`Something wrong happened...|")
+        return await m.edit("`Sesuatu yang salah terjadi...|")
     file = await pbot.download_media(file_id)
     try:
         results = await arq.nsfw_scan(file=file)
@@ -144,7 +144,7 @@ async def nsfw_scan_command(_, message):
 @adminsOnly("can_change_info")
 async def nsfw_enable_disable(_, message):
     if len(message.command) != 2:
-        await message.reply_text("Usage: /antinsfw [on/off]")
+        await message.reply_text("Penggunaan: /antinsfw [on/off]")
         return
     status = message.text.split(None, 1)[1].strip()
     status = status.lower()
@@ -152,10 +152,10 @@ async def nsfw_enable_disable(_, message):
     if status == "on" or status == "yes":
         await nsfw_on(chat_id)
         await message.reply_text(
-            "Enabled AntiNSFW System. I will Delete Messages Containing Inappropriate Content."
+            "Diaktifkan AntiNSFW Sistem. Saya akan Menghapus Pesan yang Mengandung Konten Tidak Pantas."
         )
     elif status == "off" or status == "no":
         await nsfw_off(chat_id)
-        await message.reply_text("Disabled AntiNSFW System.")
+        await message.reply_text("Menonaktifkan AntiNSFW Sistem.")
     else:
-        await message.reply_text("Unknown Suffix, Use /antinsfw [on/off]")
+        await message.reply_text("Sufiks Tidak Diketahui, Gunakan /antinsfw [on/off]")
