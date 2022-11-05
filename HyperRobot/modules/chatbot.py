@@ -69,7 +69,7 @@ async def hmm(_, message):
             return
         await lel.edit(f"Hyper AI Dinonaktifkan oleh {message.from_user.mention()} untuk pengguna di {message.chat.title}")
 
-    elif status == "EN" or status == "en" atau status == "english":
+    elif status == "EN" or status == "en" or status == "english":
         if not chat_id in en_chats:
             en_chats.append(chat_id)
             await message.reply_text(f"Obrolan AI bahasa Inggris Diaktifkan oleh {message.from_user.mention()}")
@@ -230,7 +230,7 @@ async def hmm(client, message):
                 "Hi, teman saya, apa yang bisa saya lakukan untuk Anda hari ini??",
                 "Hi, Nama saya Hyper Senang bertemu denganmu")
         pro = response
-        if Bukan "en" di lan dan bukan lan == "":
+        if not "en" in lan and not lan == "":
             try:
                 pro = translator.translate(pro, dest=lan)
                 pro = pro.text
@@ -282,7 +282,7 @@ async def inuka(client, message):
     except:
         return
     test = rm
-    if Bukan "en" di lan dan bukan lan == "":
+    if note "en" in lan and not lan == "":
         try:
             test = translator.translate(test, dest="en")
             test = test.text
@@ -325,7 +325,7 @@ async def inuka(client, message):
             "Hi, Nama saya Hyper Senang bertemu denganmu")
 
     pro = response
-    if Bukan "en" di lan dan bukan lan == "":
+    if not "en" in lan and not lan == "":
         pro = translator.translate(pro, dest=lan)
         pro = pro.text
     try:
@@ -374,7 +374,7 @@ async def inuka(client, message):
     except:
         return
     test = rm
-    if Bukan "en" di lan dan bukan lan == "":
+    if not "en" in lan and not lan == "":
         try:
             test = translator.translate(test, dest="en")
             test = test.text
@@ -419,7 +419,7 @@ async def inuka(client, message):
             "Hi, Nama saya Hyper Senang bertemu denganmu")
 
     pro = response
-    if Bukan "en" di lan dan bukan lan == "":
+    if not "en" in lan and not lan == "":
         try:
             pro = translator.translate(pro, dest=lan)
             pro = pro.text
