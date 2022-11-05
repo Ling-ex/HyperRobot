@@ -160,7 +160,7 @@ def ban(update: Update, context: CallbackContext) -> str:
         return log
 
     except BadRequest as excp:
-        if excp.message == "Reply message not found":
+        if excp.message == "Pesan balasan tidak ditemukan":
             # Do not reply
             if silent:
                 return log
@@ -410,7 +410,7 @@ def punchme(update: Update, context: CallbackContext):
     res = update.effective_chat.unban_member(user_id)  # unban on current user = kick
     if res:
         update.effective_message.reply_text(
-            "punches you out of the group!!",
+            "mengeluarkanmu dari grup!!",
         )
     else:
         update.effective_message.reply_text("Hah? aku tidak bisa :/")
