@@ -3,7 +3,7 @@ import requests
 from telegram import Bot, Update
 from telegram.ext import CommandHandler, run_async
 
-from EmikoRobot import dispatcher, CASH_API_KEY
+from HyperRobot import dispatcher, CASH_API_KEY
 
 
 def convert(bot: Bot, update: Update):
@@ -17,7 +17,7 @@ def convert(bot: Bot, update: Update):
             orig_cur = args[2].upper()
         except IndexError:
             update.effective_message.reply_text(
-                "You forgot to mention the currency code."
+                "Anda lupa menyebutkan kode mata uang."
             )
             return
 
@@ -25,7 +25,7 @@ def convert(bot: Bot, update: Update):
             new_cur = args[3].upper()
         except IndexError:
             update.effective_message.reply_text(
-                "You forgot to mention the currency code to convert into."
+                "Anda lupa menyebutkan kode mata uang untuk dikonversi menjadi."
             )
             return
 
@@ -33,10 +33,10 @@ def convert(bot: Bot, update: Update):
         response = requests.get(request_url).json()
         try:
             current_rate = float(
-                response["Realtime Currency Exchange Rate"]["5. Exchange Rate"]
+                tanggapan["Nilai Tukar Mata Uang Realtime"]["5. Kurs"]
             )
         except KeyError:
-            update.effective_message.reply_text(f"Currency Not Supported.")
+            update.effective_message.reply_text(f"Mata Uang Tidak Didukung.")
             return
         new_cur_amount = round(orig_cur_amount * current_rate, 5)
         update.effective_message.reply_text(
