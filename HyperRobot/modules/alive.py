@@ -15,7 +15,7 @@ PHOTO = "https://telegra.ph/file/e9391ab2bea553a805974.jpg"
 async def awake(event):
   TEXT = f"**Hai [{event.sender.first_name}](tg://user?id={event.sender.id}), Dewek Hyper Robot.** \n\n"
   TEXT += "⍟ **Gua Aktif** \n\n"
-  TEXT += f"⍟ **Tuhan Gua : [ling-zy](https://t.me/excute7)** \n\n"
+  TEXT += f"⍟ **Tuhan Gua : [zøɴӄɛʏ ᴅ ʟɪɴɢ](https://t.me/excute7)** \n\n"
   TEXT += f"⍟ **Library Version :** `{telever}` \n\n"
   TEXT += f"⍟ **Telethon Version :** `{tlhver}` \n\n"
   TEXT += f"⍟ **Pyrogram Version :** `{pyrover}` \n\n"
