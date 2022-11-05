@@ -1,7 +1,7 @@
 # Module to blacklist users and prevent them from using commands by @TheRealPhoenix
 import html
-import EmikoRobot.modules.sql.blacklistusers_sql as sql
-from EmikoRobot import (
+import HyperRobot.modules.sql.blacklistusers_sql as sql
+from HyperRobot import (
     DEV_USERS,
     OWNER_ID,
     DRAGONS,
@@ -10,12 +10,12 @@ from EmikoRobot import (
     WOLVES,
     dispatcher,
 ) 
-from EmikoRobot.modules.helper_funcs.chat_status import dev_plus
-from EmikoRobot.modules.helper_funcs.extraction import (
+from HyperRobot.modules.helper_funcs.chat_status import dev_plus
+from HyperRobot.modules.helper_funcs.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from EmikoRobot.modules.log_channel import gloggable
+from HyperRobot.modules.log_channel import gloggable
 from telegram import ParseMode, Update
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler
@@ -34,27 +34,27 @@ def bl_user(update: Update, context: CallbackContext) -> str:
     user_id, reason = extract_user_and_text(message, args)
 
     if not user_id:
-        message.reply_text("I doubt that's a user.")
+        message.reply_text("Saya ragu itu pengguna.")
         return ""
 
     if user_id == bot.id:
-        message.reply_text("How am I supposed to do my work if I am ignoring myself?")
+        message.reply_text("Bagaimana saya bisa melakukan pekerjaan saya jika saya mengabaikan diri saya sendiri?")
         return ""
 
     if user_id in BLACKLISTWHITELIST:
-        message.reply_text("No!\nNoticing Disasters is my job.")
+        message.reply_text("Tidak!\nMemperhatikan Bencana adalah pekerjaanku.")
         return ""
 
     try:
         target_user = bot.get_chat(user_id)
     except BadRequest as excp:
-        if excp.message == "User not found":
-            message.reply_text("I can't seem to find this user.")
+        if excp.message == "Pengguna tidak ditemukan":
+            message.reply_text("Sepertinya saya tidak dapat menemukan pengguna ini.")
             return ""
         raise
 
     sql.blacklist_user(user_id, reason)
-    message.reply_text("I shall ignore the existence of this user!")
+    message.reply_text("Saya akan mengabaikan keberadaan pengguna ini!")
     log_message = (
         f"#BLACKLIST\n"
         f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
@@ -75,25 +75,25 @@ def unbl_user(update: Update, context: CallbackContext) -> str:
     user_id = extract_user(message, args)
 
     if not user_id:
-        message.reply_text("I doubt that's a user.")
+        message.reply_text("Saya ragu itu pengguna.")
         return ""
 
     if user_id == bot.id:
-        message.reply_text("I always notice myself.")
+        message.reply_text("Saya selalu memperhatikan diri saya sendiri.")
         return ""
 
     try:
         target_user = bot.get_chat(user_id)
     except BadRequest as excp:
         if excp.message == "User not found":
-            message.reply_text("I can't seem to find this user.")
+            message.reply_text("Sepertinya saya tidak dapat menemukan pengguna ini.")
             return ""
         raise
 
     if sql.is_user_blacklisted(user_id):
 
         sql.unblacklist_user(user_id)
-        message.reply_text("*notices user*")
+        message.reply_text("*pengguna pemberitahuan*")
         log_message = (
             f"#UNBLACKLIST\n"
             f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
@@ -101,7 +101,7 @@ def unbl_user(update: Update, context: CallbackContext) -> str:
         )
 
         return log_message
-    message.reply_text("I am not ignoring them at all though!")
+    message.reply_text("Saya tidak mengabaikan mereka sama sekali!")
     return ""
 
 
@@ -122,7 +122,7 @@ def bl_users(update: Update, context: CallbackContext):
 
     message = "<b>Blacklisted Users</b>\n"
     if not users:
-        message += "Noone is being ignored as of yet."
+        message += "Belum ada yang diabaikan."
     else:
         message += "\n".join(users)
 
