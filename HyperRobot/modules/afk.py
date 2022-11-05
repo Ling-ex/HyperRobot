@@ -1,13 +1,13 @@
 
 import random, html
 
-from EmikoRobot import dispatcher
-from EmikoRobot.modules.disable import (
+from HyperRobot import dispatcher
+from HyperRobot.modules.disable import (
     DisableAbleCommandHandler,
     DisableAbleMessageHandler,
 )
-from EmikoRobot.modules.sql import afk_sql as sql
-from EmikoRobot.modules.users import get_user_id
+from HyperRobot.modules.sql import afk_sql as sql
+from HyperRobot.modules.users import get_user_id
 from telegram import MessageEntity, Update
 from telegram.error import BadRequest
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
@@ -39,7 +39,7 @@ def afk(update: Update, context: CallbackContext):
         reason = args[1]
         if len(reason) > 100:
             reason = reason[:100]
-            notice = "\nYour afk reason was shortened to 100 characters."
+            notice = "\nAlasan afk Anda dipersingkat menjadi 100 karakter."
     else:
         reason = ""
 
@@ -65,14 +65,14 @@ def no_longer_afk(update: Update, context: CallbackContext):
         firstname = update.effective_user.first_name
         try:
             options = [
-                "{} is here!",
-                "{} is back!",
-                "{} is now in the chat!",
-                "{} is awake!",
-                "{} is back online!",
-                "{} is finally here!",
-                "Welcome back! {}",
-                "Where is {}?\nIn the chat!",
+                "{} di sini!",
+                "{} kembali dari kuburan!",
+                "{} sekarang ada di chat!",
+                "{} sudah bangun dari kematian!",
+                "{} sudah online Aktif lagi nih adik!",
+                "{} akhirnya di sini, napa ga minggat aja lu😒!",
+                "Selamat datang kembali! {}",
+                "Dimana {}?\nDalam obrolan!",
             ]
             chosen_option = random.choice(options)
             update.effective_message.reply_text(chosen_option.format(firstname))
@@ -117,7 +117,7 @@ def reply_afk(update: Update, context: CallbackContext):
             try:
                 chat = bot.get_chat(user_id)
             except BadRequest:
-                print("Error: Could not fetch userid {} for AFK module".format(user_id))
+                print("Error: Tidak dapat mengambil ID pengguna {} untuk modul AFK".format(user_id))
                 return
             fst_name = chat.first_name
 
@@ -135,10 +135,10 @@ def check_afk(update, context, user_id, fst_name, userc_id):
         if int(userc_id) == int(user_id):
             return
         if not user.reason:
-            res = "{} is afk".format(fst_name)
+            res = "{} adalah afk".format(fst_name)
             update.effective_message.reply_text(res)
         else:
-            res = "{} is afk.\nReason: <code>{}</code>".format(
+            res = "{} adalah afk.\nAlasan: <code>{}</code>".format(
                 html.escape(fst_name), html.escape(user.reason)
             )
             update.effective_message.reply_text(res, parse_mode="html")
