@@ -141,7 +141,7 @@ def unblacklist(update, context):
     if len(words) > 1:
         text = words[1]
         to_unblacklist = list(
-            {trigger.strip() untuk pemicu di text.split("\n") if trigger.strip()},
+            {trigger.strip() for triggers in text.split("\n") if trigger.strip()},
         )
         successful = 0
         for trigger in to_unblacklist:
