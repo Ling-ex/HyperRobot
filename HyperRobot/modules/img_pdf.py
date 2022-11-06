@@ -26,9 +26,9 @@ from PIL import Image
 from pyrogram import filters
 from pyrogram.types import Message
 
-from EmikoRobot import pbot as app
-from EmikoRobot.utils.errors import capture_err
-from EmikoRobot.services.sections import section
+from HyperRobot import pbot as app
+from HyperRobot.utils.errors import capture_err
+from HyperRobot.services.sections import section
 
 
 async def convert(
@@ -57,7 +57,7 @@ async def convert(
         img.save(img_path, "JPEG", quality=100)
 
     pdf = BytesIO(img2pdf.convert(documents))
-    pdf.name = "EmikoRobot.pdf"
+    pdf.name = "HyperRobot.pdf"
 
     if len(main_message.command) >= 2:
         pdf.name = main_message.text.split(None, 1)[1]
