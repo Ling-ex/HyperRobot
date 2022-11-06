@@ -1,7 +1,7 @@
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-from EmikoRobot import telethn as tbot
-from EmikoRobot.events import register
-from EmikoRobot import ubot2 as ubot
+from HyperRobot import telethn as tbot
+from HyperRobot.events import register
+from HyperRobot import ubot2 as ubot
 from asyncio.exceptions import TimeoutError
 
 
@@ -56,4 +56,4 @@ async def lastname(steal):
                 conv.chat_id, [msg.id, r.id, response.id, respond.id]
             )
     except TimeoutError:
-        return await puki.edit("`I'm Sick Sorry...`")
+        return await puki.edit("`Aku Sakit Maaf...`")
