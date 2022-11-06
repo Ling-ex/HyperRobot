@@ -13,9 +13,9 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import mention_html
 
-import EmikoRobot.modules.sql.global_bans_sql as sql
-from EmikoRobot.modules.sql.users_sql import get_user_com_chats
-from EmikoRobot import (
+import HyperRobot.modules.sql.global_bans_sql as sql
+from HyperRobot.modules.sql.users_sql import get_user_com_chats
+from HuperRobot import (
     DEV_USERS,
     EVENT_LOGS,
     OWNER_ID,
@@ -29,16 +29,16 @@ from EmikoRobot import (
     sw,
     dispatcher,
 )
-from EmikoRobot.modules.helper_funcs.chat_status import (
+from HyperRobot.modules.helper_funcs.chat_status import (
     is_user_admin,
     support_plus,
     user_admin,
 )
-from EmikoRobot.modules.helper_funcs.extraction import (
+from HyperRobot.modules.helper_funcs.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from EmikoRobot.modules.helper_funcs.misc import send_to_list
+from HyperRobot.modules.helper_funcs.misc import send_to_list
 
 GBAN_ENFORCE_GROUP = 6
 
@@ -538,14 +538,14 @@ def __chat_settings__(chat_id, user_id):
 
 
 __help__ = f"""
-*Admins only:*
-❂ /antispam <on/off/yes/no>: Will toggle our antispam tech or return your current settings.
-Anti-Spam, used by bot devs to ban spammers across all groups. This helps protect \
-you and your groups by removing spam flooders as quickly as possible.
-Note: Users can appeal gbans or report spammers at @{SUPPORT_CHAT}
-❂ /flood: Get the current antiflood settings
-❂ /setflood <number/off/no>: Set the number of messages after which to take action on a user. Set to '0', 'off', or 'no' to disable.
-❂ /setfloodmode <action type>: Choose which action to take on a user who has been flooding. Options: ban/kick/mute/tban/tmute.
+*Hanya admin:*
+❂ /antispam <on/off/yes/no>: Akan mengaktifkan teknologi antispam kami atau mengembalikan pengaturan Anda saat ini.
+Anti-Spam, digunakan oleh pengembang bot untuk melarang spammer di semua grup. Ini membantu melindungi \
+Anda dan grup Anda dengan menghapus pembanjir spam secepat mungkin.
+Catatan: Pengguna dapat mengajukan banding atau melaporkan spammer di @{SUPPORT_CHAT}
+❂ /flood: Dapatkan pengaturan antibanjir saat ini
+❂ /setflood <number/off/no>: Tetapkan jumlah pesan yang akan diambil tindakan pada pengguna. Mulai '0', 'off', atau 'no' untuk menonaktifkan.
+❂ /setfloodmode <action type>: Pilih tindakan yang akan diambil terhadap pengguna yang telah membanjiri. Pilihan: ban/kick/mute/tban/tmute.
 """
 
 GBAN_HANDLER = CommandHandler("gban", gban, run_async=True)
