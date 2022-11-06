@@ -1,26 +1,26 @@
 import os
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from EmikoRobot import ubot2
-from EmikoRobot.events import register
-from EmikoRobot import telethn as tbot, TEMP_DOWNLOAD_DIRECTORY, SUPPORT_CHAT
+from HyperRobot import ubot2
+from HyperRobot.events import register
+from HyperRobot import telethn as tbot, TEMP_DOWNLOAD_DIRECTORY, SUPPORT_CHAT
 
 
 @register(pattern="^/kamuii ?(.*)")
 async def _(fry):
     level = fry.pattern_match.group(1)
-    kntl = await fry.reply("`Deepfrying this image...`")
+    kntl = await fry.reply("`Menggoreng gambar ini...`")
     if fry.fwd_from:
         return
     if not fry.reply_to_msg_id:
-        await kntl.edit("`Reply to a stickers`")
+        await kntl.edit("`Membalas stiker`")
         return
     reply_message = await fry.get_reply_message()
     if not reply_message.media:
-        await fry.edit("`this file not supported`")
+        await fry.edit("`file ini tidak didukung`")
         return
     if reply_message.sender.bot:
-        await fry.edit("`Reply to a asticker to destroy`")
+        await fry.edit("`Balas assticker untuk dihancurkan`")
         return
     chat = "@image_deepfrybot"
     message_id_to_reply = fry.message.reply_to_msg_id
@@ -36,7 +36,7 @@ async def _(fry):
                 response = await conv.get_response()
             else:
                 response = await conv.get_response()
-            """ - don't spam notif - """
+            """ - jangan spam notif tolol - """
             await ubot2.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
             await fry.reply(f"`Error, tell the problem on @{SUPPORT_CHAT}`")
@@ -54,7 +54,7 @@ async def _(fry):
                 force_document=False,
                 reply_to=message_id_to_reply
             )
-            """ - cleanup chat after completed - """
+            """ - pembersihan obrolan setelah selesai - """
             try:
                 msg_level
             except NameError:
