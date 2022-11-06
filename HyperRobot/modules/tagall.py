@@ -6,7 +6,7 @@ from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.types import ChannelParticipantAdmin
 from telethon.tl.types import ChannelParticipantCreator
 
-from EmikoRobot import telethn as client
+from HyperRobot import telethn as client
 
 spam_chats = []
 
@@ -15,7 +15,7 @@ spam_chats = []
 async def mentionall(event):
     chat_id = event.chat_id
     if event.is_private:
-        return await event.respond("__This command can be use in groups and channels!__")
+        return await event.respond("__Perintah ini dapat digunakan dalam grup dan saluran!__")
 
     is_admin = False
     try:
@@ -111,12 +111,12 @@ async def cancel_spam(event):
 
 __mod_name__ = "Tag all"
 __help__ = """
-──「 Mention all func 」──
+──「 Sebutkan semua fungsi 」──
 
-Emiko Can Be a Mention Bot for your group.
+Hyper Dapat Menjadi Mention Bot untuk grup Anda.
 
-Only admins can tag all.  here is a list of commands
+Hanya admin yang dapat menandai semua. di sini adalah daftar perintah
 
-❂ /tagall or @all (reply to message or add another message) To mention all members in your group, without exception.
-❂ /cancel for canceling the mention-all.
+❂ /tagall or @all (membalas pesan atau menambahkan pesan lain) Untuk menyebut semua anggota di grup Anda, tanpa kecuali.
+❂ /cancel untuk membatalkan mention-all.
 """
