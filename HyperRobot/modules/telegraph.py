@@ -1,8 +1,8 @@
 # This file is part of YuiGBot (Telegram Bot)
 # I give credit for this module to YuiGBot.
 
-from EmikoRobot.events import register
-from EmikoRobot import telethn
+from HyperRobot.events import register
+from HyperRobot import telethn
 
 TMP_DOWNLOAD_DIRECTORY = "./"
 from telethon import events
@@ -11,7 +11,7 @@ from PIL import Image
 from datetime import datetime
 from telegraph import Telegraph, upload_file, exceptions
 
-wibu = "EmikoRobot"
+wibu = "HyperRobot"
 telegraph = Telegraph()
 r = telegraph.create_account(short_name=wibu)
 auth_url = r["auth_url"]
@@ -76,7 +76,7 @@ async def _(event):
             ms = (end - start).seconds
             await event.reply("Pasted to https://telegra.ph/{}".format(response["path"], ms), link_preview=True)
     else:
-        await event.reply("Reply to a message to get a permanent telegra.ph link.")
+        await event.reply("Balas pesan untuk mendapatkan tautan telegra.ph permanen.")
 
 
 def resize_image(image):
