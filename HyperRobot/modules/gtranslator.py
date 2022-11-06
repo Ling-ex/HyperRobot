@@ -15,19 +15,19 @@ from EmikoRobot.modules.disable import DisableAbleCommandHandler
 
 
 __help__ = """ 
-Use this module to translate stuff!
-*Commands:*
-❂ /tl (or /tr): as a reply to a message, translates it to English.
-❂ /tl <lang>: translates to <lang>
-eg: /tl ja: translates to Japanese.
-❂ /tl <source>//<dest>: translates from <source> to <lang>.
-eg:  /tl ja//en: translates from Japanese to English.
-❂ /langs: get a list of supported languages for translation.
+Gunakan modul ini untuk menerjemahkan barang!
+*Perintah:*
+❂ /tl (or /tr): sebagai balasan pesan, terjemahkan ke bahasa Inggris.
+❂ /tl <lang>: diterjemahkan menjadi <lang>
+eg: /tl ja: diterjemahkan ke dalam bahasa Jepang.
+❂ /tl <source>//<dest>: diterjemahkan dari <source> ke <lang>.
+eg:  /tl ja//en: menerjemahkan dari bahasa Jepang ke bahasa Inggris.
+❂ /langs: dapatkan daftar bahasa yang didukung untuk terjemahan.
 
-I can convert text to voice and voice to text..
-❂ /tts <lang code>*:* Reply to any message to get text to speech output
-❂ /stt*:* Type in reply to a voice message(support english only) to extract text from it.
-*Language Codes*
+Saya dapat mengonversi teks menjadi suara dan suara menjadi teks..
+❂ /tts <lang code>*:* Balas pesan apa pun untuk mendapatkan output teks ke ucapan
+❂ /stt*:* Ketik membalas pesan suara(hanya mendukung bahasa Inggris) untuk mengekstrak teks darinya.
+*Kode Bahasa*
 `af,am,ar,az,be,bg,bn,bs,ca,ceb,co,cs,cy,da,de,el,en,eo,es,
 et,eu,fa,fi,fr,fy,ga,gd,gl,gu,ha,haw,hi,hmn,hr,ht,hu,hy,
 id,ig,is,it,iw,ja,jw,ka,kk,km,kn,ko,ku,ky,la,lb,lo,lt,lv,mg,mi,mk,
@@ -46,7 +46,7 @@ trans = Translator()
 async def translate(_, message: Message) -> None:
     reply_msg = message.reply_to_message
     if not reply_msg:
-        await message.reply_text("Reply to a message to translate it!")
+        await message.reply_text("Balas pesan untuk menerjemahkannya!")
         return
     if reply_msg.caption:
         to_translate = reply_msg.caption
@@ -74,7 +74,7 @@ async def translate(_, message: Message) -> None:
 
 def languages(update: Update, context: CallbackContext) -> None:
     update.effective_message.reply_text(
-        "Click on the button below to see the list of supported language codes.",
+        "Klik tombol di bawah untuk melihat daftar kode bahasa yang didukung.",
         reply_markup=InlineKeyboardMarkup(
             [
                 [
