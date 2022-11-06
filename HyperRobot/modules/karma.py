@@ -3,10 +3,10 @@ from pyrogram import filters
 from aiohttp import ClientSession
 from Python_ARQ import ARQ
 
-from EmikoRobot import pbot as app, BOT_ID
-from EmikoRobot.utils.errors import capture_err
-from EmikoRobot.utils.permissions import adminsOnly
-from EmikoRobot.ex_plugins.dbfunctions import (
+from HyperRobot import pbot as app, BOT_ID
+from HyperRobot.utils.errors import capture_err
+from HyperRobot.utils.permissions import adminsOnly
+from HyperRobot.ex_plugins.dbfunctions import (
     alpha_to_int,
     get_karma,
     get_karmas,
@@ -16,8 +16,8 @@ from EmikoRobot.ex_plugins.dbfunctions import (
     karma_on,
     update_karma,
 )      
-from EmikoRobot.utils.filter_groups import karma_negative_group, karma_positive_group
-from EmikoRobot import arq
+from HyperRobot.utils.filter_groups import karma_negative_group, karma_positive_group
+from HyperRobot import arq
 
 regex_upvote = r"^((?i)\+|\+\+|\+1|thx|thanx|thanks|pro|cool|good|👍)$"
 regex_downvote = r"^(\-|\-\-|\-1|👎|noob|weak)$"
@@ -60,7 +60,7 @@ async def upvote(_, message):
         chat_id, await int_to_alpha(user_id), new_karma
     )
     await message.reply_text(
-        f"Incremented Karma of {user_mention} By 1 \nTotal Points: {karma}"
+        f"Karma Bertambah {user_mention} By 1 \nTotal Points: {karma}"
     )
 
 
@@ -133,7 +133,7 @@ async def downvote(_, message):
     new_karma = {"karma": karma}
     await update_karma(chat_id, await int_to_alpha(user_id), new_karma)
     await message.reply_text(
-        f"Decremented Karma Of {user_mention} By 1 \nTotal Points: {karma}"
+        f"Karma yang Dikurangi {user_mention} By 1 \nJumlah Poin: {karma}"
     )
 
 
@@ -147,7 +147,7 @@ async def karma(_, message):
         if not karma:
             await m.edit("No karma in DB for this chat.")
             return
-        msg = f"**Karma list of {message.chat.title}:- **\n"
+        msg = f"**daftar karma {message.chat.title}:- **\n"
         limit = 0
         karma_dicc = {}
         for i in karma:
@@ -158,7 +158,7 @@ async def karma(_, message):
                 sorted(karma_dicc.items(), key=lambda item: item[1], reverse=True)
             )
         if not karma_dicc:
-            await m.edit("No karma in DB for this chat.")
+            await m.edit("Tidak ada karma di DB untuk obrolan ini.")
             return
         for user_idd, karma_count in karma_arranged.items():
             if limit > 9:
@@ -193,9 +193,9 @@ async def captcha_state(_, message):
     state = state.lower()
     if state == "on":
         await karma_on(chat_id)
-        await message.reply_text("Enabled karma system.")
+        await message.reply_text("Sistem karma yang diaktifkan.")
     elif state == "off":
         karma_off(chat_id)
-        await message.reply_text("Disabled karma system.")
+        await message.reply_text("Sistem karma yang dinonaktifkan.")
     else:
         await message.reply_text(usage)
