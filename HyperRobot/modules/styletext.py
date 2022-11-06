@@ -1,6 +1,6 @@
-from EmikoRobot  import dispatcher
-from EmikoRobot.modules.disable import DisableAbleCommandHandler
-from EmikoRobot.modules.helper_funcs.alternate import typing_action
+from HyperRobot  import dispatcher
+from HyperRobot.modules.disable import DisableAbleCommandHandler
+from HyperRobot.modules.helper_funcs.alternate import typing_action
 from telegram import ParseMode
 from telegram.ext import run_async
 
