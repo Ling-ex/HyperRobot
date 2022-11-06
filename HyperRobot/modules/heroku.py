@@ -5,8 +5,8 @@ import os
 import heroku3
 import requests
 
-from EmikoRobot import telethn as borg, HEROKU_APP_NAME, HEROKU_API_KEY, OWNER_ID
-from EmikoRobot.events import register
+from HyperRobot import telethn as borg, HEROKU_APP_NAME, HEROKU_API_KEY, OWNER_ID
+from HyperRobot.events import register
 
 heroku_api = "https://api.heroku.com"
 Heroku = heroku3.from_key(HEROKU_API_KEY)
@@ -31,7 +31,7 @@ async def variable(var):
     exe = var.pattern_match.group(1)
     heroku_var = app.config()
     if exe == "see":
-        k = await var.reply("`Getting information...`")
+        k = await var.reply("`Mendapatkan informasi...`")
         await asyncio.sleep(1.5)
         try:
             variable = var.pattern_match.group(2).split()[0]
@@ -153,15 +153,15 @@ async def dyno_usage(dyno):
     await asyncio.sleep(1.5)
 
     return await die.edit(
-        "❂ **Dyno Usage **:\n\n"
-        f" » Dyno usage for **{HEROKU_APP_NAME}**:\n"
+        "❂ **Penggunaan Dyno **:\n\n"
+        f" » Penggunaan Dyno untuk **{HEROKU_APP_NAME}**:\n"
         f"      •  `{AppHours}`**h**  `{AppMinutes}`**m**  "
         f"**|**  [`{AppPercentage}`**%**]"
         "\n\n"
-        "  » Dyno hours quota remaining this month:\n"
+        "  » Kuota Dyno hours tersisa bulan ini:\n"
         f"      •  `{hours}`**h**  `{minutes}`**m**  "
         f"**|**  [`{percentage}`**%**]"
-        f"\n\n  » Dynos heroku {day} days left"
+        f"\n\n  » dynos heroku {day} hari tersisa"
     )
 
 
@@ -178,7 +178,7 @@ async def _(dyno):
         app = Heroku.app(HEROKU_APP_NAME)
     except:
         return await dyno.reply(
-            " Please make sure your Heroku API Key, Your App name are configured correctly in the heroku"
+            " Pastikan Kunci API Heroku Anda, Nama Aplikasi Anda dikonfigurasi dengan benar di heroku"
         )
     v = await dyno.reply("Getting Logs....")
     with open("logs.txt", "w") as log:
@@ -188,7 +188,7 @@ async def _(dyno):
         dyno.chat_id,
         "logs.txt",
         reply_to=dyno.id,
-        caption="Emiko logs.",
+        caption="Hyper logs.",
     )
 
     await asyncio.sleep(5)
