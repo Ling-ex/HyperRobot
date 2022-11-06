@@ -1,37 +1,37 @@
 __mod_name__ = "Tools"
 
 __help__ = """
-*Sangmata Info bot*
-❂ /sg <reply>*:* To check history name
+*Bot Info Sangmata*
+❂ /sg <reply>*:* Untuk memeriksa nama riwayat
 
-*Date-time-Weather*
-❂ /time <country code>*:* Gives information about a timezone.
-❂ /weather <city>*:* Get weather info in a particular place.
-❂ /wttr <city>*:* Advanced weather module, usage same as /weather
-❂ /wttr moon*:* Get the current status of moon
+*Tanggal-waktu-Cuaca*
+❂ /time <country code>*:* Memberikan informasi tentang zona waktu.
+❂ /weather <city>*:* Dapatkan info cuaca di tempat tertentu.
+❂ /wttr <city>*:* Modul cuaca lanjutan, penggunaan sama dengan /weather
+❂ /wttr moon*:* Dapatkan status bulan saat ini
 
-*Converts*
-❂ /encrypt*:* Encrypts The Given Text
-❂ /decrypt*:* Decrypts Previously Ecrypted Text
-❂ /zip*:* reply to a telegram file to compress it in .zip format
-❂ /unzip*:* reply to a telegram file to decompress it from the .zip format
+*Mengkonversi*
+❂ /encrypt*:* Mengenkripsi Teks yang Diberikan
+❂ /decrypt*:* Mendekripsi Teks Terenkripsi Sebelumnya
+❂ /zip*:* membalas file telegram untuk mengompresnya .zip format
+❂ /unzip*:* membalas file telegram untuk mendekompresnya dari .zip format
 
-*Random API*
-❂ /ptl or /asupan: get random video from Instagram timeline
-❂ /chika: get random video from chikakiku
-❂ /wibu:get random short anime video or photos
-❂ /truth: challenge 
-❂ /dare: challenge
-Link To File:
-❂ /up: reply to a direct download link to upload it to telegram as files
+*API Acak*
+❂ /ptl or /asupan: dapatkan video acak dari timeline Instagram
+❂ /chika: dapatkan video acak dari chikakiku
+❂ /wibu:dapatkan video atau foto anime pendek acak
+❂ /truth: tantangan 
+❂ /dare: tantangan
+Tautan Ke File:
+❂ /up: balas tautan unduhan langsung untuk mengunggahnya ke telegram sebagai file
  
  File To Link:
-❂ /transfersh: reply to a telegram file to upload it on transfersh and get direct download link
-❂ /tmpninja: reply to a telegram file to upload it on tmpninja and get direct download link
- File Or Text To Telegraph:
-❂ /tgm : Get Telegraph Link Of Replied Media
-❂ /tgt: Get Telegraph Link of Replied Text
+❂ /transfersh: balas file telegram untuk mengunggahnya di transfersh dan dapatkan tautan unduhan langsung
+❂ /tmpninja: balas file telegram untuk mengunggahnya di tmpninja dan dapatkan tautan unduhan langsung
+ File Atau Teks Ke Telegraf:
+❂ /tgm : Dapatkan Tautan Telegraf Media Balasan
+❂ /tgt: Dapatkan Tautan Telegraf dari Teks Balasan
 
  Tagger
-❂ /tagall : for tag everyone at least 100 member first.
+❂ /tagall : untuk tag semua orang minimal 100 member dulu.
 """
