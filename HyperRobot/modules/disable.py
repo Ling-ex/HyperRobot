@@ -2,9 +2,9 @@ import importlib
 from typing import Union
 
 from future.utils import string_types
-from EmikoRobot import dispatcher
-from EmikoRobot.modules.helper_funcs.handlers import CMD_STARTERS, SpamChecker
-from EmikoRobot.modules.helper_funcs.misc import is_module_loaded
+from HyperRobot import dispatcher
+from HyperRobot.modules.helper_funcs.handlers import CMD_STARTERS, SpamChecker
+from HyperRobot.modules.helper_funcs.misc import is_module_loaded
 from telegram import ParseMode, Update
 from telegram.ext import (
     CallbackContext,
@@ -22,7 +22,7 @@ FILENAME = __name__.rsplit(".", 1)[-1]
 # If module is due to be loaded, then setup all the magical handlers
 if is_module_loaded(FILENAME):
 
-    from EmikoRobot.modules.helper_funcs.chat_status import (
+    from HyperRobot.modules.helper_funcs.chat_status import (
         connection_status,
         is_user_admin,
         user_admin,
@@ -66,7 +66,7 @@ if is_module_loaded(FILENAME):
                             return None
                         chat = update.effective_chat
                         user = update.effective_user
-                        if user.id == 1087968824:
+                        if user.id == 5050907047:
                             user_id = chat.id
                         else:
                             user_id = user.id
@@ -140,14 +140,14 @@ if is_module_loaded(FILENAME):
             if disable_cmd in set(DISABLE_CMDS + DISABLE_OTHER):
                 sql.disable_command(chat.id, str(disable_cmd).lower())
                 update.effective_message.reply_text(
-                    f"Disabled the use of `{disable_cmd}`",
+                    f"Nonaktifkan penggunaan `{disable_cmd}`",
                     parse_mode=ParseMode.MARKDOWN,
                 )
             else:
-                update.effective_message.reply_text("That command can't be disabled")
+                update.effective_message.reply_text("Perintah itu tidak dapat dinonaktifkan")
 
         else:
-            update.effective_message.reply_text("What should I disable?")
+            update.effective_message.reply_text("Apa yang harus saya nonaktifkan??")
 
     @connection_status
     @user_admin
@@ -155,19 +155,19 @@ if is_module_loaded(FILENAME):
         args = context.args
         chat = update.effective_chat
         if len(args) >= 1:
-            disable_module = "EmikoRobot.modules." + args[0].rsplit(".", 1)[0]
+            disable_module = "HyperRobot.modules." + args[0].rsplit(".", 1)[0]
 
             try:
                 module = importlib.import_module(disable_module)
             except:
-                update.effective_message.reply_text("Does that module even exist?")
+                update.effective_message.reply_text("Apakah modul itu ada??")
                 return
 
             try:
                 command_list = module.__command_list__
             except:
                 update.effective_message.reply_text(
-                    "Module does not contain command list!",
+                    "Modul tidak berisi daftar perintah!",
                 )
                 return
 
@@ -187,19 +187,19 @@ if is_module_loaded(FILENAME):
             if disabled_cmds:
                 disabled_cmds_string = ", ".join(disabled_cmds)
                 update.effective_message.reply_text(
-                    f"Disabled the uses of `{disabled_cmds_string}`",
+                    f"Nonaktifkan penggunaan `{disabled_cmds_string}`",
                     parse_mode=ParseMode.MARKDOWN,
                 )
 
             if failed_disabled_cmds:
                 failed_disabled_cmds_string = ", ".join(failed_disabled_cmds)
                 update.effective_message.reply_text(
-                    f"Commands `{failed_disabled_cmds_string}` can't be disabled",
+                    f"Perintah `{failed_disabled_cmds_string}` tidak bisa dinonaktifkan",
                     parse_mode=ParseMode.MARKDOWN,
                 )
 
         else:
-            update.effective_message.reply_text("What should I disable?")
+            update.effective_message.reply_text("Apa yang harus saya nonaktifkan??")
 
     @connection_status
     @user_admin
@@ -213,14 +213,14 @@ if is_module_loaded(FILENAME):
 
             if sql.enable_command(chat.id, enable_cmd):
                 update.effective_message.reply_text(
-                    f"Enabled the use of `{enable_cmd}`",
+                    f"Mengaktifkan penggunaan `{enable_cmd}`",
                     parse_mode=ParseMode.MARKDOWN,
                 )
             else:
-                update.effective_message.reply_text("Is that even disabled?")
+                update.effective_message.reply_text("Apakah itu bahkan dinonaktifkan?")
 
         else:
-            update.effective_message.reply_text("What should I enable?")
+            update.effective_message.reply_text("Apa yang harus saya aktifkan??")
 
     @connection_status
     @user_admin
@@ -229,19 +229,19 @@ if is_module_loaded(FILENAME):
         chat = update.effective_chat
 
         if len(args) >= 1:
-            enable_module = "EmikoRobot.modules." + args[0].rsplit(".", 1)[0]
+            enable_module = "HyperRobot.modules." + args[0].rsplit(".", 1)[0]
 
             try:
                 module = importlib.import_module(enable_module)
             except:
-                update.effective_message.reply_text("Does that module even exist?")
+                update.effective_message.reply_text("Apakah modul itu ada??")
                 return
 
             try:
                 command_list = module.__command_list__
             except:
                 update.effective_message.reply_text(
-                    "Module does not contain command list!",
+                    "Modul tidak berisi daftar perintah!",
                 )
                 return
 
@@ -260,19 +260,19 @@ if is_module_loaded(FILENAME):
             if enabled_cmds:
                 enabled_cmds_string = ", ".join(enabled_cmds)
                 update.effective_message.reply_text(
-                    f"Enabled the uses of `{enabled_cmds_string}`",
+                    f"Mengaktifkan penggunaan `{enabled_cmds_string}`",
                     parse_mode=ParseMode.MARKDOWN,
                 )
 
             if failed_enabled_cmds:
                 failed_enabled_cmds_string = ", ".join(failed_enabled_cmds)
                 update.effective_message.reply_text(
-                    f"Are the commands `{failed_enabled_cmds_string}` even disabled?",
+                    f"Apakah perintahnya? `{failed_enabled_cmds_string}` bahkan dinonaktifkan?",
                     parse_mode=ParseMode.MARKDOWN,
                 )
 
         else:
-            update.effective_message.reply_text("What should I enable?")
+            update.effective_message.reply_text("Apa yang harus saya aktifkan??")
 
     @connection_status
     @user_admin
@@ -282,22 +282,22 @@ if is_module_loaded(FILENAME):
             for cmd in set(DISABLE_CMDS + DISABLE_OTHER):
                 result += f" - `{escape_markdown(cmd)}`\n"
             update.effective_message.reply_text(
-                f"The following commands are toggleable:\n{result}",
+                f"Perintah berikut dapat dialihkan:\n{result}",
                 parse_mode=ParseMode.MARKDOWN,
             )
         else:
-            update.effective_message.reply_text("No commands can be disabled.")
+            update.effective_message.reply_text("Tidak ada perintah yang dapat dinonaktifkan.")
 
     # do not async
     def build_curr_disabled(chat_id: Union[str, int]) -> str:
         disabled = sql.get_all_disabled(chat_id)
         if not disabled:
-            return "No commands are disabled!"
+            return "Tidak ada perintah yang dinonaktifkan!"
 
         result = ""
         for cmd in disabled:
             result += " - `{}`\n".format(escape_markdown(cmd))
-        return "The following commands are currently restricted:\n{}".format(result)
+        return "Perintah berikut saat ini dibatasi:\n{}".format(result)
 
     @connection_status
     def commands(update: Update, context: CallbackContext):
@@ -318,18 +318,18 @@ if is_module_loaded(FILENAME):
 
 
     __help__ = """
-❂ /cmds*:* check the current status of disabled commands
+❂ /cmds*:* periksa status perintah yang dinonaktifkan saat ini
 
-*Admins only:*
+*Hanya admin:*
 
-❂ /enable <cmd name>*:* enable that command
-❂ /disable <cmd name>*:* disable that command
-❂ /enablemodule <module name>*:* enable all commands in that module
-❂ /disablemodule <module name>*:* disable all commands in that module
-❂ /listcmds*:* list all possible toggleable commands
+❂ /enable <cmd name>*:* aktifkan perintah itu
+❂ /disable <cmd name>*:* nonaktifkan perintah itu
+❂ /enablemodule <module name>*:* aktifkan semua perintah dalam modul itu
+❂ /disablemodule <module name>*:* nonaktifkan semua perintah dalam modul itu
+❂ /listcmds*:* daftar semua kemungkinan perintah yang dapat dialihkan
 """
 
-    DISABLE_HANDLER = CommandHandler("disable", disable, run_async=True)
+    DISABLE_HANDLER = CommandHandler("disabled", disable, run_async=True)
     DISABLE_MODULE_HANDLER = CommandHandler(
         "disablemodule", disable_module, run_async=True
     )
