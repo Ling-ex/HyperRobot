@@ -7,10 +7,10 @@ from pykeyboard import InlineKeyboard
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton
 
-from EmikoRobot import aiohttpsession as session
-from EmikoRobot import pbot as app
-from EmikoRobot.utils.errors import capture_err
-from EmikoRobot.utils.pastebin import paste
+from HyperRobot import aiohttpsession as session
+from HyperRobot import pbot as app
+from HyperRobot.utils.errors import capture_err
+from HyperRobot.utils.pastebin import paste
 
 __mod_name__ = "Paste​"
 
@@ -39,7 +39,7 @@ async def isPreviewUp(preview: str) -> bool:
 async def paste_func(_, message):
     if not message.reply_to_message:
         return await message.reply_text(
-            "Reply To A Message With /paste"
+            "Balas Pesan Dengan / tempel"
         )
     m = await message.reply_text("Pasting...")
     if message.reply_to_message.text:
@@ -48,10 +48,10 @@ async def paste_func(_, message):
         document = message.reply_to_message.document
         if document.file_size > 1048576:
             return await m.edit(
-                "You can only paste files smaller than 1MB."
+                "Anda hanya dapat menempelkan file yang lebih kecil dari 1MB."
             )
         if not pattern.search(document.mime_type):
-            return await m.edit("Only text files can be pasted.")
+            return await m.edit("Hanya file teks yang dapat ditempel.")
         doc = await message.reply_to_message.download()
         async with aiofiles.open(doc, mode="r") as f:
             content = await f.read()
