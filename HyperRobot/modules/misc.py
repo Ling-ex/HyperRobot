@@ -4,9 +4,9 @@ import re
 import codecs
 from typing import List
 from random import randint
-from EmikoRobot.modules.helper_funcs.chat_status import user_admin
-from EmikoRobot.modules.disable import DisableAbleCommandHandler
-from EmikoRobot import (
+from HyperRobot.modules.helper_funcs.chat_status import user_admin
+from HyperRobot.modules.disable import DisableAbleCommandHandler
+from HyperRobot import (
     dispatcher,
     WALL_API,
 )
@@ -27,13 +27,13 @@ from telegram import (
 from telegram.error import BadRequest
 from telegram.ext.dispatcher import run_async
 from telegram.ext import CallbackContext, Filters, CommandHandler
-from EmikoRobot import StartTime
-from EmikoRobot.modules.helper_funcs.chat_status import sudo_plus
-from EmikoRobot.modules.helper_funcs.alternate import send_action, typing_action
+from HyperRobot import StartTime
+from HyperRobot.modules.helper_funcs.chat_status import sudo_plus
+from HyperRobot.modules.helper_funcs.alternate import send_action, typing_action
 
 MARKDOWN_HELP = f"""
-Markdown is a very powerful formatting tool supported by telegram. {dispatcher.bot.first_name} has some enhancements, to make sure that \
-saved messages are correctly parsed, and to allow you to create buttons.
+Penurunan harga adalah alat pemformatan yang sangat kuat yang didukung oleh telegram. {dispatcher.bot.first_name} has some enhancements, to make sure that \
+pesan yang disimpan diurai dengan benar, dan untuk memungkinkan Anda membuat tombol.
 
 ❂ <code>_italic_</code>: wrapping text with '_' will produce italic text
 ❂ <code>*bold*</code>: wrapping text with '*' will produce bold text
@@ -52,7 +52,7 @@ If you want multiple buttons on the same line, use :same, as such:
 [two](buttonurl://google.com:same)</code>
 This will create two buttons on a single line, instead of one button per line.
 
-Keep in mind that your message <b>MUST</b> contain some text other than just a button!
+Ingatlah bahwa pesan Anda <b>MUST</b> berisi beberapa teks selain hanya sebuah tombol!
 """
 
 
@@ -182,26 +182,26 @@ def wall(update: Update, context: CallbackContext):
 
 
 __help__ = """
-*Available commands:*
+*Perintah yang tersedia:*
 
-❂ /markdownhelp*:* quick summary of how markdown works in telegram - can only be called in private chats
-❂ /paste*:* Saves replied content to `nekobin.com` and replies with a url
-❂ /react*:* Reacts with a random reaction 
-❂ /ud <word>*:* Type the word or expression you want to search use
-❂ /reverse*:* Does a reverse image search of the media which it was replied to.
-❂ /wiki <query>*:* wikipedia your query
-❂ /wall <query>*:* get a wallpaper from wall.alphacoders.com
-❂ /cash*:* currency converter
- Example:
+❂ /markdownhelp*:* qringkasan singkat tentang cara kerja penurunan harga di telegram - hanya dapat dipanggil dalam obrolan pribadi
+❂ /paste*:* Simpan konten yang dibalas ke `nekobin.com` dan membalas dengan url
+❂ /react*:* Bereaksi dengan reaksi acak 
+❂ /ud <word>*:* Ketik kata atau ekspresi yang ingin Anda cari gunakan
+❂ /reverse*:* Apakah pencarian gambar terbalik dari media yang dibalas.
+❂ /wiki <query>*:* wikipedia permintaan Anda
+❂ /wall <query>*:* dapatkan wallpaper dari wall.alphacoders.com
+❂ /cash*:* pengonversi mata uang
+ Contoh:
  `/cash 1 USD INR`  
       _OR_
  `/cash 1 usd inr`
  Output: `1.0 USD = 75.505 INR`
 
-*Music Modules:*
-❂ /video or /vsong (query): download video from youtube
-❂ /music or /song (query): download song from yt servers. (API BASED)
-❂ /lyrics (song name) : This plugin searches for song lyrics with song name.
+*Musik M itulah:*
+❂ /video or /vsong (query): unduh video dari youtube
+❂ /music or /song (query): unduh lagu dari server yt. (API BASED)
+❂ /lyrics (song name) : Plugin ini mencari lirik lagu dengan nama lagu.
 """
 
 ECHO_HANDLER = DisableAbleCommandHandler(
