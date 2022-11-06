@@ -1,9 +1,9 @@
 import html
 
-from EmikoRobot import LOGGER, DRAGONS, TIGERS, WOLVES, dispatcher
-from EmikoRobot.modules.helper_funcs.chat_status import user_admin, user_not_admin
-from EmikoRobot.modules.log_channel import loggable
-from EmikoRobot.modules.sql import reporting_sql as sql
+from HyperRobot import LOGGER, DRAGONS, TIGERS, WOLVES, dispatcher
+from HyperRobot.modules.helper_funcs.chat_status import user_admin, user_not_admin
+from HyperRobot.modules.log_channel import loggable
+from HyperRobot.modules.sql import reporting_sql as sql
 from telegram import Chat, InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import (
@@ -265,14 +265,14 @@ def buttons(update: Update, context: CallbackContext):
 
 
 __help__ = """
-❂ /report <reason>*:* reply to a message to report it to admins.
-❂ @admin*:* reply to a message to report it to admins.
-*NOTE:* Neither of these will get triggered if used by admins.
+❂ /report <reason>*:* membalas pesan untuk melaporkannya ke admin.
+❂ @admin*:* membalas pesan untuk melaporkannya ke admin.
+*CATATAN:* Tak satu pun dari ini akan dipicu jika digunakan oleh admin.
 
-*Admins only:*
-❂ /reports <on/off>*:* change report setting, or view current status.
-❂ If done in pm, toggles your status.
-❂ If in group, toggles that groups's status.
+*Hanya admin:*
+❂ /reports <on/off>*:* ubah pengaturan laporan, atau lihat status saat ini.
+❂ Jika dilakukan di malam hari, matikan status Anda.
+❂ Jika dalam grup, ubah status grup itu.
 """
 
 SETTING_HANDLER = CommandHandler("reports", report_setting, run_async=True)
