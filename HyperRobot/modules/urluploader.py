@@ -3,7 +3,7 @@ import time
 
 import aiohttp
 
-from EmikoRobot.utils.uputils import humanbytes, time_formatter
+from HyperRobot.utils.uputils import humanbytes, time_formatter
 
 
 async def download_file(url, file_name, message, start_time, bot):
@@ -24,10 +24,10 @@ async def download_coroutine(session, url, file_name, event, start, bot):
         if "text" in content_type and total_length < 500:
             return await response.release()
         await event.edit(
-            """**Initiating Download**
+            """**Memulai Unduh**
 **URL:** {}
-**File Name:** {}
-**File Size:** {}
+**Nama file:** {}
+**Ukuran file:** {}
 **© @Misszero_bot**""".format(
                 url,
                 os.path.basename(file_name).replace("%20", " "),
@@ -55,11 +55,11 @@ async def download_coroutine(session, url, file_name, event, start, bot):
                     try:
                         if total_length < downloaded:
                             total_length = downloaded
-                        current_message = """Downloading : {}%
+                        current_message = """Mengunduh : {}%
 URL: {}
-File Name: {}
-File Size: {}
-Downloaded: {}
+Nama file: {}
+Ukuran file: {}
+Diunduh: {}
 ETA: {}""".format(
                             "%.2f" % (percentage),
                             url,
