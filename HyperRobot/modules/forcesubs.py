@@ -10,9 +10,9 @@ from pyrogram.errors.exceptions.bad_request_400 import (
 )
 from pyrogram.types import ChatPermissions, InlineKeyboardButton, InlineKeyboardMarkup
 
-from EmikoRobot import DRAGONS as SUDO_USERS
-from EmikoRobot import pbot
-from EmikoRobot.modules.sql import forceSubscribe_sql as sql
+from HyperRobot import DRAGONS as SUDO_USERS
+from HyperRobot import pbot
+from HyperRobot.modules.sql import forceSubscribe_sql as sql
 
 logging.basicConfig(level=logging.INFO)
 
@@ -40,13 +40,13 @@ def _onUnMuteRequest(client, cb):
                 except UserNotParticipant:
                     client.answer_callback_query(
                         cb.id,
-                        text=f"❗ Join our @{channel} channel and press 'Unmute Me' button.",
+                        text=f"❗ Bergabunglah dengan kami @{channel} saluran dan tekan 'Suarakan Saya' button.",
                         show_alert=True,
                     )
             else:
                 client.answer_callback_query(
                     cb.id,
-                    text="❗ You have been muted by admins due to some other reason.",
+                    text="❗ Anda telah dibisukan oleh admin karena beberapa alasan lain.",
                     show_alert=True,
                 )
         else:
@@ -54,13 +54,13 @@ def _onUnMuteRequest(client, cb):
             ):
                 client.send_message(
                     chat_id,
-                    f"❗ **{cb.from_user.mention} is trying to UnMute himself but i can't unmute him because i am not an admin in this chat add me as admin again.**\n__#Leaving this chat...__",
+                    f"❗ **{cb.from_user.mention} sedang mencoba untuk mengaktifkan suara sendiri tetapi saya tidak dapat mengaktifkannya karena saya bukan admin dalam obrolan ini, tambahkan saya sebagai admin lagi.**\n__#Meninggalkan obrolan ini...__",
                 )
 
             else:
                 client.answer_callback_query(
                     cb.id,
-                    text="❗ Warning! Don't press the button when you cn talk.",
+                    text="❗ Peringatan! Jangan tekan tombol saat Anda bisa berbicara.",
                     show_alert=True,
                 )
 
@@ -80,7 +80,7 @@ def _check_member(client, message):
             except UserNotParticipant:
                 try:
                     sent_message = message.reply_text(
-                        "Welcome {} 🙏 \n **You haven't joined our @{} Channel yet**👷 \n \nPlease Join [Our Channel](https://t.me/{}) and hit the **UNMUTE ME** Button. \n \n ".format(
+                        "Selamat datang {} 🙏 \n **Anda belum bergabung dengan kami @{} Saluran belum**👷 \n \nTolong ikut [Our Channel](https://t.me/{}) dan tekan **UNMUTE ME** Button. \n \n ".format(
                             message.from_user.mention, channel, channel
                         ),
                         disable_web_page_preview=True,
@@ -88,7 +88,7 @@ def _check_member(client, message):
                             [
                                 [
                                     InlineKeyboardButton(
-                                        "Join Channel",
+                                        "Bergabunglah dengan Saluran",
                                         url="https://t.me/{}".format(channel),
                                     )
                                 ],
@@ -105,13 +105,13 @@ def _check_member(client, message):
                     )
                 except ChatAdminRequired:
                     sent_message.edit(
-                        "😕 **Emiko is not admin here..**\n__Give me ban permissions and retry.. \n#Ending FSub...__"
+                        "😕 **Hyper bukan admin disini..**\n__Memberi saya melarang izin dan coba lagi.. \n#Ending FSub...__"
                     )
 
             except ChatAdminRequired:
                 client.send_message(
                     chat_id,
-                    text=f"😕 **I not an admin of @{channel} channel.**\n__Give me admin of that channel and retry.\n#Ending FSub...__",
+                    text=f"😕 **saya bukan admin @{channel} channel.**\n__Memberi saya admin saluran itu dan coba lagi.\n#Ending FSub...__",
                 )
 
 
@@ -125,10 +125,10 @@ def config(client, message):
             input_str = input_str.replace("@", "")
             if input_str.lower() in ("off", "no", "disable"):
                 sql.disapprove(chat_id)
-                message.reply_text("❌ **Force Subscribe is Disabled Successfully.**")
+                message.reply_text("❌ **Paksa Berlangganan Berhasil Dinonaktifkan.**")
             elif input_str.lower() in ("clear"):
                 sent_message = message.reply_text(
-                    "**Unmuting all members who are muted by me...**"
+                    "**Mengaktifkan semua anggota yang dibisukan oleh saya...**"
                 )
                 try:
                     for chat_member in client.get_chat_members(
@@ -137,67 +137,65 @@ def config(client, message):
                         if chat_member.restricted_by.id == (client.get_me()).id:
                             client.unban_chat_member(chat_id, chat_member.user.id)
                             time.sleep(1)
-                    sent_message.edit("✅ **Unmuted all members who are muted by me.**")
+                    sent_message.edit("✅ **Suarakan semua anggota yang dibisukan oleh saya.**")
                 except ChatAdminRequired:
                     sent_message.edit(
-                        "😕 **I am not an admin in this chat.**\n__I can't unmute members because i am not an admin in this chat make me admin with ban user permission.__"
+                        "😕 **Saya bukan admin di chat ini.**\n__Saya tidak dapat mengaktifkan suara anggota karena saya bukan admin dalam obrolan ini, jadikan saya admin dengan izin pengguna larangan.__"
                     )
             else:
                 try:
                     client.get_chat_member(input_str, "me")
                     sql.add_channel(chat_id, input_str)
                     message.reply_text(
-                        f"✅ **Force Subscribe is Enabled**\n__Force Subscribe is enabled, all the group members have to subscribe this [channel](https://t.me/{input_str}) in order to send messages in this group.__",
+                        f"✅ **Paksa Berlangganan is Enabled**\n__Paksa Berlangganan diaktifkan, semua anggota grup harus berlangganan ini [channel](https://t.me/{input_str}) untuk mengirim pesan di grup ini.__",
                         disable_web_page_preview=True,
                     )
                 except UserNotParticipant:
                     message.reply_text(
-                        f"😕 **Not an Admin in the Channel**\n__I am not an admin in the [channel](https://t.me/{input_str}). Add me as a admin in order to enable ForceSubscribe.__",
+                        f"😕 **Bukan Admin di Channel**\n__Saya bukan admin di [channel](https://t.me/{input_str}). Tambahkan saya sebagai admin untuk mengaktifkan ForceSubscribe.__",
                         disable_web_page_preview=True,
                     )
                 except (UsernameNotOccupied, PeerIdInvalid):
-                    message.reply_text(f"❗ **Invalid Channel Username.**")
+                    message.reply_text(f"❗ **Nama Pengguna Saluran Tidak Valid.**")
                 except Exception as err:
                     message.reply_text(f"❗ **ERROR:** ```{err}```")
         else:
             if sql.fs_settings(chat_id):
                 message.reply_text(
-                    f"✅ **Force Subscribe is enabled in this chat.**\n__For this [Channel](https://t.me/{sql.fs_settings(chat_id).channel})__",
+                    f"✅ **Paksa Berlangganan diaktifkan di obrolan ini.**\n__Untuk ini [Channel](https://t.me/{sql.fs_settings(chat_id).channel})__",
                     disable_web_page_preview=True,
                 )
             else:
-                message.reply_text("❌ **Force Subscribe is disabled in this chat.**")
+                message.reply_text("❌ **Paksa Berlangganan dinonaktifkan dalam obrolan ini.**")
     else:
         message.reply_text(
-            "❗ **Group Creator Required**\n__You have to be the group creator to do that.__"
+            "❗ **Diperlukan Pembuat Grup**\n__Anda harus menjadi pembuat grup untuk melakukan itu.__"
         )
 
 
 __help__ = """
 *Force Subscribe:*
-❂ Emiko can mute members who are not subscribed your channel until they subscribe
-❂ When enabled I will mute unsubscribed members and show them a unmute button. When they pressed the button I will unmute them
-❂*Setup*
-*Only creator*
-❂ Add me in your group as admin
-❂ Add me in your channel as admin 
+❂ Hyper dapat membisukan anggota yang tidak berlangganan saluran Anda sampai mereka berlangganan
+❂ Saat diaktifkan, saya akan membisukan anggota yang tidak berlangganan dan menunjukkan kepada mereka tombol suarakan. Ketika mereka menekan tombol, saya akan membunyikan mereka
+❂*Mempersiapkan*
+*Hanya pencipta*
+❂ Tambahkan saya di grup Anda sebagai admin
+❂ Tambahkan saya di saluran Anda sebagai admin 
  
 *Commmands*
-❂ /fsub {channel username} - To turn on and setup the channel.
-  💡Do this first...
-❂ /fsub - To get the current settings.
-❂ /fsub disable - To turn of ForceSubscribe..
-  💡If you disable fsub, you need to set again for working.. /fsub {channel username} 
-❂ /fsub clear - To unmute all members who muted by me.
-*Federation*
-Everything is fun, until a spammer starts entering your group, and you have to block it. Then you need to start banning more, and more, and it hurts.
-But then you have many groups, and you don't want this spammer to be in one of your groups - how can you deal? Do you have to manually block it, in all your groups?\n
-*No longer!* With Federation, you can make a ban in one chat overlap with all other chats.\n
-You can even designate federation admins, so your trusted admin can ban all the spammers from chats you want to protect.\n
-*Commands:*\n
-Feds are now divided into 3 sections for your ease.
-• `/fedownerhelp`*:* Provides help for fed creation and owner only commands
-• `/fedadminhelp`*:* Provides help for fed administration commands
-• `/feduserhelp`*:* Provides help for commands anyone can use
+❂ /fsub {channel username} - Untuk mengaktifkan dan mengatur saluran.
+  💡Lakukan ini dulu...
+❂ /fsub - Untuk mendapatkan pengaturan saat ini.
+❂ /fsub disable - Untuk mematikan ForceSubscribe..
+  💡Jika Anda menonaktifkan fsub, Anda perlu mengatur lagi agar berfungsi.. /fsub {channel username} 
+❂ /fsub clear - Untuk membunyikan semua anggota yang dibisukan oleh saya.
+*Federasi*
+Semuanya menyenangkan, sampai spammer mulai memasuki grup Anda, dan Anda harus memblokirnya. Maka Anda harus mulai melarang lebih banyak, dan lebih banyak lagi, dan itu menyakitkan.
+Tetapi kemudian Anda memiliki banyak grup, dan Anda tidak mau .\n
+*Perintah:*\n
+FBI sekarang dibagi menjadi 3 bagian untuk kemudahan Anda.
+• `/fedownerhelp`*:* Memberikan bantuan untuk pembuatan makan dan perintah khusus pemilik
+• `/fedadminhelp`*:* Memberikan bantuan untuk perintah administrasi makan
+• `/feduserhelp`*:* Memberikan bantuan untuk perintah yang dapat digunakan siapa saja
 """
 __mod_name__ = "F-Sub/Feds"
