@@ -2,8 +2,8 @@ import asyncio
 import time
 from telethon import events
 
-from EmikoRobot import telethn
-from EmikoRobot.modules.helper_funcs.telethn.chatstatus import (
+from HyperRobot import telethn
+from HyperRobot.modules.helper_funcs.telethn.chatstatus import (
     can_delete_messages,
     user_is_admin,
 )
@@ -21,16 +21,16 @@ async def purge_messages(event):
         )
         and event.from_id not in [1087968824]
     ):
-        await event.reply("Only Admins are allowed to use this command")
+        await event.reply("Hanya Admin yang diperbolehkan menggunakan perintah ini")
         return
 
     if not await can_delete_messages(message=event):
-        await event.reply("Can't seem to purge the message")
+        await event.reply("Sepertinya tidak dapat menghapus pesan")
         return
 
     reply_msg = await event.get_reply_message()
     if not reply_msg:
-        await event.reply("Reply to a message to select where to start purging from.")
+        await event.reply("Balas pesan untuk memilih dari mana harus mulai membersihkan.")
         return
     messages = []
     message_id = reply_msg.id
@@ -48,7 +48,7 @@ async def purge_messages(event):
     except:
         pass
     time_ = time.perf_counter() - start
-    text = f"Purged Successfully in {time_:0.2f} Second(s)"
+    text = f"Berhasil Dibersihkan in {time_:0.2f} Second(s)"
     await event.respond(text, parse_mode="markdown")
 
 async def delete_messages(event):
@@ -62,16 +62,16 @@ async def delete_messages(event):
         )
         and event.from_id not in [1087968824]
     ):
-        await event.reply("Only Admins are allowed to use this command")
+        await event.reply("Hanya Admin yang diperbolehkan menggunakan perintah ini")
         return
 
     if not await can_delete_messages(message=event):
-        await event.reply("Can't seem to delete this?")
+        await event.reply("Sepertinya tidak bisa menghapus ini?")
         return
 
     message = await event.get_reply_message()
     if not message:
-        await event.reply("Whadya want to delete?")
+        await event.reply("Whadya ingin menghapus?")
         return
     chat = await event.get_input_chat()
     del_message = [message, event.message]
