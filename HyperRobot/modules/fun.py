@@ -2,11 +2,11 @@ import html
 import random
 import time
 
-import EmikoRobot.modules.fun_strings as fun_strings
-from EmikoRobot import dispatcher
-from EmikoRobot.modules.disable import DisableAbleCommandHandler
-from EmikoRobot.modules.helper_funcs.chat_status import is_user_admin
-from EmikoRobot.modules.helper_funcs.extraction import extract_user
+import HyperRobot.modules.fun_strings as fun_strings
+from HyperRobot import dispatcher
+from HyperRobot.modules.disable import DisableAbleCommandHandler
+from HyperRobot.modules.helper_funcs.chat_status import is_user_admin
+from HyperRobot.modules.helper_funcs.extraction import extract_user
 from telegram import ChatPermissions, ParseMode, Update
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext
@@ -16,8 +16,8 @@ GIF_ID = "CgACAgQAAx0CSVUvGgAC7KpfWxMrgGyQs-GUUJgt-TSO8cOIDgACaAgAAlZD0VHT3Zynpr
 
 def runs(update: Update, context: CallbackContext):
     temp = random.choice(fun_strings.RUN_STRINGS)
-    if update.effective_user.id == 1170714920:
-        temp = "Run everyone, they just dropped a bomb 💣💣"
+    if update.effective_user.id == 5050907047:
+        temp = "Jalankan semua orang, mereka baru saja menjatuhkan bom 💣💣"
     update.effective_message.reply_text(temp)
 
 
@@ -101,8 +101,8 @@ def slap(update: Update, context: CallbackContext):
     hit = random.choice(fun_strings.HIT)
     throw = random.choice(fun_strings.THROW)
 
-    if update.effective_user.id == 1096215023:
-        temp = "@NeoTheKitty scratches {user2}"
+    if update.effective_user.id == 1538401133:
+        temp = "@AndaSiiapaa scratches {user2}"
 
     reply = temp.format(user1=user1, user2=user2, item=item, hits=hit, throws=throw)
 
@@ -313,39 +313,39 @@ def weebify(update: Update, context: CallbackContext):
 
 
 __help__ = """
-❂ /runs*:* reply a random string from an array of replies
-❂ /slap*:* slap a user, or get slapped if not a reply
-❂ /shrug*:* get shrug XD
-❂ /table*:* get flip/unflip :v
-❂ /decide*:* Randomly answers yes/no/maybe
-❂ /toss*:* Tosses A coin
-❂ /bluetext*:* check urself :V
-❂ /roll*:* Roll a dice
-❂ /rlg*:* Join ears,nose,mouth and create an emo ;-;
-❂ /shout <keyword>*:* write anything you want to give loud shout
-❂ /weebify <text>*:* returns a weebified text
-❂ /sanitize*:* always use this before /pat or any contact
-❂ /pat*:* pats a user, or get patted
-❂ /8ball*:* predicts using 8ball method
+❂ /runs*:* membalas string acak dari array balasan
+❂ /slap*:* menampar pengguna, atau ditampar jika bukan balasan
+❂ /shrug*:* angkat bahu XD
+❂ /table*:* dapatkan flip/unflip :v
+❂ /decide*:* Menjawab secara acak yes/no/maybe
+❂ /toss*:* Melempar koin
+❂ /bluetext*:* cek sendiri :V
+❂ /roll*:* Melempar dadu
+❂ /rlg*:* Bergabunglah dengan telinga, hidung, mulut dan buat emo ;-;
+❂ /shout <keyword>*:* tulis apa saja yang ingin kamu teriakkan
+❂ /weebify <text>*:* mengembalikan teks weebified
+❂ /sanitize*:* selalu gunakan ini sebelum / tepuk atau kontak apa pun
+❂ /pat*:* menepuk pengguna, atau ditepuk
+❂ /8ball*:* prediksi menggunakan metode 8ball
 
 - Animation
 ❂ /love 
 ❂ /hack 
 ❂ /bombs 
 
-- Shippering
-❂ /couples - get couples of today
+- pengiriman
+❂ /couples - dapatkan pasangan hari ini
 
-- Here is the help for the Styletext module:
+- Berikut adalah bantuan untuk modul Styletext:
 
-❂ /weebify <text>: weebify your text!
-❂ /bubble <text>: bubble your text!
-❂ /fbubble <text>: bubble-filled your text!
-❂ /square <text>: square your text!
-❂ /fsquare <text>: square-filled your text!
-❂ /blue <text>: bluify your text!
-❂ /latin <text>: latinify your text!
-❂ /lined <text>: lined your text!
+❂ /weebify <text>: weebify teks Anda!
+❂ /bubble <text>: gelembung teks Anda!
+❂ /fbubble <text>: teks Anda penuh gelembung!
+❂ /square <text>: kuadratkan teks Anda!
+❂ /fsquare <text>: isi kotak teks Anda!
+❂ /blue <text>: mengaburkan teks Anda!
+❂ /latin <text>: latinkan teks Anda!
+❂ /lined <text>: berjajar teks Anda!
 """
 
 SANITIZE_HANDLER = DisableAbleCommandHandler("sanitize", sanitize, run_async=True)
