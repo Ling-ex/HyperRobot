@@ -7,9 +7,9 @@ import traceback
 import aiohttp
 from telethon import events
 
-from EmikoRobot import telethn as bot
-from EmikoRobot.modules.urluploader import download_file
-from EmikoRobot.utils.uputils import humanbytes, progress
+from HyperRobot import telethn as bot
+from HyperRobot.modules.urluploader import download_file
+from HyperRobot.utils.uputils import humanbytes, progress
 
 DOWNLOADPATH = "Downloads/"
 
@@ -159,7 +159,7 @@ async def up(event):
                 event.chat.id,
                 dosya,
                 force_document=True,
-                caption=f"Uploaded By *AsunaRobot*",
+                caption=f"Uploaded By *HyperRobot*",
             )
         except Exception as e:
             traceback.print_exc()
