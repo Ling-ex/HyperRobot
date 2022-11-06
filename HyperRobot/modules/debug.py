@@ -5,8 +5,8 @@ from telethon import events
 from telegram import Update
 from telegram.ext import CallbackContext, CommandHandler
 
-from EmikoRobot import telethn, dispatcher
-from EmikoRobot.modules.helper_funcs.chat_status import dev_plus
+from HyperRobot import telethn, dispatcher
+from HyperRobot.modules.helper_funcs.chat_status import dev_plus
 
 DEBUG_MODE = False
 
@@ -20,15 +20,15 @@ def debug(update: Update, context: CallbackContext):
     if len(args) > 1:
         if args[1] in ("yes", "on"):
             DEBUG_MODE = True
-            message.reply_text("Debug mode is now on.")
-        elif args[1] in ("no", "off"):
+            message.reply_text("Mode debug sekarang on.")
+        elif args[1] in ("on", "off"):
             DEBUG_MODE = False
-            message.reply_text("Debug mode is now off.")
+            message.reply_text("Mode debug sekarang off.")
     else:
         if DEBUG_MODE:
-            message.reply_text("Debug mode is currently on.")
+            message.reply_text("Mode debug saat ini on.")
         else:
-            message.reply_text("Debug mode is currently off.")
+            message.reply_text("Mode debug saat ini off.")
 
 
 @telethn.on(events.NewMessage(pattern="[/!].*"))
