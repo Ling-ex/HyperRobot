@@ -1,9 +1,9 @@
 from time import sleep
 
-import EmikoRobot.modules.sql.global_bans_sql as gban_sql
-import EmikoRobot.modules.sql.users_sql as user_sql
-from EmikoRobot import DEV_USERS, OWNER_ID, dispatcher
-from EmikoRobot.modules.helper_funcs.chat_status import dev_plus
+import HyperRobot.modules.sql.global_bans_sql as gban_sql
+import HyperRobot.modules.sql.users_sql as user_sql
+from HyperRobot import DEV_USERS, OWNER_ID, dispatcher
+from HyperRobot.modules.helper_funcs.chat_status import dev_plus
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import (
@@ -120,23 +120,23 @@ def callback_button(update: Update, context: CallbackContext):
 
     if query_type == "db_leave_chat":
         if query.from_user.id in admin_list:
-            bot.editMessageText("Leaving chats ...", chat_id, message.message_id)
+            bot.editMessageText("Meninggalkan obrolan ...", chat_id, message.message_id)
             chat_count = get_muted_chats(update, context, True)
             bot.sendMessage(chat_id, f"Left {chat_count} chats.")
         else:
-            query.answer("You are not allowed to use this.")
+            query.answer("Anda tidak diizinkan untuk menggunakan ini.")
     elif query_type == "db_cleanup":
         if query.from_user.id in admin_list:
-            bot.editMessageText("Cleaning up DB ...", chat_id, message.message_id)
+            bot.editMessageText("Membersihkan DB ...", chat_id, message.message_id)
             invalid_chat_count = get_invalid_chats(update, context, True)
             invalid_gban_count = get_invalid_gban(update, context, True)
-            reply = "Cleaned up {} chats and {} gbanned users from db.".format(
+            reply = "Dibersihkan {} obrolan dan {} gbanned pengguna dari db.".format(
                 invalid_chat_count,
                 invalid_gban_count,
             )
             bot.sendMessage(chat_id, reply)
         else:
-            query.answer("You are not allowed to use this.")
+            query.answer("Anda tidak diizinkan untuk menggunakan ini.")
 
 
 DB_CLEANUP_HANDLER = CommandHandler("dbcleanup", dbcleanup, run_async=True)
@@ -145,5 +145,5 @@ BUTTON_HANDLER = CallbackQueryHandler(callback_button, pattern="db_.*", run_asyn
 dispatcher.add_handler(DB_CLEANUP_HANDLER)
 dispatcher.add_handler(BUTTON_HANDLER)
 
-__mod_name__ = "DB Cleanup"
+__mod_name__ = "Pembersihan DB"
 __handlers__ = [DB_CLEANUP_HANDLER, BUTTON_HANDLER]
