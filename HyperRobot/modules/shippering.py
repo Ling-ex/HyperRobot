@@ -1,6 +1,6 @@
-from EmikoRobot import pbot as app
-from EmikoRobot.utils.errors import capture_err
-from EmikoRobot.ex_plugins.dbfunctions import get_couple, save_couple
+from HyperRobot import pbot as app
+from HyperRobot.utils.errors import capture_err
+from HyperRobot.ex_plugins.dbfunctions import get_couple, save_couple
 from pyrogram import filters
 import random
 from datetime import datetime
