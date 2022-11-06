@@ -14,8 +14,8 @@ from tswift import Song
 from yt_dlp import YoutubeDL
 from youtube_search import YoutubeSearch
 from youtubesearchpython import SearchVideos
-from EmikoRobot.utils.pluginhelper import get_text, progress
-from EmikoRobot import pbot, arq
+from HyperRobot.utils.pluginhelper import get_text, progress
+from HyperRobot import pbot, arq
 
 async def lyrics_func(answers, text):
     song = await arq.lyrics(text)
@@ -97,7 +97,7 @@ async def ytmusic(client, message: Message):
         message.chat.id, f"`Getting {urlissed} From Youtube Servers. Please Wait.`"
     )
     if not urlissed:
-        await pablo.edit("Invalid Command Syntax, Please Check Help Menu To Know More!")
+        await pablo.edit("Sintaks Perintah Tidak Valid, Silakan Periksa Menu Bantuan Untuk Mengetahui Lebih Lanjut!")
         return
 
     search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
@@ -134,7 +134,7 @@ async def ytmusic(client, message: Message):
         return
     c_time = time.time()
     file_stark = f"{ytdl_data['id']}.mp4"
-    capy = f"**Video Name ➠** [{thum}]({mo}) \n**Requested For :** `{urlissed}` \n**Channel :** `{thums}` "
+    capy = f"**Nama Video ➠** [{thum}]({mo}) \n**Diminta Untuk :** `{urlissed}` \n**Saluran :** `{thums}` "
     await client.send_video(
         message.chat.id,
         video=open(file_stark, "rb"),
@@ -147,7 +147,7 @@ async def ytmusic(client, message: Message):
         progress_args=(
             pablo,
             c_time,
-            f"`Uploading {urlissed} Song From YouTube Music!`",
+            f"`Mengunggah {urlissed} Lagu Dari YouTube Music!`",
             file_stark,
         ),
     )
@@ -163,11 +163,11 @@ async def ytmusic(client, message: Message):
     if not urlissed:
         await client.send_message(
             message.chat.id,
-            "Invalid Command Syntax, Please Check Help Menu To Know More!",
+            "Sintaks Perintah Tidak Valid, Silakan Periksa Menu Bantuan Untuk Mengetahui Lebih Lanjut!",
         )
         return
     pablo = await client.send_message(
-        message.chat.id, f"`Getting {urlissed} From Youtube Servers. Please Wait.`"
+        message.chat.id, f"`Mendapatkan {urlissed} Dari Server Youtube. Harap tunggu.`"
     )
     search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)
     mi = search.result()
@@ -203,10 +203,10 @@ async def ytmusic(client, message: Message):
         with YoutubeDL(opts) as ytdl:
             ytdl_data = ytdl.extract_info(mo, download=True)
     except Exception as e:
-        await pablo.edit(f"**Failed To Download** \n**Error :** `{str(e)}`")
+        await pablo.edit(f"**Gagal Mengunduh** \n**Kesalahan :** `{str(e)}`")
         return
     c_time = time.time()
-    capy = f"**Song Name :** [{thum}]({mo}) \n**Requested For :** `{urlissed}` \n**Channel :** `{thums}` "
+    capy = f"**Nama lagu :** [{thum}]({mo}) \n**Diminta Untuk :** `{urlissed}` \n**Saluran :** `{thums}` "
     file_stark = f"{ytdl_data['id']}.mp3"
     await client.send_audio(
         message.chat.id,
@@ -220,7 +220,7 @@ async def ytmusic(client, message: Message):
         progress_args=(
             pablo,
             c_time,
-            f"`Uploading {urlissed} Song From YouTube Music!`",
+            f"`Mengunggah {urlissed} Lagu Dari YouTube Music!`",
             file_stark,
         ),
     )
@@ -234,7 +234,7 @@ async def ytmusic(client, message: Message):
 async def lyrics_func(_, message):
     if len(message.command) < 2:
         return await message.reply_text("**Usage:**\n/lyrics [QUERY]")
-    m = await message.reply_text("**__Searching your lyrics__**")
+    m = await message.reply_text("**__Mencari lirik Anda__**")
     query = message.text.strip().split(None, 1)[1]
     song = await arq.lyrics(query)
     lyrics = song.result
