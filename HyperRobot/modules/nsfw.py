@@ -3,15 +3,15 @@ import html
 import nekos
 import requests
 from PIL import Image
-from telegram import ParseMode
-from EmikoRobot import dispatcher, updater
-import EmikoRobot.modules.sql.nsfw_sql as sql
-from EmikoRobot.modules.log_channel import gloggable
+from telgraam import ParseMode
+from HyperRobot import dispatcher, updater
+import HyperRobot.modules.sql.nsfw_sql as sql
+from HyperRobot.modules.log_channel import gloggable
 from telegram import Message, Chat, Update, Bot, MessageEntity
 from telegram.error import BadRequest, RetryAfter, Unauthorized
 from telegram.ext import CommandHandler, run_async, CallbackContext
-from EmikoRobot.modules.helper_funcs.filters import CustomFilters
-from EmikoRobot.modules.helper_funcs.chat_status import user_admin
+from HyperRobot.modules.helper_funcs.filters import CustomFilters
+from HyperRobot.modules.helper_funcs.chat_status import user_admin
 from telegram.utils.helpers import mention_html, mention_markdown, escape_markdown
 
 @user_admin
@@ -23,7 +23,7 @@ def add_nsfw(update: Update, context: CallbackContext):
     is_nsfw = sql.is_nsfw(chat.id)
     if not is_nsfw:
         sql.set_nsfw(chat.id)
-        msg.reply_text("Activated NSFW Mode!")
+        msg.reply_text("Mode NSFW Diaktifkan!")
         message = (
             f"<b>{html.escape(chat.title)}:</b>\n"
             f"ACTIVATED_NSFW\n"
@@ -31,7 +31,7 @@ def add_nsfw(update: Update, context: CallbackContext):
         )
         return message
     else:
-        msg.reply_text("NSFW Mode is already Activated for this chat!")
+        msg.reply_text("Mode NSFW sudah Diaktifkan untuk obrolan ini!")
         return ""
 
 
@@ -43,12 +43,11 @@ def rem_nsfw(update: Update, context: CallbackContext):
     user = update.effective_user
     is_nsfw = sql.is_nsfw(chat.id)
     if not is_nsfw:
-        msg.reply_text("NSFW Mode is already Deactivated")
+        msg.reply_text("Mode NSFW sudah Dinonaktifkan")
         return ""
     else:
         sql.rem_nsfw(chat.id)
-        msg.reply_text("Rolled Back to SFW Mode!")
-        message = (
+        msg.reply_text("Digulung Kembali ke Mode SFW!")
             f"<b>{html.escape(chat.title)}:</b>\n"
             f"DEACTIVATED_NSFW\n"
             f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
@@ -771,60 +770,60 @@ __handlers__ = [
 """
 __help__ = 
 *NSFW:*
-❂ /addnsfw : Enable NSFW mode
-❂ /rmnsfw : Disable NSFW mode
+❂ /addnsfw : Aktifkan mode NSFW
+❂ /rmnsfw : Nonaktifkan mode NSFW
  
 *Available commands:*  
-❂ /neko: Sends Random SFW Neko source Images.
-❂ /feet: Sends Random Anime Feet Images.
-❂ /yuri: Sends Random Yuri source Images.
-❂ /trap: Sends Random Trap source Images.
-❂ /futanari: Sends Random Futanari source Images.
-❂ /hololewd: Sends Random Holo Lewds.
-❂ /lewdkemo: Sends Random Kemo Lewds.
-❂ /sologif: Sends Random Solo GIFs.
-❂ /cumgif: Sends Random Cum GIFs.
-❂ /erokemo: Sends Random Ero-Kemo Images.
-❂ /lesbian: Sends Random Les Source Images.
-❂ /lewdk: Sends Random Kitsune Lewds.
-❂ /ngif: Sends Random Neko GIFs.
-❂ /tickle: Sends Random Tickle GIFs.
-❂ /lewd: Sends Random Lewds.
-❂ /feed: Sends Random Feeding GIFs.
-❂ /eroyuri: Sends Random Ero-Yuri source Images.
-❂ /eron: Sends Random Ero-Neko source Images.
-❂ /cum: Sends Random Cum Images.
-❂ /bjgif: Sends Random Blow Job GIFs.
-❂ /bj: Sends Random Blow Job source Images.
-❂ /nekonsfw: Sends Random NSFW Neko source Images.
-❂ /solo: Sends Random NSFW Neko GIFs.
-❂ /kemonomimi: Sends Random KemonoMimi source Images.
-❂ /avatarlewd: Sends Random Avater Lewd Stickers.
-❂ /gasm: Sends Random Orgasm Stickers.
-❂ /poke: Sends Random Poke GIFs.
-❂ /anal: Sends Random Anal GIFs.
-❂ /hentai: Sends Random Hentai source Images.
-❂ /avatar: Sends Random Avatar Stickers.
-❂ /erofeet: Sends Random Ero-Feet source Images.
-❂ /holo: Sends Random Holo source Images.
-❂ /tits: Sends Random Tits source Images.
-❂ /pussygif: Sends Random Pussy GIFs.
-❂ /holoero: Sends Random Ero-Holo source Images.
-❂ /pussy: Sends Random Pussy source Images.
-❂ /hentaigif: Sends Random Hentai GIFs.
-❂ /classic: Sends Random Classic Hentai GIFs.
-❂ /kuni: Sends Random Pussy Lick GIFs.
-❂ /waifu: Sends Random Waifu Stickers.
-❂ /kiss: Sends Random Kissing GIFs.
-❂ /femdom: Sends Random Femdom source Images.
-❂ /cuddle: Sends Random Cuddle GIFs.
-❂ /erok: Sends Random Ero-Kitsune source Images.
-❂ /foxgirl: Sends Random FoxGirl source Images.
-❂ /titsgif: Sends Random Tits GIFs.
-❂ /ero: Sends Random Ero source Images.
-❂ /smug: Sends Random Smug GIFs.
-❂ /baka: Sends Random Baka Shout GIFs.
-❂ /dva: Sends Random D.VA source Images.
+❂ /neko: Mengirim Gambar sumber SFW Neko Acak.
+❂ /feet: Mengirim Gambar Kaki Anime Acak.
+❂ /yuri: Mengirim Gambar sumber Yuri Acak.
+❂ /trap: Mengirim Gambar sumber Perangkap Acak.
+❂ /futanari: Mengirim Gambar sumber Futanari Acak.
+❂ /hololewd: Mengirimkan Holo Cabul Acak.
+❂ /lewdkemo: Mengirimkan Kemo Cabul Secara Acak.
+❂ /sologif: Mengirim GIF Solo Acak.
+❂ /cumgif: Mengirim GIF Cum Acak.
+❂ /erokemo: Mengirim Gambar Ero-Kemo Acak.
+❂ /lesbian: Mengirim Gambar Sumber Les Acak.
+❂ /lewdk: Mengirim Kitsune Cabul Acak.
+❂ /ngif: Mengirim GIF Neko Acak.
+❂ /tickle: Mengirim GIF Gelitik Acak.
+❂ /lewd: Mengirim Cabul Acak.
+❂ /feed: Mengirim GIF Umpan Acak.
+❂ /eroyuri: Mengirim Gambar sumber Ero-Yuri Acak.
+❂ /eron: Mengirim Gambar sumber Ero-Neko Acak.
+❂ /cum: Mengirim Gambar Cum Acak.
+❂ /bjgif: Mengirim GIF Pekerjaan Pukulan Acak.
+❂ /bj: Mengirim Gambar Sumber Pekerjaan Pukulan Acak.
+❂ /nekonsfw: Mengirim Gambar sumber NSFW Neko Acak.
+❂ /solo: Mengirim GIF NSFW Neko Acak.
+❂ /kemonomimi: Mengirim Gambar sumber KemonoMimi Acak.
+❂ /avatarlewd: Mengirim Stiker Cabul Avater Acak.
+❂ /gasm: Mengirim Stiker Orgasme Acak.
+❂ /poke: Mengirim GIF Poke Acak.
+❂ /anal: Mengirim GIF Anal Acak.
+❂ /hentai: Mengirim Gambar sumber Hentai Acak.
+❂ /avatar: Mengirim Stiker Avatar Acak.
+❂ /erofeet: Mengirim Gambar sumber Ero-Feet Acak.
+❂ /holo: Mengirim Gambar sumber Holo Acak.
+❂ /tits: Mengirim Gambar sumber Acak Tits.
+❂ /pussygif: Mengirim GIF Pussy Acak.
+❂ /holoero: Mengirim Gambar sumber Ero-Holo Acak.
+❂ /pussy: Mengirim Gambar sumber Pussy Acak.
+❂ /hentaigif: Mengirim GIF Hentai Acak.
+❂ /classic: Mengirim GIF Hentai Klasik Acak.
+❂ /kuni: Mengirim GIF Acak Pussy Jilat.
+❂ /waifu: Mengirim Stiker Waifu Acak.
+❂ /kiss: Mengirim GIF Ciuman Acak.
+❂ /femdom: Mengirim Gambar sumber Femdom Acak.
+❂ /cuddle: Mengirim GIF Cuddle Acak.
+❂ /erok: Mengirim Gambar sumber Ero-Kitsune Acak.
+❂ /foxgirl: Mengirim Gambar sumber FoxGirl Acak.
+❂ /titsgif: Mengirim GIF Payudara Acak.
+❂ /ero: Mengirim Gambar sumber Ero Acak.
+❂ /smug: Mengirim GIF Smug Acak.
+❂ /baka: Mengirim GIF Baka Shout Acak.
+❂ /dva: Mengirim Gambar sumber D.VA Acak.
 """
 
 
