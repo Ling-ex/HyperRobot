@@ -14,7 +14,7 @@ from telegram import (
 )
 from telegram.ext import CallbackContext, CommandHandler, Filters, run_async
 
-from EmikoRobot import dispatcher
+from HyperRobot import dispatcher
 
 jikan = Jikan()
 
@@ -27,12 +27,12 @@ def anime(update: Update, context: CallbackContext):
     try:
         res = jikan.search("anime", query)
     except APIException:
-        msg.reply_text("Error connecting to the API. Please try again!")
+        msg.reply_text("Terjadi kesalahan saat menyambungkan ke API. Silakan coba lagi!")
         return ""
     try:
         res = res.get("results")[0].get("mal_id")  # Grab first result
     except APIException:
-        msg.reply_text("Error connecting to the API. Please try again!")
+        msg.reply_text("Terjadi kesalahan saat menyambungkan ke API. Silakan coba lagi!")
         return ""
     if res:
         anime = jikan.anime(res)
@@ -62,7 +62,7 @@ def anime(update: Update, context: CallbackContext):
         url = anime.get("url")
         trailer = anime.get("trailer_url")
     else:
-        msg.reply_text("No results found!")
+        msg.reply_text("Tidak ada hasil yang ditemukan!")
         return
     rep = f"<b>{title} ({japanese})</b>\n"
     rep += f"<b>Type:</b> <code>{type}</code>\n"
@@ -80,12 +80,12 @@ def anime(update: Update, context: CallbackContext):
     if trailer:
         keyb = [
             [
-                InlineKeyboardButton("More Information", url=url),
+                InlineKeyboardButton("Informasi Lebih Lanjut", url=url),
                 InlineKeyboardButton("Trailer", url=trailer),
             ]
         ]
     else:
-        keyb = [[InlineKeyboardButton("More Information", url=url)]]
+        keyb = [[InlineKeyboardButton("Informasi Lebih Lanjut", url=url)]]
 
     msg.reply_text(
         rep, parse_mode=ParseMode.HTML, reply_markup=InlineKeyboardMarkup(keyb)
@@ -100,13 +100,13 @@ def character(update: Update, context: CallbackContext):
     try:
         search = jikan.search("character", query).get("results")[0].get("mal_id")
     except APIException:
-        msg.reply_text("No results found!")
+        msg.reply_text("Tidak ada hasil yang ditemukan!")
         return ""
     if search:
         try:
             res = jikan.character(search)
         except APIException:
-            msg.reply_text("Error connecting to the API. Please try again!")
+            msg.reply_text("Terjadi kesalahan saat menyambungkan ke API. Silakan coba lagi!")
             return ""
     if res:
         name = res.get("name")
@@ -119,7 +119,7 @@ def character(update: Update, context: CallbackContext):
         rep = f"<b>{name} ({kanji})</b>\n\n"
         rep += f"<a href='{image}'>\u200c</a>"
         rep += f"<i>{about}</i>\n"
-        keyb = [[InlineKeyboardButton("More Information", url=url)]]
+        keyb = [[InlineKeyboardButton("Informasi Lebih Lanjut", url=url)]]
 
         msg.reply_text(
             rep, parse_mode=ParseMode.HTML, reply_markup=InlineKeyboardMarkup(keyb)
@@ -149,13 +149,13 @@ def manga(update: Update, context: CallbackContext):
     try:
         res = jikan.search("manga", query).get("results")[0].get("mal_id")
     except APIException:
-        msg.reply_text("Error connecting to the API. Please try again!")
+        msg.reply_text("Terjadi kesalahan saat menyambungkan ke API. Silakan coba lagi!")
         return ""
     if res:
         try:
             manga = jikan.manga(res)
         except APIException:
-            msg.reply_text("Error connecting to the API. Please try again!")
+            msg.reply_text("Terjadi kesalahan saat menyambungkan ke API. Silakan coba lagi!")
             return ""
         title = manga.get("title")
         japanese = manga.get("title_japanese")
