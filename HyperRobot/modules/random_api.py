@@ -1,6 +1,6 @@
 import requests
-from EmikoRobot.events import register
-from EmikoRobot import telethn as tbot
+from HyperRobot.events import register
+from HyperRobot import telethn as tbot
 
 
 @register(pattern="^/ptl ?(.*)")
@@ -37,7 +37,7 @@ async def _(hilih):
         await hilih.reply("Something went wrong LOL...")
 
 
-# Copyright 2021 ©
+# Copyright 2022 ©
 # Modul Create by https://t.me/xflicks | Github = https://github.com/FeriEXP
 # Yang remove cacat
 
