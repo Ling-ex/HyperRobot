@@ -20,10 +20,10 @@ from telethon.tl import functions
 from telethon.tl import types
 from telethon.tl.types import *
 
-from EmikoRobot import *
+from HyperRobot import *
 
-from EmikoRobot.events import register
-from EmikoRobot import telethn as tbot
+from HyperRobot.events import register
+from HyperRobot import telethn as tbot
 
 opener = urllib.request.build_opener()
 useragent = "Mozilla/5.0 (Linux; Android 9; SM-G960F Build/PPR1.180610.011; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/74.0.3729.157 Mobile Safari/537.36"
@@ -35,7 +35,7 @@ async def _(event):
     if event.fwd_from:
         return
 
-    webevent = await event.reply("searching........")
+    webevent = await event.reply("mencari........")
     match = event.pattern_match.group(1)
     page = re.findall(r"page=\d+", match)
     try:
@@ -57,7 +57,7 @@ async def _(event):
         except IndexError:
             break
     await webevent.edit(
-        "**Search Query:**\n`" + match + "`\n\n**Results:**\n" + msg, link_preview=False
+        "**Permintaan Pencarian:**\n`" + match + "`\n\n**Results:**\n" + msg, link_preview=False
     )
 
 
@@ -102,15 +102,15 @@ async def okgoogle(img):
         photo = io.BytesIO()
         await tbot.download_media(message, photo)
     else:
-        await img.reply("`Reply to photo or sticker nigger.`")
+        await img.reply("`Balas foto atau stiker negro.`")
         return
 
     if photo:
-        dev = await img.reply("`Processing...`")
+        dev = await img.reply("`Pengolahan...`")
         try:
             image = Image.open(photo)
         except OSError:
-            await dev.edit("`Unsupported sexuality, most likely.`")
+            await dev.edit("`Seksualitas yang tidak didukung, kemungkinan besar.`")
             return
         name = "okgoogle.png"
         image.save(name, "PNG")
@@ -123,11 +123,11 @@ async def okgoogle(img):
 
         if response != 400:
             await dev.edit(
-                "`Image successfully uploaded to Google. Maybe.`"
-                "\n`Parsing source now. Maybe.`"
+                "`Gambar berhasil diunggah ke Google. Mungkin.`"
+                "\n`Sumber parsing sekarang. Mungkin.`"
             )
         else:
-            await dev.edit("`Google told me to fuck off.`")
+            await dev.edit("`Google menyuruhku pergi.`")
             return
 
         os.remove(name)
@@ -138,7 +138,7 @@ async def okgoogle(img):
         if guess and imgspage:
             await dev.edit(f"[{guess}]({fetchUrl})\n\n`Looking for this Image...`")
         else:
-            await dev.edit("`Can't find this piece of shit.`")
+            await dev.edit("`Tidak dapat menemukan omong kosong ini.`")
             return
 
         if img.pattern_match.group(1):
@@ -268,26 +268,26 @@ async def apk(e):
             + app_link
             + "'>View in Play Store</a>"
         )
-        app_details += "\n\n===> Emiko <==="
+        app_details += "\n\n===> Hyper <==="
         await e.reply(app_details, link_preview=True, parse_mode="HTML")
     except IndexError:
-        await e.reply("No result found in search. Please enter **Valid app name**")
+        await e.reply("Tidak ada hasil yang ditemukan dalam pencarian. Silahkan masuk **Nama aplikasi yang valid**")
     except Exception as err:
-        await e.reply("Exception Occured:- " + str(err))
+        await e.reply("Pengecualian Terjadi:- " + str(err))
 
 
-__mod_name__ = "Search"
+__mod_name__ = "Mencari"
 
 __help__ = """
-❂ /google <query>*:* Perform a google search
-❂ /image <query>*:* Search Google for images and returns them\nFor greater no. of results specify lim, For eg: `/img hello lim=10`
-❂ /app <appname>*:* Searches for an app in Play Store and returns its details.
-❂ /reverse: Does a reverse image search of the media which it was replied to.
-❂ /gps <location>*:* Get gps location.
-❂ /github <username>*:* Get information about a GitHub user.
-❂ /country <country name>*:* Gathering info about given country
-❂ /imdb <Movie name>*:* Get full info about a movie with imdb.com
-❂ Emiko <query>*:* Emiko answers the query
+❂ /google <query>*:* Lakukan pencarian google
+❂ /image <query>*:* Cari gambar di Google dan kembalikan\nUntuk lebih besar tidak. dari hasil tentukan lim, Untuk misalnya: `/img hello lim=10`
+❂ /app <appname>*:* Mencari aplikasi di Play Store dan mengembalikan detailnya.
+❂ /reverse: Apakah pencarian gambar terbalik dari media yang dibalas.
+❂ /gps <location>*:* Dapatkan lokasi gps.
+❂ /github <username>*:* Dapatkan informasi tentang pengguna GitHub.
+❂ /country <country name>*:* Mengumpulkan info tentang negara tertentu
+❂ /imdb <Movie name>*:* Dapatkan info lengkap tentang film dengan imdb.com
+❂ Hyper <query>*:* Hyper menjawab pertanyaannya
 
-  💡Ex: `Emiko where is Japan?`
+  💡Ex: `Hyper dimana Indonesia?`
 """
