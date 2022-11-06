@@ -5,10 +5,10 @@ from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton, Upda
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import CommandHandler, CallbackQueryHandler
 
-import EmikoRobot.modules.sql.connection_sql as sql
-from EmikoRobot import dispatcher, DRAGONS, DEV_USERS
-from EmikoRobot.modules.helper_funcs import chat_status
-from EmikoRobot.modules.helper_funcs.alternate import send_message, typing_action
+import HyperRobot.modules.sql.connection_sql as sql
+from HyperRobot import dispatcher, DRAGONS, DEV_USERS
+from HyperRobot.modules.helper_funcs import chat_status
+from HyperRobot.modules.helper_funcs.alternate import send_message, typing_action
 
 user_admin = chat_status.user_admin
 
@@ -318,16 +318,16 @@ def connected(bot: Bot, update: Update, chat, user_id, need_admin=True):
 
 
 CONN_HELP = """
- Actions are available with connected groups:
- • View and edit Notes.
- • View and edit Filters.
- • Get invite link of chat.
- • Set and control AntiFlood settings.
- • Set and control Blacklist settings.
- • Set Locks and Unlocks in chat.
- • Enable and Disable commands in chat.
- • Export and Imports of chat backup.
- • More in future!"""
+ Tindakan tersedia dengan grup yang terhubung:
+ • Lihat dan edit Catatan.
+ • Lihat dan edit Filter.
+ • Dapatkan tautan undangan obrolan.
+ • Mengatur dan mengontrol pengaturan AntiFlood.
+ • Mengatur dan mengontrol pengaturan Daftar Hitam.
+ • Setel Kunci dan Buka Kunci dalam obrolan.
+ • Aktifkan dan Nonaktifkan perintah dalam obrolan.
+ • Ekspor dan Impor cadangan obrolan.
+ • Lebih banyak di masa depan!"""
 
 
 def help_connect_chat(update, context):
@@ -335,7 +335,7 @@ def help_connect_chat(update, context):
     args = context.args
 
     if update.effective_message.chat.type != "private":
-        send_message(update.effective_message, "PM me with that command to get help.")
+        send_message(update.effective_message, "PM saya dengan perintah itu untuk mendapatkan bantuan.")
         return
     send_message(update.effective_message, CONN_HELP, parse_mode="markdown")
 
@@ -367,7 +367,7 @@ def connect_button(update, context):
                 )
                 chat_name = conn_chat.title
                 query.message.edit_text(
-                    "Successfully connected to *{}*. \nUse `/helpconnect` to check available commands.".format(
+                    "Berhasil terhubung ke *{}*. \nUse `/helpconnect` untuk memeriksa perintah yang tersedia.".format(
                         chat_name,
                     ),
                     parse_mode=ParseMode.MARKDOWN,
@@ -378,7 +378,7 @@ def connect_button(update, context):
         else:
             context.bot.answer_callback_query(
                 query.id,
-                "Connection to this chat is not allowed!",
+                "Koneksi ke obrolan ini tidak diizinkan!",
                 show_alert=True,
             )
     elif disconnect_match:
@@ -388,7 +388,7 @@ def connect_button(update, context):
         else:
             context.bot.answer_callback_query(
                 query.id,
-                "You're not connected!",
+                "Anda tidak terhubung!",
                 show_alert=True,
             )
     elif clear_match:
@@ -403,17 +403,17 @@ def connect_button(update, context):
 __mod_name__ = "Connection"
 
 __help__ = """
-Sometimes, you just want to add some notes and filters to a group chat, but you don't want everyone to see; This is where connections come in...
-This allows you to connect to a chat's database, and add things to it without the commands appearing in chat! For obvious reasons, you need to be an admin to add things; but any member in the group can view your data.
+Terkadang, Anda hanya ingin menambahkan beberapa catatan dan filter ke obrolan grup, tetapi Anda tidak ingin semua orang melihatnya; Di sinilah koneksi masuk...
+Ini memungkinkan Anda untuk terhubung ke database obrolan, dan menambahkan sesuatu ke dalamnya tanpa perintah yang muncul di obrolan! Untuk alasan yang jelas, Anda harus menjadi admin untuk menambahkan sesuatu; tetapi setiap anggota dalam grup dapat data Anda.
 
-❂ /connect: Connects to chat (Can be done in a group by /connect or /connect <chat id> in PM)
-❂ /connection: List connected chats
-❂ /disconnect: Disconnect from a chat
-❂ /helpconnect: List available commands that can be used remotely
+❂ /connect: Terhubung ke obrolan (Dapat dilakukan dalam grup dengan /koneksi atau /koneksi <chat id> di PM)
+❂ /connection: Daftar obrolan yang terhubung
+❂ /disconnect: Putuskan sambungan dari obrolan
+❂ /helpconnect: Daftar perintah yang tersedia yang dapat digunakan dari jarak jauh
 
-*Admin only:*
+*Hanya admin:*
 
-❂ /allowconnect <yes/no>: allow a user to connect to a chat
+❂ /allowconnect <yes/no>: izinkan pengguna terhubung ke obrolan
 """
 
 CONNECT_CHAT_HANDLER = CommandHandler(
