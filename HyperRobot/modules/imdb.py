@@ -1,11 +1,11 @@
-from EmikoRobot import telethn as tbot
+from HyperRobot import telethn as tbot
 import os
 import re
 import bs4
 import requests
 from telethon import types
 from telethon.tl import functions
-from EmikoRobot.events import register
+from HyperRobot.events import register
 
 langi = "en"
 
@@ -106,4 +106,4 @@ async def imdb(e):
             parse_mode="HTML",
         )
     except IndexError:
-        await e.reply("Plox enter **Valid movie name** kthx")
+        await e.reply("Silakan masuk **Valid movie name** kthx")
