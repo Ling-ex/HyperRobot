@@ -1,5 +1,5 @@
-# By @TroJanzHEX
-# Improved by TeamDaisyX
+# By @Hyper
+# Improved by LING
 
 from pyrogram import filters
 from pyrogram.types import (
@@ -9,8 +9,8 @@ from pyrogram.types import (
     Message,
 )
 
-# By @TroJanzHEX
-from EmikoRobot.ex_plugins.ImageEditor.edit_1 import (  # pylint:disable=import-error
+# By @Hyper
+from HyperRobot.ex_plugins.ImageEditor.edit_1 import (  # pylint:disable=import-error
     black_white,
     box_blur,
     bright,
@@ -18,7 +18,7 @@ from EmikoRobot.ex_plugins.ImageEditor.edit_1 import (  # pylint:disable=import-
     mix,
     normal_blur,
 )
-from EmikoRobot.ex_plugins.ImageEditor.edit_2 import (  # pylint:disable=import-error
+from HyperRobot.ex_plugins.ImageEditor.edit_2 import (  # pylint:disable=import-error
     cartoon,
     circle_with_bg,
     circle_without_bg,
@@ -28,13 +28,13 @@ from EmikoRobot.ex_plugins.ImageEditor.edit_2 import (  # pylint:disable=import-
     sepia_mode,
     sticker,
 )
-from EmikoRobot.ex_plugins.ImageEditor.edit_3 import (  # pylint:disable=import-error
+from HyperRobot.ex_plugins.ImageEditor.edit_3 import (  # pylint:disable=import-error
     black_border,
     blue_border,
     green_border,
     red_border,
 )
-from EmikoRobot.ex_plugins.ImageEditor.edit_4 import (  # pylint:disable=import-error
+from HyperRobot.ex_plugins.ImageEditor.edit_4 import (  # pylint:disable=import-error
     inverted,
     removebg_plain,
     removebg_sticker,
@@ -44,7 +44,7 @@ from EmikoRobot.ex_plugins.ImageEditor.edit_4 import (  # pylint:disable=import-
     rotate_270,
     round_sticker,
 )
-from EmikoRobot.ex_plugins.ImageEditor.edit_5 import (  # pylint:disable=import-error
+from HyperRobot.ex_plugins.ImageEditor.edit_5 import (  # pylint:disable=import-error
     normalglitch_1,
     normalglitch_2,
     normalglitch_3,
@@ -56,7 +56,7 @@ from EmikoRobot.ex_plugins.ImageEditor.edit_5 import (  # pylint:disable=import-
     scanlineglitch_4,
     scanlineglitch_5,
 )
-from EmikoRobot import pbot
+from HyperRobot import pbot
 
 lel = 00000000
 # pylint:disable=import-error
