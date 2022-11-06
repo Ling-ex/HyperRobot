@@ -13,23 +13,23 @@ from telegram.ext import (
     Filters,
 )
 from telegram.utils.helpers import mention_html, escape_markdown
-from EmikoRobot import dispatcher, LOGGER, DRAGONS
-from EmikoRobot.modules.disable import DisableAbleCommandHandler
-from EmikoRobot.modules.helper_funcs.handlers import MessageHandlerChecker
-from EmikoRobot.modules.helper_funcs.chat_status import user_admin
-from EmikoRobot.modules.helper_funcs.extraction import extract_text
-from EmikoRobot.modules.helper_funcs.filters import CustomFilters
-from EmikoRobot.modules.helper_funcs.misc import build_keyboard_parser
-from EmikoRobot.modules.helper_funcs.msg_types import get_filter_type
-from EmikoRobot.modules.helper_funcs.string_handling import (
+from HyperRobot import dispatcher, LOGGER, DRAGONS
+from HyperRobot.modules.disable import DisableAbleCommandHandler
+from HyperRobot.modules.helper_funcs.handlers import MessageHandlerChecker
+from HyperRobot.modules.helper_funcs.chat_status import user_admin
+from HyperRobot.modules.helper_funcs.extraction import extract_text
+from HyperRobot.modules.helper_funcs.filters import CustomFilters
+from HyperRobot.modules.helper_funcs.misc import build_keyboard_parser
+from HyperRobot.modules.helper_funcs.msg_types import get_filter_type
+from HyperRobot.modules.helper_funcs.string_handling import (
     split_quotes,
     button_markdown_parser,
     escape_invalid_curly_brackets,
     markdown_to_html,
 )
-from EmikoRobot.modules.sql import cust_filters_sql as sql
-from EmikoRobot.modules.connection import connected
-from EmikoRobot.modules.helper_funcs.alternate import send_message, typing_action
+from HyperRobot.modules.sql import cust_filters_sql as sql
+from HyperRobot.modules.connection import connected
+from HyperRobot.modules.helper_funcs.alternate import send_message, typing_action
 
 HANDLER_GROUP = 10
 
@@ -607,13 +607,13 @@ def __chat_settings__(chat_id, user_id):
 
 
 __help__ = """
-❂ /filters*:* List all active filters saved in the chat.
+❂ /filters*:* Daftar semua filter aktif yang disimpan dalam obrolan.
 *Admin only:*
-❂ /filter <keyword> <reply message>*:* Add a filter to this chat. The bot will now reply that message whenever 'keyword'\
-is mentioned. If you reply to a sticker with a keyword, the bot will reply with that sticker. NOTE: all filter \
-keywords are in lowercase. If you want your keyword to be a sentence, use quotes. eg: /filter "hey there" How you \
-doin?
- Separate diff replies by `%%%` to get random replies
+❂ /filter <keyword> <reply message>*:* Tambahkan filter ke obrolan ini. Bot sekarang akan membalas pesan itu kapan saja 'keyword'\
+disebutkan. Jika Anda membalas stiker dengan kata kunci, bot akan membalas dengan stiker itu. CATATAN: all filter \
+kata kunci dalam huruf kecil. Jika Anda ingin kata kunci Anda menjadi kalimat, gunakan tanda kutip. eg: /filter "hei disana" Bagaimana Anda \
+lakukan?
+ Pisahkan balasan yang berbeda menurut `%%%` untuk mendapatkan balasan acak
  *Example:* 
  `/filter "filtername"
  Reply 1
@@ -622,13 +622,13 @@ doin?
  %%%
  Reply 3`
 
-❂ /stop <filter keyword>*:* Stop that filter.
+❂ /stop <filter keyword>*:* Hentikan filter itu.
 
-*Chat creator only:*
+*Hanya pembuat obrolan:*
 
-❂ /removeallfilters*:* Remove all chat filters at once.
-*Note*: Filters also support markdown formatters like: {first}, {last} etc.. and buttons.
-Check /markdownhelp to know more!
+❂ /removeallfilters*:* Hapus semua filter obrolan sekaligus.
+*Catatan*: Filter juga mendukung pemformat penurunan harga seperti: {first}, {last} dll. dan tombol.
+*Periksa /markdownhelp untuk tahu lebih banyak!
 """
 
 __mod_name__ = "Filters"
