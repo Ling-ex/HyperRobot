@@ -5,10 +5,10 @@ import sys
 from contextlib import suppress
 from time import sleep
 
-import EmikoRobot
+import HyperRobot
 
-from EmikoRobot import dispatcher
-from EmikoRobot.modules.helper_funcs.chat_status import dev_plus
+from HyperRobot import dispatcher
+from HyperRobot.modules.helper_funcs.chat_status import dev_plus
 from telegram import TelegramError, Update
 from telegram.error import Unauthorized
 from telegram.ext import CallbackContext, CommandHandler
@@ -18,17 +18,17 @@ from telegram.ext import CallbackContext, CommandHandler
 def allow_groups(update: Update, context: CallbackContext):
     args = context.args
     if not args:
-        state = "Lockdown is " + "on" if not EmikoRobot.ALLOW_CHATS else "off"
-        update.effective_message.reply_text(f"Current state: {state}")
+        state = "Lockdown is " + "on" if not HyperRobot.ALLOW_CHATS else "off"
+        update.effective_message.reply_text(f"Kondisi saat ini: {state}")
         return
     if args[0].lower() in ["off", "no"]:
-        EmikoRobot.ALLOW_CHATS = True
+        HyperRobot.ALLOW_CHATS = True
     elif args[0].lower() in ["yes", "on"]:
-        EmikoRobot.ALLOW_CHATS = False
+        HyperRobot.ALLOW_CHATS = False
     else:
         update.effective_message.reply_text("Format: /lockdown Yes/No or Off/On")
         return
-    update.effective_message.reply_text("Done! Lockdown value toggled.")
+    update.effective_message.reply_text("Selesai! Nilai lockdown diaktifkan.")
 
 
 @dev_plus
@@ -41,29 +41,29 @@ def leave(update: Update, context: CallbackContext):
             bot.leave_chat(int(chat_id))
         except TelegramError:
             update.effective_message.reply_text(
-                "Beep boop, I could not leave that group(dunno why tho).",
+                "Bip boop, saya tidak bisa meninggalkan grup itu (entah kenapa itu).",
             )
             return
         with suppress(Unauthorized):
-            update.effective_message.reply_text("Beep boop, I left that soup!.")
+            update.effective_message.reply_text("Bip boop, saya meninggalkan sup itu!.")
     else:
-        update.effective_message.reply_text("Send a valid chat ID")
+        update.effective_message.reply_text("Kirim ID obrolan yang valid")
 
 
 @dev_plus
 def gitpull(update: Update, context: CallbackContext):
     sent_msg = update.effective_message.reply_text(
-        "Pulling all changes from remote and then attempting to restart.",
+        "Menarik semua perubahan dari jarak jauh dan kemudian mencoba memulai kembali.",
     )
     subprocess.Popen("git pull", stdout=subprocess.PIPE, shell=True)
 
-    sent_msg_text = sent_msg.text + "\n\nChanges pulled...I guess.. Restarting in "
+    sent_msg_text = sent_msg.text + "\n\nPerubahan ditarik...Saya kira .. Mulai ulang di "
 
     for i in reversed(range(5)):
         sent_msg.edit_text(sent_msg_text + str(i + 1))
         sleep(1)
 
-    sent_msg.edit_text("Restarted.")
+    sent_msg.edit_text("Mulai ulang.")
 
     os.system("restart.bat")
     os.execv("start.bat", sys.argv)
@@ -72,7 +72,7 @@ def gitpull(update: Update, context: CallbackContext):
 @dev_plus
 def restart(update: Update, context: CallbackContext):
     update.effective_message.reply_text(
-        "Starting a new instance and shutting down this one",
+        "Memulai instance baru dan mematikan yang ini",
     )
 
     os.system("restart.bat")
