@@ -9,13 +9,13 @@ import requests
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.ext import CallbackContext, CommandHandler
 
-from EmikoRobot import dispatcher, ERROR_LOG, DEV_USERS
+from HyperRobot import dispatcher, ERROR_LOG, DEV_USERS
 
 pretty_errors.mono()
 
 
 class ErrorsDict(dict):
-    """A custom dict to store errors and their count"""
+    """Dikt khusus untuk menyimpan kesalahan dan jumlahnya"""
 
     def __init__(self, *args, **kwargs):
         self.raw = []
@@ -54,7 +54,7 @@ def error_callback(update: Update, context: CallbackContext):
             pretty_error = stringio.getvalue()
             stringio.close()
         except:
-            pretty_error = "Failed to create pretty error."
+            pretty_error = "Gagal membuat kesalahan cantik/ganteng chuaks."
         tb_list = traceback.format_exception(
             None,
             context.error,
@@ -64,7 +64,7 @@ def error_callback(update: Update, context: CallbackContext):
         pretty_message = (
             "{}\n"
             "-------------------------------------------------------------------------------\n"
-            "An exception was raised while handling an update\n"
+            "Pengecualian muncul saat menangani pembaruan\n"
             "User: {}\n"
             "Chat: {} {}\n"
             "Callback data: {}\n"
