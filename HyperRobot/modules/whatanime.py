@@ -27,11 +27,11 @@ async def whatanime(e):
         r = await e.get_reply_message()
         media = getattr(r, "media", None)
     if not media:
-        await e.reply("`Media required`")
+        await e.reply("`Diperlukan media`")
         return
     ig = is_gif(media) or is_video(media)
     if not is_image(media) and not ig:
-        await e.reply("`Media must be an image or gif or video`")
+        await e.reply("`Media harus berupa gambar atau gif atau video`")
         return
     filename = "file.jpg"
     if not ig and isinstance(media, MessageMediaDocument):
