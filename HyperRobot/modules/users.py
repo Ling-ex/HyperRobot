@@ -10,10 +10,10 @@ from telegram.ext import (
     MessageHandler,
 )
 
-import EmikoRobot.modules.sql.users_sql as sql
-from EmikoRobot import DEV_USERS, LOGGER, OWNER_ID, dispatcher
-from EmikoRobot.modules.helper_funcs.chat_status import dev_plus, sudo_plus
-from EmikoRobot.modules.sql.users_sql import get_all_users
+import HyperRobot.modules.sql.users_sql as sql
+from HyperRobot import DEV_USERS, LOGGER, OWNER_ID, dispatcher
+from HyperRobot.modules.helper_funcs.chat_status import dev_plus, sudo_plus
+from HyperRobot.modules.sql.users_sql import get_all_users
 
 USERS_GROUP = 4
 CHAT_GROUP = 5
@@ -45,7 +45,7 @@ def get_user_id(username):
             if excp.message == "Chat not found":
                 pass
             else:
-                LOGGER.exception("Error extracting user ID")
+                LOGGER.exception("Kesalahan saat mengekstrak ID pengguna")
 
     return None
 
@@ -139,7 +139,7 @@ def chats(update: Update, context: CallbackContext):
         update.effective_message.reply_document(
             document=output,
             filename="groups_list.txt",
-            caption="Here be the list of groups in my database.",
+            caption="Ini daftar grup di database saya.",
         )
 
 
@@ -154,11 +154,11 @@ def chat_checker(update: Update, context: CallbackContext):
 
 def __user_info__(user_id):
     if user_id in [777000, 1087968824]:
-        return """╘═━「 Groups count: <code>???</code> 」"""
+        return """╘═━「 Jumlah grup: <code>???</code> 」"""
     if user_id == dispatcher.bot.id:
-        return """╘═━「 Groups count: <code>???</code> 」"""
+        return """╘═━「 Jumlah grup: <code>???</code> 」"""
     num_chats = sql.get_user_num_chats(user_id)
-    return f"""╘═━「 Groups count: <code>{num_chats}</code> 」"""
+    return f"""╘═━「 Jumlah grup: <code>{num_chats}</code> 」"""
 
 
 def __stats__():
