@@ -3,9 +3,9 @@ import re
 from typing import Optional
 
 import telegram
-from EmikoRobot import TIGERS, WOLVES, dispatcher
-from EmikoRobot.modules.disable import DisableAbleCommandHandler
-from EmikoRobot.modules.helper_funcs.chat_status import (
+from HyperRobot import TIGERS, WOLVES, dispatcher
+from HyperRobot.modules.disable import DisableAbleCommandHandler
+from HyperRobot.modules.helper_funcs.chat_status import (
     bot_admin,
     can_restrict,
     is_user_admin,
@@ -14,16 +14,16 @@ from EmikoRobot.modules.helper_funcs.chat_status import (
     user_admin_no_reply,
     can_delete,
 )
-from EmikoRobot.modules.helper_funcs.extraction import (
+from HyperRobot.modules.helper_funcs.extraction import (
     extract_text,
     extract_user,
     extract_user_and_text,
 )
-from EmikoRobot.modules.helper_funcs.filters import CustomFilters
-from EmikoRobot.modules.helper_funcs.misc import split_message
-from EmikoRobot.modules.helper_funcs.string_handling import split_quotes
-from EmikoRobot.modules.log_channel import loggable
-from EmikoRobot.modules.sql import warns_sql as sql
+from HyperRobot.modules.helper_funcs.filters import CustomFilters
+from HyperRobot.modules.helper_funcs.misc import split_message
+from HyperRobot.modules.helper_funcs.string_handling import split_quotes
+from HyperRobot.modules.log_channel import loggable
+from HyperRobot.modules.sql import warns_sql as sql
 from telegram import (
     CallbackQuery,
     Chat,
@@ -48,8 +48,7 @@ from telegram.utils.helpers import mention_html
 from EmikoRobot.modules.sql.approve_sql import is_approved
 
 WARN_HANDLER_GROUP = 9
-CURRENT_WARNING_FILTER_STRING = "<b>Current warning filters in this chat:</b>\n"
-
+CURRENT_WARNING_FILTER_STRING = "<b>Filter peringatan saat ini di obrolan ini:</b>\n"
 
 # Not async
 def warn(user: User,
@@ -58,7 +57,7 @@ def warn(user: User,
          message: Message,
          warner: User = None) -> str:
     if is_user_admin(chat, user.id):
-        # message.reply_text("Damn admins, They are too far to be One Punched!")
+        # message.reply_text("Admin sial goblok lu, Mereka terlalu jauh untuk menjadi One Punched!")
         return
 
     if user.id in TIGERS:
@@ -66,7 +65,7 @@ def warn(user: User,
             message.reply_text("Tigers cant be warned.")
         else:
             message.reply_text(
-                "Tiger triggered an auto warn filter!\n I can't warn tigers but they should avoid abusing this."
+                "Harimau memicu filter peringatan otomatis!\n Saya tidak bisa memperingatkan harimau tetapi mereka harus menghindari penyalahgunaan ini."
             )
         return
 
@@ -75,7 +74,7 @@ def warn(user: User,
             message.reply_text("Wolf disasters are warn immune.")
         else:
             message.reply_text(
-                "Wolf Disaster triggered an auto warn filter!\nI can't warn wolves but they should avoid abusing this."
+                "Bencana Serigala memicu filter peringatan otomatis!\nSaya tidak bisa memperingatkan serigala, tetapi mereka harus menghindari penyalahgunaan ini."
             )
         return
 
@@ -133,7 +132,7 @@ def warn(user: User,
         message.reply_text(
             reply, reply_markup=keyboard, parse_mode=ParseMode.HTML)
     except BadRequest as excp:
-        if excp.message == "Reply message not found":
+        if excp.message == "Pesan balasan tidak ditemukan":
             # Do not reply
             message.reply_text(
                 reply,
@@ -173,7 +172,7 @@ def button(update: Update, context: CallbackContext) -> str:
             )
         else:
             update.effective_message.edit_text(
-                "User already has no warns.", parse_mode=ParseMode.HTML
+                "Pengguna sudah tidak memiliki peringatan.", parse_mode=ParseMode.HTML
             )
 
     return ""
@@ -207,7 +206,7 @@ def warn_user(update: Update, context: CallbackContext) -> str:
         else:
             return warn(chat.get_member(user_id).user, chat, reason, message, warner)
     else:
-        message.reply_text("That looks like an invalid User ID to me.")
+        message.reply_text("Itu terlihat seperti ID Pengguna yang tidak valid bagi saya.")
     return ""
 
 
@@ -234,7 +233,7 @@ def reset_warns(update: Update, context: CallbackContext) -> str:
             f"<b>User:</b> {mention_html(warned.id, warned.first_name)}"
         )
     else:
-        message.reply_text("⚠️ No user has been designated!")
+        message.reply_text("⚠️ error!")
     return ""
 
 
@@ -264,7 +263,7 @@ def warns(update: Update, context: CallbackContext):
                 f"User has {num_warns}/{limit} warns, but no reasons for any of them."
             )
     else:
-        update.effective_message.reply_text("This user doesn't have any warns!")
+        update.effective_message.reply_text("Pengguna ini tidak memiliki peringatan apa pun!")
 
 
 # Dispatcher handler stop - do not async
@@ -298,7 +297,7 @@ def add_warn_filter(update: Update, context: CallbackContext):
 
     sql.add_warn_filter(chat.id, keyword, content)
 
-    update.effective_message.reply_text(f"Warn handler added for '{keyword}'!")
+    update.effective_message.reply_text(f"Peringatkan handler ditambahkan untuk '{keyword}'!")
     raise DispatcherHandlerStop
 
 
@@ -402,7 +401,7 @@ def set_warn_limit(update: Update, context: CallbackContext) -> str:
                 msg.reply_text("The minimum warn limit is 3!")
             else:
                 sql.set_warn_limit(chat.id, int(args[0]))
-                msg.reply_text("Updated the warn limit to {}".format(args[0]))
+                msg.reply_text("Memperbarui batas peringatan menjadi {}".format(args[0]))
                 return (
                     f"<b>{html.escape(chat.title)}:</b>\n"
                     f"#SET_WARN_LIMIT\n"
@@ -414,7 +413,7 @@ def set_warn_limit(update: Update, context: CallbackContext) -> str:
     else:
         limit, soft_warn = sql.get_warn_setting(chat.id)
 
-        msg.reply_text("The current warn limit is {}".format(limit))
+        msg.reply_text("Memperbarui batas peringatan menjadi {}".format(limit))
     return ""
 
 
@@ -433,13 +432,13 @@ def set_warn_strength(update: Update, context: CallbackContext):
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
                 f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
-                f"Has enabled strong warns. Users will be seriously punched.(banned)"
+                f"Telah mengaktifkan peringatan kuat. Pengguna akan ditinju dengan serius.(banned)"
             )
 
         elif args[0].lower() in ("off", "no"):
             sql.set_warn_strength(chat.id, True)
             msg.reply_text(
-                "Too many warns will now result in a normal punch! Users will be able to join again after."
+                "Terlalu banyak peringatan sekarang akan menghasilkan pukulan normal! Pengguna akan dapat bergabung lagi setelah."
             )
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
@@ -453,12 +452,12 @@ def set_warn_strength(update: Update, context: CallbackContext):
         limit, soft_warn = sql.get_warn_setting(chat.id)
         if soft_warn:
             msg.reply_text(
-                "Warns are currently set to *punch* users when they exceed the limits.",
+                "Peringatan saat ini disetel ke *punch* users when they exceed the limits.",
                 parse_mode=ParseMode.MARKDOWN,
             )
         else:
             msg.reply_text(
-                "Warns are currently set to *Ban* users when they exceed the limits.",
+                "Peringatan saat ini disetel ke *Ban* users when they exceed the limits.",
                 parse_mode=ParseMode.MARKDOWN,
             )
     return ""
@@ -491,15 +490,15 @@ def __chat_settings__(chat_id, user_id):
 
 __help__ = """
 
-❂ /warns <userhandle>: get a user's number, and reason, of warns.
-❂ /warnlist: list of all current warning filters
-❂ /warn <userhandle>: warn a user. After 3 warns, the user will be banned from the group. Can also be used as a reply.
-❂ /dwarn <userhandle>: warn a user and delete the message. After 3 warns, the user will be banned from the group. Can also be used as a reply.
-❂ /resetwarn <userhandle>: reset the warns for a user. Can also be used as a reply.
-❂ /addwarn <keyword> <reply message>: set a warning filter on a certain keyword. If you want your keyword to be a sentence, encompass it with quotes, as such: /addwarn "very angry" This is an angry user.
-❂ /nowarn <keyword>: stop a warning filter
+❂ /warns <userhandle>: dapatkan nomor pengguna, dan alasan, dari peringatan.
+❂ /warnlist: daftar semua filter peringatan saat ini
+❂ /warn <userhandle>: memperingatkan pengguna. Setelah 3 kali peringatan, pengguna akan diblokir dari grup. Bisa juga digunakan sebagai balasan.
+❂ /dwarn <userhandle>: memperingatkan pengguna dan menghapus pesan. Setelah 3 kali peringatan, pengguna akan diblokir dari grup. Bisa juga digunakan sebagai balasan.
+❂ /resetwarn <userhandle>: mengatur ulang peringatan untuk pengguna. Bisa juga digunakan sebagai reply.
+❂ /addwarn <keyword> <reply message>: atur filter peringatan pada kata kunci tertentu. Jika Anda ingin kata kunci Anda menjadi kalimat, lampirkan dengan tanda kutip, seperti: /addwarn "sangat marah" Ini adalah pengguna yang marah.
+❂ /nowarn <keyword>: hentikan filter peringatan
 ❂ /warnlimit <num>: set the warning limit
-❂ /strongwarn <on/yes/off/no>: If set to on, exceeding the warn limit will result in a ban. Else, will just punch.
+❂ /strongwarn <on/yes/off/no>: Jika disetel ke aktif, melebihi batas peringatan akan mengakibatkan larangan. Lain, hanya akan meninju.
 """
 
 __mod_name__ = "Warning"
