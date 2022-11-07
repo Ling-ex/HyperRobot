@@ -48,6 +48,7 @@ def rem_nsfw(update: Update, context: CallbackContext):
     else:
         sql.rem_nsfw(chat.id)
         msg.reply_text("Digulung Kembali ke Mode SFW!")
+        message = (
             f"<b>{html.escape(chat.title)}:</b>\n"
             f"DEACTIVATED_NSFW\n"
             f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}\n"
