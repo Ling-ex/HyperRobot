@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, scoped_session
 
-from EmikoRobot import DB_URL, LOGGER
+from HyperRobot import DB_URL, LOGGER
 
 
 if DB_URL and DB_URL.startswith("postgres://"):
@@ -12,7 +12,7 @@ if DB_URL and DB_URL.startswith("postgres://"):
 
 def start() -> scoped_session:
     engine = create_engine(DB_URL, client_encoding="utf8")
-    LOGGER.info("PostgreSQL Connecting to database......")
+    LOGGER.info("PostgreSQL Menghubungkan ke database......")
     BASE.metadata.bind = engine
     BASE.metadata.create_all(engine)
     return scoped_session(sessionmaker(bind=engine, autoflush=True))
@@ -22,7 +22,7 @@ BASE = declarative_base()
 try:
     SESSION: scoped_session = start()
 except Exception as e:
-    LOGGER.exception(f"PostgreSQL Failed to connect due to {e}")
+    LOGGER.exception(f"PostgreSQL Gagal terhubung karena {e}")
     sys.exit()
 
-LOGGER.info("PostgreSQL Connection successful, session started.")
+LOGGER.info("Koneksi PostgreSQL berhasil, sesi dimulai.")
