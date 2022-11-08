@@ -1,7 +1,7 @@
 import ast
 import threading
-from EmikoRobot import dispatcher
-from EmikoRobot.modules.sql import BASE, SESSION
+from HyperRobot import dispatcher
+from HyperRobot.modules.sql import BASE, SESSION
 from sqlalchemy import Boolean, Column, String, UnicodeText, Integer
 from telegram.error import BadRequest, Unauthorized
 from sqlalchemy.sql.sqltypes import BigInteger
@@ -203,7 +203,7 @@ def new_fed(owner_id, fed_name, fed_id):
             str(owner_id),
             fed_name,
             str(fed_id),
-            "Rules is not set in this federation.",
+            "Aturan tidak diatur dalam federasi ini.",
             None,
             str({"owner": str(owner_id), "members": "[]"}),
         )
@@ -212,21 +212,21 @@ def new_fed(owner_id, fed_name, fed_id):
         FEDERATION_BYOWNER[str(owner_id)] = {
             "fid": str(fed_id),
             "fname": fed_name,
-            "frules": "Rules is not set in this federation.",
+            "frules": "Aturan tidak diatur dalam federasi ini.",
             "flog": None,
             "fusers": str({"owner": str(owner_id), "members": "[]"}),
         }
         FEDERATION_BYFEDID[str(fed_id)] = {
             "owner": str(owner_id),
             "fname": fed_name,
-            "frules": "Rules is not set in this federation.",
+            "frules": "Aturan tidak diatur dalam federasi ini.",
             "flog": None,
             "fusers": str({"owner": str(owner_id), "members": "[]"}),
         }
         FEDERATION_BYNAME[fed_name] = {
             "fid": str(fed_id),
             "owner": str(owner_id),
-            "frules": "Rules is not set in this federation.",
+            "frules": "Aturan tidak diatur dalam federasi ini.",
             "flog": None,
             "fusers": str({"owner": str(owner_id), "members": "[]"}),
         }
