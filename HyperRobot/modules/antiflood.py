@@ -226,7 +226,9 @@ def set_flood(update, context) -> str:
             )
 
         else:
-            message.reply_text("Argumen tidak valid, harap gunakan angka, 'off' or 'no'")
+            message.reply_text(
+                "Argumen tidak valid, harap gunakan angka, 'off' or 'no'"
+            )
     else:
         message.reply_text(
             (
@@ -396,6 +398,7 @@ def __chat_settings__(chat_id, user_id):
     if limit == 0:
         return "Not enforcing to flood control."
     return "Antiflood has been set to`{}`.".format(limit)
+
 
 __mod_name__ = "Anti-Flood"
 

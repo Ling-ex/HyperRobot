@@ -335,7 +335,10 @@ def help_connect_chat(update, context):
     args = context.args
 
     if update.effective_message.chat.type != "private":
-        send_message(update.effective_message, "PM saya dengan perintah itu untuk mendapatkan bantuan.")
+        send_message(
+            update.effective_message,
+            "PM saya dengan perintah itu untuk mendapatkan bantuan.",
+        )
         return
     send_message(update.effective_message, CONN_HELP, parse_mode="markdown")
 

@@ -9,7 +9,7 @@ from HyperRobot import (
     TIGERS,
     WOLVES,
     dispatcher,
-) 
+)
 from HyperRobot.modules.helper_funcs.chat_status import dev_plus
 from HyperRobot.modules.helper_funcs.extraction import (
     extract_user,
@@ -38,7 +38,9 @@ def bl_user(update: Update, context: CallbackContext) -> str:
         return ""
 
     if user_id == bot.id:
-        message.reply_text("Bagaimana saya bisa melakukan pekerjaan saya jika saya mengabaikan diri saya sendiri?")
+        message.reply_text(
+            "Bagaimana saya bisa melakukan pekerjaan saya jika saya mengabaikan diri saya sendiri?"
+        )
         return ""
 
     if user_id in BLACKLISTWHITELIST:

@@ -144,7 +144,9 @@ if is_module_loaded(FILENAME):
                     parse_mode=ParseMode.MARKDOWN,
                 )
             else:
-                update.effective_message.reply_text("Perintah itu tidak dapat dinonaktifkan")
+                update.effective_message.reply_text(
+                    "Perintah itu tidak dapat dinonaktifkan"
+                )
 
         else:
             update.effective_message.reply_text("Apa yang harus saya nonaktifkan??")
@@ -286,7 +288,9 @@ if is_module_loaded(FILENAME):
                 parse_mode=ParseMode.MARKDOWN,
             )
         else:
-            update.effective_message.reply_text("Tidak ada perintah yang dapat dinonaktifkan.")
+            update.effective_message.reply_text(
+                "Tidak ada perintah yang dapat dinonaktifkan."
+            )
 
     # do not async
     def build_curr_disabled(chat_id: Union[str, int]) -> str:
@@ -315,7 +319,6 @@ if is_module_loaded(FILENAME):
 
     def __chat_settings__(chat_id, user_id):
         return build_curr_disabled(chat_id)
-
 
     __help__ = """
 ❂ /cmds*:* periksa status perintah yang dinonaktifkan saat ini

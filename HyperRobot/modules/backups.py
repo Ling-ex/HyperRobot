@@ -77,7 +77,9 @@ def import_data(update, context):
                     text = "Cadangan berasal dari obrolan lain, saya tidak dapat mengembalikan obrolan lain ke obrolan ini"
                 return msg.reply_text(text, parse_mode="markdown")
         except Exception:
-            return msg.reply_text("Ada masalah saat mengimpor data anda kurang beruntung!")
+            return msg.reply_text(
+                "Ada masalah saat mengimpor data anda kurang beruntung!"
+            )
         # Check if backup is from self
         try:
             if str(context.bot.id) != str(data[str(chat.id)]["bot"]):

@@ -14,13 +14,10 @@ async def purge_messages(event):
     if event.from_id is None:
         return
 
-    if (
-        not await user_is_admin(
-            user_id=event.sender_id,
-            message=event,
-        )
-        and event.from_id not in [1087968824]
-    ):
+    if not await user_is_admin(
+        user_id=event.sender_id,
+        message=event,
+    ) and event.from_id not in [1087968824]:
         await event.reply("Hanya Admin yang diperbolehkan menggunakan perintah ini")
         return
 
@@ -30,7 +27,9 @@ async def purge_messages(event):
 
     reply_msg = await event.get_reply_message()
     if not reply_msg:
-        await event.reply("Balas pesan untuk memilih dari mana harus mulai membersihkan.")
+        await event.reply(
+            "Balas pesan untuk memilih dari mana harus mulai membersihkan."
+        )
         return
     messages = []
     message_id = reply_msg.id
@@ -51,17 +50,15 @@ async def purge_messages(event):
     text = f"Berhasil Dibersihkan in {time_:0.2f} Second(s)"
     await event.respond(text, parse_mode="markdown")
 
+
 async def delete_messages(event):
     if event.from_id is None:
         return
 
-    if (
-        not await user_is_admin(
-            user_id=event.sender_id,
-            message=event,
-        )
-        and event.from_id not in [1087968824]
-    ):
+    if not await user_is_admin(
+        user_id=event.sender_id,
+        message=event,
+    ) and event.from_id not in [1087968824]:
         await event.reply("Hanya Admin yang diperbolehkan menggunakan perintah ini")
         return
 
@@ -76,6 +73,7 @@ async def delete_messages(event):
     chat = await event.get_input_chat()
     del_message = [message, event.message]
     await event.client.delete_messages(chat, del_message)
+
 
 PURGE_HANDLER = purge_messages, events.NewMessage(pattern="^[!/]purge$")
 DEL_HANDLER = delete_messages, events.NewMessage(pattern="^[!/]del$")

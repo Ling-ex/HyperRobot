@@ -259,7 +259,9 @@ def join_fed(update: Update, context: CallbackContext):
                     )
                     return
     if fed_id:
-        message.reply_text("Anda tidak dapat bergabung dengan dua federasi dari satu obrolan")
+        message.reply_text(
+            "Anda tidak dapat bergabung dengan dua federasi dari satu obrolan"
+        )
         return
 
     if len(args) >= 1:
@@ -331,7 +333,9 @@ def leave_fed(update: Update, context: CallbackContext):
                 "Bagaimana Anda bisa meninggalkan federasi yang tidak pernah Anda ikuti??!",
             )
     else:
-        update.effective_message.reply_text("Hanya pembuat grup yang dapat menggunakan perintah ini!")
+        update.effective_message.reply_text(
+            "Hanya pembuat grup yang dapat menggunakan perintah ini!"
+        )
 
 
 def user_join_fed(update: Update, context: CallbackContext):
@@ -452,7 +456,9 @@ def user_demote_fed(update: Update, context: CallbackContext):
         else:
             update.effective_message.reply_text("Demosi gagal!")
     else:
-        update.effective_message.reply_text("Hanya pemilik federasi yang dapat melakukan ini!")
+        update.effective_message.reply_text(
+            "Hanya pemilik federasi yang dapat melakukan ini!"
+        )
         return
 
 
@@ -529,7 +535,9 @@ def fed_admin(update: Update, context: CallbackContext):
         return
 
     if is_user_fed_admin(fed_id, user.id) is False:
-        update.effective_message.reply_text("Hanya admin federasi yang dapat melakukan ini!")
+        update.effective_message.reply_text(
+            "Hanya admin federasi yang dapat melakukan ini!"
+        )
         return
 
     user = update.effective_user
@@ -581,7 +589,9 @@ def fed_ban(update: Update, context: CallbackContext):
     getfednotif = sql.user_feds_report(info["owner"])
 
     if is_user_fed_admin(fed_id, user.id) is False:
-        update.effective_message.reply_text("Hanya admin federasi yang dapat melakukan ini!")
+        update.effective_message.reply_text(
+            "Hanya admin federasi yang dapat melakukan ini!"
+        )
         return
 
     message = update.effective_message
@@ -770,7 +780,9 @@ def fed_ban(update: Update, context: CallbackContext):
                     break
                 else:
                     LOGGER.warning(
-                        "Tidak dapat mem-fban {} because: {}".format(chat, excp.message),
+                        "Tidak dapat mem-fban {} because: {}".format(
+                            chat, excp.message
+                        ),
                     )
             except TelegramError:
                 pass
@@ -1005,7 +1017,9 @@ def unfban(update: Update, context: CallbackContext):
     getfednotif = sql.user_feds_report(info["owner"])
 
     if is_user_fed_admin(fed_id, user.id) is False:
-        update.effective_message.reply_text("Hanya admin federasi yang dapat melakukan ini!")
+        update.effective_message.reply_text(
+            "Hanya admin federasi yang dapat melakukan ini!"
+        )
         return
 
     user_id = extract_user_fban(message, args)
@@ -1181,7 +1195,9 @@ def unfban(update: Update, context: CallbackContext):
     if unfbanned_in_chats > 0:
         send_message(
             update.effective_message,
-            "Orang ini telah dibatalkan pemblokirannya di {} chats.".format(unfbanned_in_chats),
+            "Orang ini telah dibatalkan pemblokirannya di {} chats.".format(
+                unfbanned_in_chats
+            ),
         )
     # Also do not spamming all fed admins
     """
@@ -1221,7 +1237,9 @@ def set_frules(update: Update, context: CallbackContext):
         return
 
     if is_user_fed_admin(fed_id, user.id) is False:
-        update.effective_message.reply_text("Hanya admin yang diberi makan yang dapat melakukan ini!")
+        update.effective_message.reply_text(
+            "Hanya admin yang diberi makan yang dapat melakukan ini!"
+        )
         return
 
     if len(args) >= 1:

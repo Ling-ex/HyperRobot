@@ -39,7 +39,9 @@ def blacklist(update, context):
         chat_id = update.effective_chat.id
         chat_name = chat.title
 
-    filter_list = "Kata-kata yang masuk daftar hitam saat ini di <b>{}</b>:\n".format(chat_name)
+    filter_list = "Kata-kata yang masuk daftar hitam saat ini di <b>{}</b>:\n".format(
+        chat_name
+    )
 
     all_blacklisted = sql.get_chat_blacklist(chat_id)
 
@@ -55,12 +57,17 @@ def blacklist(update, context):
 
     split_text = split_message(filter_list)
     for text in split_text:
-        if filter_list == "Kata-kata yang masuk daftar hitam saat ini di <b>{}</b>:\n".format(
-            html.escape(chat_name),
+        if (
+            filter_list
+            == "Kata-kata yang masuk daftar hitam saat ini di <b>{}</b>:\n".format(
+                html.escape(chat_name),
+            )
         ):
             send_message(
                 update.effective_message,
-                "Tidak ada kata yang masuk daftar hitam <b>{}</b>!".format(html.escape(chat_name)),
+                "Tidak ada kata yang masuk daftar hitam <b>{}</b>!".format(
+                    html.escape(chat_name)
+                ),
                 parse_mode=ParseMode.HTML,
             )
             return

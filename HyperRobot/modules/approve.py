@@ -74,7 +74,9 @@ def disapprove(update, context):
     except BadRequest:
         return ""
     if member.status in ("administrator", "creator"):
-        message.reply_text("Pengguna ini adalah admin, mereka tidak dapat ditolak kecuali di bunuh hhe.")
+        message.reply_text(
+            "Pengguna ini adalah admin, mereka tidak dapat ditolak kecuali di bunuh hhe."
+        )
         return ""
     if not sql.is_approved(message.chat_id, user_id):
         message.reply_text(f"{member.user['first_name']} belum disetujui!")
@@ -184,10 +186,14 @@ def unapproveall_btn(update: Update, context: CallbackContext):
             query.answer("Anda harus menjadi admin untuk melakukan ini haha so soan.")
     elif query.data == "unapproveall_cancel":
         if member.status == "creator" or query.from_user.id in DRAGONS:
-            message.edit_text("Penghapusan semua pengguna yang disetujui telah dibatalkan.")
+            message.edit_text(
+                "Penghapusan semua pengguna yang disetujui telah dibatalkan."
+            )
             return ""
         if member.status == "administrator":
-            query.answer("Hanya pemilik obrolan yang dapat melakukan ini, bukan own mah diam aja om/tante.")
+            query.answer(
+                "Hanya pemilik obrolan yang dapat melakukan ini, bukan own mah diam aja om/tante."
+            )
         if member.status == "member":
             query.answer("Anda harus menjadi admin untuk melakukan ini haha so soan.")
 

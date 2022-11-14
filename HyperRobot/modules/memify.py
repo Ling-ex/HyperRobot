@@ -10,7 +10,9 @@ async def handler(event):
     if event.fwd_from:
         return
     if not event.reply_to_msg_id:
-        await event.reply("`Berikan Beberapa Teks Untuk Digambar! Dan Membalas Contoh Gambar/Stiker: /mmf text`")
+        await event.reply(
+            "`Berikan Beberapa Teks Untuk Digambar! Dan Membalas Contoh Gambar/Stiker: /mmf text`"
+        )
         return
     reply_message = await event.get_reply_message()
     if not reply_message.media:

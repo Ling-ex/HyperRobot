@@ -323,9 +323,11 @@ def blacklist_mode(update: Update, context: CallbackContext):
             )
             return
         if conn:
-            text = "Mode stiker daftar hitam berubah, pengguna akan `{}` at *{}*!".format(
-                settypeblacklist,
-                chat_name,
+            text = (
+                "Mode stiker daftar hitam berubah, pengguna akan `{}` at *{}*!".format(
+                    settypeblacklist,
+                    chat_name,
+                )
             )
         else:
             text = "Mode stiker daftar hitam berubah, pengguna akan `{}`!".format(
