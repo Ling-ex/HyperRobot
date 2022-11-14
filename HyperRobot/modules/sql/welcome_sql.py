@@ -2,28 +2,28 @@ import random
 import threading
 from typing import Union
 
-from EmikoRobot.modules.helper_funcs.msg_types import Types
-from EmikoRobot.modules.sql import BASE, SESSION
+from HyperRobot.modules.helper_funcs.msg_types import Types
+from HyperRobot.modules.sql import BASE, SESSION
 from sqlalchemy import Boolean, Column, String, UnicodeText, Integer
 from sqlalchemy.sql.sqltypes import BigInteger
 
 
 DEFAULT_WELCOME_MESSAGES = [
-    "{first} is here!",  # Discord welcome messages copied
-    "Ready player {first}",
-    "Genos, {first} is here.",
-    "A wild {first} appeared.",
-    "{first} came in like a Lion!",
-    "{first} has joined your party.",
-    "{first} just joined. Can I get a heal?",
-    "{first} just joined the chat - asdgfhak!",
-    "{first} just joined. Everyone, look busy!",
-    "Welcome, {first}. Stay awhile and listen.",
-    "Welcome, {first}. We were expecting you ( ͡° ͜ʖ ͡°)",
-    "Welcome, {first}. We hope you brought pizza.",
-    "Welcome, {first}. Leave your weapons by the door.",
-    "Swoooosh. {first} just landed.",
-    "Brace yourselves. {first} just joined the chat.",
+    "{first} di sini!",  # Discord welcome messages copied
+    "Pemain siap {first}",
+    "Hyper, {first} di sini.",
+    "Liar {first} muncul.",
+    "{first} datang seperti singa!",
+    "{first} telah bergabung dengan pesta Anda.",
+    "{first} baru bergabung. Bisakah saya mendapatkan kesembuhan?",
+    "{first} baru saja bergabung dengan obrolan - asdgfhak!",
+    "{first} baru bergabung. Semuanya, terlihat sibuk!",
+    "Selamat datang, {first}. Tinggallah sebentar dan dengarkan.",
+    "Selamat datang, {first}. Kami mengharapkan Anda ( ͡° ͜ʖ ͡°)",
+    "Selamat datang, {first}. Kami harap Anda membawa opak.",
+    "Selamat datang, {first}. Tinggalkan senjatamu di dekat pintu.",
+    "Swoooosh. {first} Baru saja mendarat.",
+    "Kuatkan dirimu. {first} baru gabung di chat.",
     "{first} just joined. Hide your bananas.",
     "{first} just arrived. Seems OP - please nerf.",
     "{first} just slid into the chat.",
