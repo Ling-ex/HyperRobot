@@ -85,9 +85,9 @@ PM_START_TEXT = """
 *Hello {} !*
 ───────────────────────
 ☠ ꜱᴀʏᴀ ᴀᴅᴀʟᴀʜ ʜʏᴘᴇʀ ʀᴏʙᴏᴛ ʏᴀɴɢ ᴅɪʀᴀɴᴄᴀɴɢ ᴜɴᴛᴜᴋ ᴍᴇᴍʙᴀɴᴛᴜ ᴍᴇɴɢᴇʟᴏʟᴀ ᴅᴀɴ ᴍᴇᴍᴜᴛᴀʀ ᴍᴜꜱɪᴋ ɢʀᴜᴘ ᴛᴇʟᴇɢʀᴀᴍ ᴀɴᴅᴀ ᴅᴇɴɢᴀɴ ʙᴀɴʏᴀᴋ ꜰɪᴛᴜʀ.
-☠ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ ʙʏ [zøɴӄɛʏ ᴅ ʟɪɴɢ](https://t.me/excute7)** \n\n"
+☠ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ ʙʏ "zøɴӄɛʏ ᴅ ʟɪɴɢ", url="https://t.me/excute7"
 ───────────────────────
-✪ ʜɪᴛ /help ᴛᴏ ꜱᴇᴇ ᴍʏ ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅꜱ.
+✪ ᴛᴇᴋᴀɴ /help ᴜɴᴛᴜᴋ ᴍᴇʟɪʜᴀᴛ ᴘᴇʀɪɴᴛᴀʜ ꜱᴀʏᴀ ʏᴀɴɢ ᴛᴇʀꜱᴇᴅɪᴀ.
 """
 
 buttons = [
@@ -99,8 +99,8 @@ buttons = [
         InlineKeyboardButton(text="ᴛʀʏ ɪɴʟɪɴᴇ​​", switch_inline_query_current_chat=""),
     ],
     [
-        InlineKeyboardButton(text="ᴅᴏɴᴀᴛɪᴏɴ👌", url="http://t.me/excute7"),
-        InlineKeyboardButton(text="ꜱᴜᴘᴘᴏʀᴛ🇮🇩", url="https://t.me/+k7GsvnQrWwkxN2M1"),
+        InlineKeyboardButton(text="ᴅᴏɴᴀᴛɪᴏɴ👌", url="https://t.me/HyperSupportQ/220"),
+        InlineKeyboardButton(text="ꜱᴜᴘᴘᴏʀᴛ🇮🇩", url="https://t.me/HyperSupportQ"),
     ],
     [
         InlineKeyboardButton(
@@ -441,7 +441,7 @@ def hyper_about_callback(update, context):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="ꜱᴜᴘᴘᴏʀᴛ", url="t.me/AduanHyper"),
+                        InlineKeyboardButton(text="ꜱᴜᴘᴘᴏʀᴛ", url="t.me/zonkeyamanahdansyariah"),
                         InlineKeyboardButton(
                             text="ᴜᴘᴅᴀᴛᴇꜱ", url="https://t.me/storyQi"
                         ),
