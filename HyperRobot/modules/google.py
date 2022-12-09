@@ -57,7 +57,8 @@ async def _(event):
         except IndexError:
             break
     await webevent.edit(
-        "**Permintaan Pencarian:**\n`" + match + "`\n\n**Results:**\n" + msg, link_preview=False
+        "**Permintaan Pencarian:**\n`" + match + "`\n\n**Results:**\n" + msg,
+        link_preview=False,
     )
 
 
@@ -271,7 +272,9 @@ async def apk(e):
         app_details += "\n\n===> Hyper <==="
         await e.reply(app_details, link_preview=True, parse_mode="HTML")
     except IndexError:
-        await e.reply("Tidak ada hasil yang ditemukan dalam pencarian. Silahkan masuk **Nama aplikasi yang valid**")
+        await e.reply(
+            "Tidak ada hasil yang ditemukan dalam pencarian. Silahkan masuk **Nama aplikasi yang valid**"
+        )
     except Exception as err:
         await e.reply("Pengecualian Terjadi:- " + str(err))
 

@@ -50,7 +50,9 @@ def _onUnMuteRequest(client, cb):
                     show_alert=True,
                 )
         else:
-            if (not client.get_chat_member(chat_id, (client.get_me()).id).status == "administrator"
+            if (
+                not client.get_chat_member(chat_id, (client.get_me()).id).status
+                == "administrator"
             ):
                 client.send_message(
                     chat_id,
@@ -71,7 +73,9 @@ def _check_member(client, message):
     chat_db = sql.fs_settings(chat_id)
     if chat_db:
         user_id = message.from_user.id
-        if (not client.get_chat_member(chat_id, user_id).status in ("administrator", "creator")
+        if (
+            not client.get_chat_member(chat_id, user_id).status
+            in ("administrator", "creator")
             and not user_id in SUDO_USERS
         ):
             channel = chat_db.channel
@@ -137,7 +141,9 @@ def config(client, message):
                         if chat_member.restricted_by.id == (client.get_me()).id:
                             client.unban_chat_member(chat_id, chat_member.user.id)
                             time.sleep(1)
-                    sent_message.edit("✅ **Suarakan semua anggota yang dibisukan oleh saya.**")
+                    sent_message.edit(
+                        "✅ **Suarakan semua anggota yang dibisukan oleh saya.**"
+                    )
                 except ChatAdminRequired:
                     sent_message.edit(
                         "😕 **Saya bukan admin di chat ini.**\n__Saya tidak dapat mengaktifkan suara anggota karena saya bukan admin dalam obrolan ini, jadikan saya admin dengan izin pengguna larangan.__"
@@ -166,7 +172,9 @@ def config(client, message):
                     disable_web_page_preview=True,
                 )
             else:
-                message.reply_text("❌ **Paksa Berlangganan dinonaktifkan dalam obrolan ini.**")
+                message.reply_text(
+                    "❌ **Paksa Berlangganan dinonaktifkan dalam obrolan ini.**"
+                )
     else:
         message.reply_text(
             "❗ **Diperlukan Pembuat Grup**\n__Anda harus menjadi pembuat grup untuk melakukan itu.__"

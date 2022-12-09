@@ -6,7 +6,7 @@ from HyperRobot.modules.sql.night_mode_sql import (
     is_nightmode_indb,
 )
 from telethon.tl.types import ChatBannedRights
-from apscheduler.schedulers.asyncio import AsyncIOScheduler 
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from telethon import functions
 from HyperRobot.events import register
 from HyperRobot import telethn as tbot, OWNER_ID
@@ -53,6 +53,7 @@ from telethon.tl.functions.channels import (
     EditPhotoRequest,
 )
 
+
 async def is_register_admin(chat, user):
     if isinstance(chat, (types.InputPeerChannel, types.InputChannel)):
         return isinstance(
@@ -63,6 +64,7 @@ async def is_register_admin(chat, user):
         )
     if isinstance(chat, types.InputPeerUser):
         return True
+
 
 async def can_change_info(message):
     result = await tbot(
@@ -76,6 +78,7 @@ async def can_change_info(message):
         isinstance(p, types.ChannelParticipantAdmin) and p.admin_rights.change_info
     )
 
+
 @register(pattern="^/(nightmode|Nightmode|NightMode|kontolmode|KONTOLMODE) ?(.*)")
 async def profanity(event):
     if event.fwd_from:
@@ -85,38 +88,32 @@ async def profanity(event):
     input = event.pattern_match.group(2)
     if not event.sender_id == OWNER_ID:
         if not await is_register_admin(event.input_chat, event.sender_id):
-           await event.reply("Hanya admin yang dapat menjalankan perintah ini!")
-           return
-        else:
-          if not await can_change_info(message=event):
-            await event.reply("Anda kehilangan hak berikut untuk menggunakan perintah ini: CanChangeinfo")
+            await event.reply("Hanya admin yang dapat menjalankan perintah ini!")
             return
-    if not input:
-        if is_nightmode_indb(str(event.chat_id)):
+        else:
+            if not await can_change_info(message=event):
                 await event.reply(
-                    "Saat ini NightMode Diaktifkan untuk Obrolan ini"
+                    "Anda kehilangan hak berikut untuk menggunakan perintah ini: CanChangeinfo"
                 )
                 return
-        await event.reply(
-            "Saat ini NightMode Dinonaktifkan untuk Obrolan ini"
-        )
+    if not input:
+        if is_nightmode_indb(str(event.chat_id)):
+            await event.reply("Saat ini NightMode Diaktifkan untuk Obrolan ini")
+            return
+        await event.reply("Saat ini NightMode Dinonaktifkan untuk Obrolan ini")
         return
     if "on" in input:
         if event.is_group:
             if is_nightmode_indb(str(event.chat_id)):
-                    await event.reply(
-                        "Mode Malam Sudah DIAKTIFKAN untuk Obrolan ini"
-                    )
-                    return
+                await event.reply("Mode Malam Sudah DIAKTIFKAN untuk Obrolan ini")
+                return
             add_nightmode(str(event.chat_id))
             await event.reply("NightMode diaktifkan untuk obrolan ini.")
     if "off" in input:
         if event.is_group:
             if not is_nightmode_indb(str(event.chat_id)):
-                    await event.reply(
-                        "Mode Malam Sudah Nonaktif untuk Obrolan ini"
-                    )
-                    return
+                await event.reply("Mode Malam Sudah Nonaktif untuk Obrolan ini")
+                return
         rmnightmode(str(event.chat_id))
         await event.reply("NightMode Disabled!")
     if not "off" in input and not "on" in input:
@@ -131,20 +128,23 @@ async def job_close():
     for pro in chats:
         try:
             await tbot.send_message(
-              int(pro.chat_id), "12:00 Am, Grup Tutup Hingga 6 Pagi. Mode Malam Dimulai ! \n**Powered By @excute7**"
+                int(pro.chat_id),
+                "12:00 Am, Grup Tutup Hingga 6 Pagi. Mode Malam Dimulai ! \n**Powered By @excute7**",
             )
             await tbot(
-            functions.messages.EditChatDefaultBannedRightsRequest(
-                peer=int(pro.chat_id), banned_rights=hehes
-            )
+                functions.messages.EditChatDefaultBannedRightsRequest(
+                    peer=int(pro.chat_id), banned_rights=hehes
+                )
             )
         except Exception as e:
             logger.info(f"Tidak Dapat Menutup Grup {chat} - {e}")
 
-#Run everyday at 12am
+
+# Run everyday at 12am
 scheduler = AsyncIOScheduler(timezone="Asia/Jakarta")
 scheduler.add_job(job_close, trigger="cron", hour=23, minute=59)
 scheduler.start()
+
 
 async def job_open():
     chats = get_all_chat_id()
@@ -153,15 +153,16 @@ async def job_open():
     for pro in chats:
         try:
             await tbot.send_message(
-              int(pro.chat_id), "06:00 Am, Grup Dibuka.\n**Powered By @excute7**"
+                int(pro.chat_id), "06:00 Am, Grup Dibuka.\n**Powered By @excute7**"
             )
             await tbot(
-            functions.messages.EditChatDefaultBannedRightsRequest(
-                peer=int(pro.chat_id), banned_rights=openhehe
+                functions.messages.EditChatDefaultBannedRightsRequest(
+                    peer=int(pro.chat_id), banned_rights=openhehe
+                )
             )
-        )
         except Exception as e:
             logger.info(f"Unable To Open Group {pro.chat_id} - {e}")
+
 
 # Run everyday at 06
 scheduler = AsyncIOScheduler(timezone="Asia/Jakarta")

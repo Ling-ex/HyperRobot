@@ -392,7 +392,9 @@ def list_notes(update: Update, context: CallbackContext):
         try:
             update.effective_message.reply_text("Tidak ada catatan dalam obrolan ini!")
         except BadRequest:
-            update.effective_message.reply_text("Tidak ada catatan dalam obrolan ini!", quote=False)
+            update.effective_message.reply_text(
+                "Tidak ada catatan dalam obrolan ini!", quote=False
+            )
 
     elif len(msg) != 0:
         update.effective_message.reply_text(msg, parse_mode=ParseMode.MARKDOWN)

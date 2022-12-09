@@ -22,9 +22,11 @@ from ptbcontrib.postgres_persistence import PostgresPersistence
 
 StartTime = time.time()
 
+
 def get_user_list(__init__, key):
     with open("{}/HyperRobot/{}".format(os.getcwd(), __init__), "r") as json_file:
         return json.load(json_file)[key]
+
 
 # enable logging
 FORMAT = "[HyperRobot] %(message)s"
@@ -35,9 +37,11 @@ logging.basicConfig(
     datefmt="[%X]",
 )
 logging.getLogger("pyrogram").setLevel(logging.INFO)
-logging.getLogger('ptbcontrib.postgres_persistence.postgrespersistence').setLevel(logging.WARNING)
+logging.getLogger("ptbcontrib.postgres_persistence.postgrespersistence").setLevel(
+    logging.WARNING
+)
 
-LOGGER = logging.getLogger('[HyperRobot]')
+LOGGER = logging.getLogger("[HyperRobot]")
 LOGGER.info("Hyper is starting. | An Ling Project Parts. | Licensed under GPLv3.")
 LOGGER.info("Not affiliated to other anime or Villain in any way whatsoever.")
 LOGGER.info("Project maintained by: github.com/Ling-ex (t.me/excute7)")
@@ -66,22 +70,30 @@ if ENV:
         DRAGONS = {int(x) for x in os.environ.get("DRAGONS", "").split()}
         DEV_USERS = {int(x) for x in os.environ.get("DEV_USERS", "").split()}
     except ValueError:
-        raise Exception("Daftar pengguna sudo atau dev Anda tidak berisi bilangan bulat yang valid.")
+        raise Exception(
+            "Daftar pengguna sudo atau dev Anda tidak berisi bilangan bulat yang valid."
+        )
 
     try:
         DEMONS = {int(x) for x in os.environ.get("DEMONS", "").split()}
     except ValueError:
-        raise Exception("Daftar pengguna dukungan Anda tidak berisi bilangan bulat yang valid.")
+        raise Exception(
+            "Daftar pengguna dukungan Anda tidak berisi bilangan bulat yang valid."
+        )
 
     try:
         WOLVES = {int(x) for x in os.environ.get("WOLVES", "").split()}
-    except ValueError: 
-        raise Exception("Daftar pengguna Anda yang masuk daftar putih tidak berisi bilangan bulat yang valid.")
+    except ValueError:
+        raise Exception(
+            "Daftar pengguna Anda yang masuk daftar putih tidak berisi bilangan bulat yang valid."
+        )
 
     try:
         TIGERS = {int(x) for x in os.environ.get("TIGERS", "").split()}
     except ValueError:
-        raise Exception("Daftar pengguna harimau Anda tidak berisi bilangan bulat yang valid.")
+        raise Exception(
+            "Daftar pengguna harimau Anda tidak berisi bilangan bulat yang valid."
+        )
 
     INFOPIC = bool(os.environ.get("INFOPIC", True))
     EVENT_LOGS = os.environ.get("EVENT_LOGS", None)
@@ -129,7 +141,9 @@ if ENV:
     try:
         BL_CHATS = {int(x) for x in os.environ.get("BL_CHATS", "").split()}
     except ValueError:
-        raise Exception("Daftar obrolan daftar hitam Anda tidak berisi bilangan bulat yang valid.")
+        raise Exception(
+            "Daftar obrolan daftar hitam Anda tidak berisi bilangan bulat yang valid."
+        )
 
 else:
     from HyperRobot.config import Development as Config
@@ -148,22 +162,30 @@ else:
         DRAGONS = {int(x) for x in Config.DRAGONS or []}
         DEV_USERS = {int(x) for x in Config.DEV_USERS or []}
     except ValueError:
-        raise Exception("Daftar pengguna sudo atau dev Anda tidak berisi bilangan bulat yang valid.")
+        raise Exception(
+            "Daftar pengguna sudo atau dev Anda tidak berisi bilangan bulat yang valid."
+        )
 
     try:
         DEMONS = {int(x) for x in Config.DEMONS or []}
     except ValueError:
-        raise Exception("Daftar pengguna sudo atau demon Anda tidak berisi bilangan bulat yang valid.")
+        raise Exception(
+            "Daftar pengguna sudo atau demon Anda tidak berisi bilangan bulat yang valid."
+        )
 
     try:
         WOLVES = {int(x) for x in Config.WOLVES or []}
     except ValueError:
-        raise Exception("Daftar pengguna Anda yang masuk daftar putih tidak berisi bilangan bulat yang valid.")
+        raise Exception(
+            "Daftar pengguna Anda yang masuk daftar putih tidak berisi bilangan bulat yang valid."
+        )
 
     try:
         TIGERS = {int(x) for x in Config.TIGERS or []}
     except ValueError:
-        raise Exception("Daftar pengguna harimau Anda tidak berisi bilangan bulat yang valid.")
+        raise Exception(
+            "Daftar pengguna harimau Anda tidak berisi bilangan bulat yang valid."
+        )
     EVENT_LOGS = Config.EVENT_LOGS
     WEBHOOK = Config.WEBHOOK
     URL = Config.URL
@@ -206,7 +228,9 @@ else:
     try:
         BL_CHATS = {int(x) for x in Config.BL_CHATS or []}
     except ValueError:
-        raise Exception("Daftar obrolan daftar hitam Anda tidak berisi bilangan bulat yang valid.")
+        raise Exception(
+            "Daftar obrolan daftar hitam Anda tidak berisi bilangan bulat yang valid."
+        )
 
 # Jika Anda forking jangan hapus id ini, tambahkan saja id Anda. TERTAWA TERBAHAK-BAHAK...
 
@@ -245,7 +269,9 @@ ubot2 = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 try:
     ubot2.start()
 except BaseException:
-    print("Kesalahan Userbot! Sudahkah Anda menambahkan STRING_SESSION dalam penerapan??")
+    print(
+        "Kesalahan Userbot! Sudahkah Anda menambahkan STRING_SESSION dalam penerapan??"
+    )
     sys.exit(1)
 
 pbot = Client(
@@ -258,6 +284,7 @@ pbot = Client(
 apps = []
 apps.append(pbot)
 loop = asyncio.get_event_loop()
+
 
 async def get_entity(client, entity):
     entity_client = client

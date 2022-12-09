@@ -14,9 +14,7 @@ from HyperRobot.utils.pastebin import paste
 
 __mod_name__ = "Paste​"
 
-pattern = re.compile(
-    r"^text/|json$|yaml$|xml$|toml$|x-sh$|x-shellscript$"
-)
+pattern = re.compile(r"^text/|json$|yaml$|xml$|toml$|x-sh$|x-shellscript$")
 
 
 async def isPreviewUp(preview: str) -> bool:
@@ -38,9 +36,7 @@ async def isPreviewUp(preview: str) -> bool:
 @capture_err
 async def paste_func(_, message):
     if not message.reply_to_message:
-        return await message.reply_text(
-            "Balas Pesan Dengan / tempel"
-        )
+        return await message.reply_text("Balas Pesan Dengan / tempel")
     m = await message.reply_text("Pasting...")
     if message.reply_to_message.text:
         content = str(message.reply_to_message.text)
@@ -63,9 +59,7 @@ async def paste_func(_, message):
 
     if await isPreviewUp(preview):
         try:
-            await message.reply_photo(
-                photo=preview, quote=False, reply_markup=button
-            )
+            await message.reply_photo(photo=preview, quote=False, reply_markup=button)
             return await m.delete()
         except Exception:
             pass

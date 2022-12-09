@@ -17,6 +17,7 @@ from youtubesearchpython import SearchVideos
 from HyperRobot.utils.pluginhelper import get_text, progress
 from HyperRobot import pbot, arq
 
+
 async def lyrics_func(answers, text):
     song = await arq.lyrics(text)
     if not song.ok:
@@ -24,9 +25,7 @@ async def lyrics_func(answers, text):
             InlineQueryResultArticle(
                 title="Error",
                 description=song.result,
-                input_message_content=InputTextMessageContent(
-                    song.result
-                ),
+                input_message_content=InputTextMessageContent(song.result),
             )
         )
         return answers
@@ -80,9 +79,7 @@ def download_youtube_audio(url: str):
             os.remove(audio_file)
             audio_file = audio_file_opus
         thumbnail_url = info_dict["thumbnail"]
-        thumbnail_file = (
-            basename + "." + get_file_extension_from_url(thumbnail_url)
-        )
+        thumbnail_file = basename + "." + get_file_extension_from_url(thumbnail_url)
         title = info_dict["title"]
         performer = info_dict["uploader"]
         duration = int(float(info_dict["duration"]))
@@ -97,7 +94,9 @@ async def ytmusic(client, message: Message):
         message.chat.id, f"`Getting {urlissed} From Youtube Servers. Please Wait.`"
     )
     if not urlissed:
-        await pablo.edit("Sintaks Perintah Tidak Valid, Silakan Periksa Menu Bantuan Untuk Mengetahui Lebih Lanjut!")
+        await pablo.edit(
+            "Sintaks Perintah Tidak Valid, Silakan Periksa Menu Bantuan Untuk Mengetahui Lebih Lanjut!"
+        )
         return
 
     search = SearchVideos(f"{urlissed}", offset=1, mode="dict", max_results=1)

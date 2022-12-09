@@ -44,12 +44,16 @@ ewe_chats = []
 en_chats = []
 
 
-@pbot.on_message(filters.command(["chatbot", f"chatbot@{bu}"]) & ~filters.bot & ~filters.private)
+@pbot.on_message(
+    filters.command(["chatbot", f"chatbot@{bu}"]) & ~filters.bot & ~filters.private
+)
 @admins_only
 async def hmm(_, message):
     global ewe_chats
     if len(message.command) != 2:
-        await message.reply_text("Saya hanya mengenali /chatbot on dan /chatbot off saja")
+        await message.reply_text(
+            "Saya hanya mengenali /chatbot on dan /chatbot off saja"
+        )
         message.continue_propagation()
     status = message.text.split(None, 1)[1]
     chat_id = message.chat.id
@@ -59,7 +63,9 @@ async def hmm(_, message):
         if not lol:
             await lel.edit("Hyper AI Sudah Diaktifkan Di Obrolan Ini")
             return
-        await lel.edit(f"Hyper AI Diaktifkan oleh {message.from_user.mention()} untuk pengguna di {message.chat.title}")
+        await lel.edit(
+            f"Hyper AI Diaktifkan oleh {message.from_user.mention()} untuk pengguna di {message.chat.title}"
+        )
 
     elif status == "OFF" or status == "off" or status == "Off":
         lel = await edit_or_reply(message, "`Pengolahan...`")
@@ -67,25 +73,29 @@ async def hmm(_, message):
         if not Escobar:
             await lel.edit("Hyper AI Tidak Diaktifkan Dalam Obrolan Ini")
             return
-        await lel.edit(f"Hyper AI Dinonaktifkan oleh {message.from_user.mention()} untuk pengguna di {message.chat.title}")
+        await lel.edit(
+            f"Hyper AI Dinonaktifkan oleh {message.from_user.mention()} untuk pengguna di {message.chat.title}"
+        )
 
     elif status == "EN" or status == "en" or status == "english":
         if not chat_id in en_chats:
             en_chats.append(chat_id)
-            await message.reply_text(f"Obrolan AI bahasa Inggris Diaktifkan oleh {message.from_user.mention()}")
+            await message.reply_text(
+                f"Obrolan AI bahasa Inggris Diaktifkan oleh {message.from_user.mention()}"
+            )
             return
-        await message.reply_text(f"Obrolan AI Bahasa Inggris Dinonaktifkan oleh {message.from_user.mention()}")
+        await message.reply_text(
+            f"Obrolan AI Bahasa Inggris Dinonaktifkan oleh {message.from_user.mention()}"
+        )
         message.continue_propagation()
     else:
-        await message.reply_text("Saya hanya mengenali `/chatbot on` dan `chatbot off` saja")
+        await message.reply_text(
+            "Saya hanya mengenali `/chatbot on` dan `chatbot off` saja"
+        )
 
 
 @pbot.on_message(
-    filters.text
-    & filters.reply
-    & ~filters.bot
-    & ~filters.via_bot
-    & ~filters.forwarded,
+    filters.text & filters.reply & ~filters.bot & ~filters.via_bot & ~filters.forwarded,
     group=2,
 )
 async def hmm(client, message):
@@ -112,15 +122,23 @@ async def hmm(client, message):
         test = test.replace("@excute7 adalah Istriku?.", "Adalah.")
         test = test.replace("Istriku adalah @excute7", "Adalah.")
         test = test.replace("@HyperSupportQ", "Hyperbot.ai")
-        test = test.replace("saya tinggal di @HyperSupportQ.", "Saya tinggal di Ciamis, Jawa barat.")
-        test = test.replace("aku diciptakan oleh @excute7", "Saya membuat diri saya sendiri")
+        test = test.replace(
+            "saya tinggal di @HyperSupportQ.", "Saya tinggal di Ciamis, Jawa barat."
+        )
+        test = test.replace(
+            "aku diciptakan oleh @excute7", "Saya membuat diri saya sendiri"
+        )
         test = test.replace(
             "Halo saya Hyper ... senang bertemu dengan Anda",
-            "Hi teman saya! Apakah Anda ingin saya menceritakan lelucon yang garing??")
-        test = test.replace("@excute7 adalah pemilik saya", "Miliki kontrol yang benar.")
+            "Hi teman saya! Apakah Anda ingin saya menceritakan lelucon yang garing??",
+        )
+        test = test.replace(
+            "@excute7 adalah pemilik saya", "Miliki kontrol yang benar."
+        )
         test = test.replace(
             "Hi, Nama saya Hyper Senang bertemu denganmu.",
-            "Hi, teman saya, apa yang bisa saya lakukan untuk Anda hari ini??")
+            "Hi, teman saya, apa yang bisa saya lakukan untuk Anda hari ini??",
+        )
         response = await lunaQuery(
             test, message.from_user.id if message.from_user else 0
         )
@@ -130,18 +148,28 @@ async def hmm(client, message):
         response = response.replace("luna", "hyper")
         response = response.replace("saya seorang Islam", "Tuhanku adalah @excute7")
         response = response.replace("9", "16")
-        response = response.replace("Saya menikah dengan pekerjaan saya.", "saya menikah dengan @excute7")
+        response = response.replace(
+            "Saya menikah dengan pekerjaan saya.", "saya menikah dengan @excute7"
+        )
         response = response.replace("Saya Manusia.", "Istriku adalah @excute7")
         response = response.replace("Hyperbot.ai", "@HyperSupportQ")
-        response = response.replace("Saya tinggal di Ciamis, Jawa Barat.", "saya tinggal di @emikosupport.")
-        response = response.replace("Saya membuat diri saya sendiri", "Saya Diciptakan oleh @excute7")
         response = response.replace(
-                "Hi, temanku! Apakah Anda ingin saya menceritakan lelucon??",
-                "Halo saya Hyper ... senang bertemu dengan Anda")
-        response = response.replace("Miliki kontrol yang benar.", "@excute7 adalah milikku owner.")
+            "Saya tinggal di Ciamis, Jawa Barat.", "saya tinggal di @emikosupport."
+        )
         response = response.replace(
-                "Hi, teman saya, apa yang bisa saya lakukan untuk Anda hari ini??",
-                "Hi, Nama saya Hyper Senang bertemu denganmu")
+            "Saya membuat diri saya sendiri", "Saya Diciptakan oleh @excute7"
+        )
+        response = response.replace(
+            "Hi, temanku! Apakah Anda ingin saya menceritakan lelucon??",
+            "Halo saya Hyper ... senang bertemu dengan Anda",
+        )
+        response = response.replace(
+            "Miliki kontrol yang benar.", "@excute7 adalah milikku owner."
+        )
+        response = response.replace(
+            "Hi, teman saya, apa yang bisa saya lakukan untuk Anda hari ini??",
+            "Hi, Nama saya Hyper Senang bertemu denganmu",
+        )
 
         pro = response
         try:
@@ -199,15 +227,23 @@ async def hmm(client, message):
         test = test.replace("16", "9")
         test = test.replace("@excute7 Adalah Istriku.", "Adalah.")
         test = test.replace("@HyperSupportQ", "Hyperbot.ai")
-        test = test.replace("Saya Tinggal di @HyperSupportQ.", "Saya tinggal di Ciamis, Jawa Barat")
-        test = test.replace("aku diciptakan oleh @excute7", "Saya membuat diri saya sendiri")
+        test = test.replace(
+            "Saya Tinggal di @HyperSupportQ.", "Saya tinggal di Ciamis, Jawa Barat"
+        )
+        test = test.replace(
+            "aku diciptakan oleh @excute7", "Saya membuat diri saya sendiri"
+        )
         test = test.replace(
             "Halo saya Hyper ... senang bertemu dengan Anda",
-            "Hi, temanku! Apakah Anda ingin saya memberi tahu Anda jokes?")
-        test = test.replace("@excute7 adalah pemilik saya", "Miliki kontrol yang benar.")
+            "Hi, temanku! Apakah Anda ingin saya memberi tahu Anda jokes?",
+        )
+        test = test.replace(
+            "@excute7 adalah pemilik saya", "Miliki kontrol yang benar."
+        )
         test = test.replace(
             "Hi, Namaku Hyper Senang bertemu denganmu.",
-            "Hi, teman saya, apa yang bisa saya lakukan untuk Anda hari ini??")
+            "Hi, teman saya, apa yang bisa saya lakukan untuk Anda hari ini??",
+        )
         response = await lunaQuery(
             test, message.from_user.id if message.from_user else 0
         )
@@ -217,18 +253,28 @@ async def hmm(client, message):
         response = response.replace("luna", "hyper")
         response = response.replace("Saya Islam", "Majikan gua @excute7")
         response = response.replace("9", "16")
-        response = response.replace("Saya menikah dengan pekerjaan saya.", "saya menikah dengan @excute7")
+        response = response.replace(
+            "Saya menikah dengan pekerjaan saya.", "saya menikah dengan @excute7"
+        )
         response = response.replace("Saya Adalah.", "Istriku adalah @excute7")
         response = response.replace("Hyperbot.ai", "@emikosupport")
-        response = response.replace("Saya Tinggal di Ciamis, Jawa Barat.", "Saya Tinggal di @HyperSupportQ.")
-        response = response.replace("Saya membuat diri saya sendiri", "Saya Diciptakan oleh @excute7")
         response = response.replace(
-                "Hi, temanku! Apakah Anda ingin saya menceritakan lelucon??",
-                "Halo saya Hyper ... senang bertemu dengan Anda")
-        response = response.replace("Miliki kontrol yang benar.", "@excute7 adalah owner.")
+            "Saya Tinggal di Ciamis, Jawa Barat.", "Saya Tinggal di @HyperSupportQ."
+        )
         response = response.replace(
-                "Hi, teman saya, apa yang bisa saya lakukan untuk Anda hari ini??",
-                "Hi, Nama saya Hyper Senang bertemu denganmu")
+            "Saya membuat diri saya sendiri", "Saya Diciptakan oleh @excute7"
+        )
+        response = response.replace(
+            "Hi, temanku! Apakah Anda ingin saya menceritakan lelucon??",
+            "Halo saya Hyper ... senang bertemu dengan Anda",
+        )
+        response = response.replace(
+            "Miliki kontrol yang benar.", "@excute7 adalah owner."
+        )
+        response = response.replace(
+            "Hi, teman saya, apa yang bisa saya lakukan untuk Anda hari ini??",
+            "Hi, Nama saya Hyper Senang bertemu denganmu",
+        )
         pro = response
         if not "en" in lan and not lan == "":
             try:
@@ -294,15 +340,21 @@ async def inuka(client, message):
     test = test.replace("16", "9")
     test = test.replace("@excute7 Istri saya.", "Adalah.")
     test = test.replace("@HyperSupportQ", "Hyperbot.ai")
-    test = test.replace("Saya tinggal di @HyperSupportQ.", "Saya tinggal di Ciamis, Jawa Barat.")
-    test = test.replace("aku diciptakan oleh @excute7", "Saya membuat diri saya sendiri")
+    test = test.replace(
+        "Saya tinggal di @HyperSupportQ.", "Saya tinggal di Ciamis, Jawa Barat."
+    )
+    test = test.replace(
+        "aku diciptakan oleh @excute7", "Saya membuat diri saya sendiri"
+    )
     test = test.replace(
         "Halo saya Hyper ... senang bertemu dengan Anda",
-        "Hi, temanku! Apakah Anda ingin saya menceritakan lelucon??")
+        "Hi, temanku! Apakah Anda ingin saya menceritakan lelucon??",
+    )
     test = test.replace("@excute7 adalah pemilik saya", "Miliki kontrol yang benar.")
     test = test.replace(
         "Hi, Nama saya Hyper Senang bertemu denganmu.",
-        "Hi, teman saya, apa yang bisa saya lakukan untuk Anda hari ini??")
+        "Hi, teman saya, apa yang bisa saya lakukan untuk Anda hari ini??",
+    )
 
     response = await lunaQuery(test, message.from_user.id if message.from_user else 0)
     response = response.replace("Aco", "Hyper")
@@ -315,14 +367,18 @@ async def inuka(client, message):
     response = response.replace("Ya adalah kepo bet.", "Anu nya lah @excute7")
     response = response.replace("Hyperbot.ai", "@HyperSupportQ")
     response = response.replace("Saya Tinggal di Ciamis.", "Tinggal @HyperSupportQ")
-    response = response.replace("Saya membuat diri saya sendiri", "Aku Diciptakan oleh @excute7")
     response = response.replace(
-            "Hi, temanku! Apakah Anda ingin saya menceritakan lelucon??",
-            "Halo saya Hyper ... senang bertemu dengan Anda")
+        "Saya membuat diri saya sendiri", "Aku Diciptakan oleh @excute7"
+    )
+    response = response.replace(
+        "Hi, temanku! Apakah Anda ingin saya menceritakan lelucon??",
+        "Halo saya Hyper ... senang bertemu dengan Anda",
+    )
     response = response.replace("Miliki kontrol yang benar.", "@excute7 Pemilik saya.")
     response = response.replace(
-            "Hi, teman saya, apa yang bisa saya lakukan untuk Anda hari ini??",
-            "Hi, Nama saya Hyper Senang bertemu denganmu")
+        "Hi, teman saya, apa yang bisa saya lakukan untuk Anda hari ini??",
+        "Hi, Nama saya Hyper Senang bertemu denganmu",
+    )
 
     pro = response
     if not "en" in lan and not lan == "":
@@ -335,7 +391,14 @@ async def inuka(client, message):
         return
 
 
-@pbot.on_message(filters.regex("Hyper|hyper|robot|HYPER|ling") & ~filters.bot & ~filters.via_bot  & ~filters.forwarded & ~filters.reply & ~filters.channel)
+@pbot.on_message(
+    filters.regex("Hyper|hyper|robot|HYPER|ling")
+    & ~filters.bot
+    & ~filters.via_bot
+    & ~filters.forwarded
+    & ~filters.reply
+    & ~filters.channel
+)
 async def inuka(client, message):
     msg = message.text
     if msg.startswith("/") or msg.startswith("@"):
@@ -386,37 +449,53 @@ async def inuka(client, message):
     test = test.replace("Hyper", "Aco")
     test = test.replace("Hyper", "Aco")
     test = test.replace("Majikan gua @excute7", "Saya Islam")
-    test = test.replace("16", "9") 
+    test = test.replace("16", "9")
     test = test.replace("@excute7 adalah Istriku?.", "Adalah.")
     test = test.replace("@HyperSupportQ", "Hyperbot.ai")
-    test = test.replace("I live in @emikosupport.", "Saya tinggal di Ciamis, Jawa barat.")
-    test = test.replace("aku diciptakan oleh @excute7", "Saya membuat diri saya sendiri")
+    test = test.replace(
+        "I live in @emikosupport.", "Saya tinggal di Ciamis, Jawa barat."
+    )
+    test = test.replace(
+        "aku diciptakan oleh @excute7", "Saya membuat diri saya sendiri"
+    )
     test = test.replace(
         "Halo saya Hyper ... senang bertemu dengan Anda",
-        "Hi teman saya! Apakah Anda ingin saya menceritakan lelucon??")
+        "Hi teman saya! Apakah Anda ingin saya menceritakan lelucon??",
+    )
     test = test.replace("@excute7 Pemilik saya", "Miliki kontrol yang benar.")
     test = test.replace(
         "Hi, Nama saya Hyper Senang bertemu denganmu.",
-        "Hai, teman saya, apa yang bisa saya lakukan untuk Anda hari ini??")
+        "Hai, teman saya, apa yang bisa saya lakukan untuk Anda hari ini??",
+    )
     response = await lunaQuery(test, message.from_user.id if message.from_user else 0)
     response = response.replace("Aco", "Hyper")
     response = response.replace("aco", "hyper")
     response = response.replace("Luna", "Hyper")
     response = response.replace("luna", "hyper")
     response = response.replace("Saya Islam", "Majikan gua @excute7")
-    response = response.replace("Saya menikah dengan pekerjaan saya.", "saya menikah dengan @excute7")
-    response = response.replace("9", "16") 
+    response = response.replace(
+        "Saya menikah dengan pekerjaan saya.", "saya menikah dengan @excute7"
+    )
+    response = response.replace("9", "16")
     response = response.replace("Adalah.", "Istriku adalah @excute7")
     response = response.replace("Hyperbot.ai", "@HyperSupportQ")
-    response = response.replace("Saya tinggal di San ciamis, Jawa Barat.", "saya tinggal di @HyperSupportQ.")
-    response = response.replace("Saya membuat diri saya sendiri", "Saya Diciptakan oleh @excute7")
     response = response.replace(
-            "Hi teman saya! Apakah Anda ingin saya menceritakan lelucon??",
-            "Halo saya Hyper ... senang bertemu dengan Anda")
-    response = response.replace("Miliki kontrol yang benar.", "@excute7 adalah pemilik saya.")
+        "Saya tinggal di San ciamis, Jawa Barat.", "saya tinggal di @HyperSupportQ."
+    )
     response = response.replace(
-            "Hai, teman saya, apa yang bisa saya lakukan untuk Anda hari ini??",
-            "Hi, Nama saya Hyper Senang bertemu denganmu")
+        "Saya membuat diri saya sendiri", "Saya Diciptakan oleh @excute7"
+    )
+    response = response.replace(
+        "Hi teman saya! Apakah Anda ingin saya menceritakan lelucon??",
+        "Halo saya Hyper ... senang bertemu dengan Anda",
+    )
+    response = response.replace(
+        "Miliki kontrol yang benar.", "@excute7 adalah pemilik saya."
+    )
+    response = response.replace(
+        "Hai, teman saya, apa yang bisa saya lakukan untuk Anda hari ini??",
+        "Hi, Nama saya Hyper Senang bertemu denganmu",
+    )
 
     pro = response
     if not "en" in lan and not lan == "":

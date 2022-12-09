@@ -16,9 +16,7 @@ def convert(bot: Bot, update: Update):
         try:
             orig_cur = args[2].upper()
         except IndexError:
-            update.effective_message.reply_text(
-                "Anda lupa menyebutkan kode mata uang."
-            )
+            update.effective_message.reply_text("Anda lupa menyebutkan kode mata uang.")
             return
 
         try:
@@ -32,9 +30,7 @@ def convert(bot: Bot, update: Update):
         request_url = f"https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency={orig_cur}&to_currency={new_cur}&apikey={CASH_API_KEY}"
         response = requests.get(request_url).json()
         try:
-            current_rate = float(
-                tanggapan["Nilai Tukar Mata Uang Realtime"]["5. Kurs"]
-            )
+            current_rate = float(tanggapan["Nilai Tukar Mata Uang Realtime"]["5. Kurs"])
         except KeyError:
             update.effective_message.reply_text(f"Mata Uang Tidak Didukung.")
             return

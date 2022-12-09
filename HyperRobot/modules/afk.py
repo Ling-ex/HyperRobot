@@ -1,4 +1,3 @@
-
 import random, html
 
 from HyperRobot import dispatcher
@@ -117,7 +116,11 @@ def reply_afk(update: Update, context: CallbackContext):
             try:
                 chat = bot.get_chat(user_id)
             except BadRequest:
-                print("Error: Tidak dapat mengambil ID pengguna {} untuk modul AFK".format(user_id))
+                print(
+                    "Error: Tidak dapat mengambil ID pengguna {} untuk modul AFK".format(
+                        user_id
+                    )
+                )
                 return
             fst_name = chat.first_name
 

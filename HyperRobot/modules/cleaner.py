@@ -130,10 +130,8 @@ def remove_bluetext_ignore(update: Update, context: CallbackContext):
         val = args[0].lower()
         removed = sql.chat_unignore_command(chat.id, val)
         if removed:
-            reply = (
-                "<b>{}</b> telah dihapus dari daftar abaikan pembersih bluetext.".format(
-                    args[0],
-                )
+            reply = "<b>{}</b> telah dihapus dari daftar abaikan pembersih bluetext.".format(
+                args[0],
             )
         else:
             reply = "Perintah tidak diabaikan saat ini."

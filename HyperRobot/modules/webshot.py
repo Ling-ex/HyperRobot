@@ -31,9 +31,7 @@ __mod_name__ = "Webshot​"
 async def take_ss(_, message: Message):
     try:
         if len(message.command) != 2:
-            return await message.reply_text(
-                "Berikan Url Untuk Mengambil Screenshott."
-            )
+            return await message.reply_text("Berikan Url Untuk Mengambil Screenshott.")
         url = message.text.split(None, 1)[1]
         m = await message.reply_text("**Mengambil Screenshott**")
         await m.edit("**Mengunggah**")

@@ -187,7 +187,6 @@ if is_module_loaded(FILENAME):
             return f"Grup ini memiliki semua log yang dikirim ke: {escape_markdown(log_channel_info.title)} (`{log_channel}`)"
         return "Tidak ada saluran log yang disetel untuk grup ini!"
 
-
     __help__ = """
 ──「 Log channel 」──
 

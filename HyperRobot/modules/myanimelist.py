@@ -27,12 +27,16 @@ def anime(update: Update, context: CallbackContext):
     try:
         res = jikan.search("anime", query)
     except APIException:
-        msg.reply_text("Terjadi kesalahan saat menyambungkan ke API. Silakan coba lagi!")
+        msg.reply_text(
+            "Terjadi kesalahan saat menyambungkan ke API. Silakan coba lagi!"
+        )
         return ""
     try:
         res = res.get("results")[0].get("mal_id")  # Grab first result
     except APIException:
-        msg.reply_text("Terjadi kesalahan saat menyambungkan ke API. Silakan coba lagi!")
+        msg.reply_text(
+            "Terjadi kesalahan saat menyambungkan ke API. Silakan coba lagi!"
+        )
         return ""
     if res:
         anime = jikan.anime(res)
@@ -106,7 +110,9 @@ def character(update: Update, context: CallbackContext):
         try:
             res = jikan.character(search)
         except APIException:
-            msg.reply_text("Terjadi kesalahan saat menyambungkan ke API. Silakan coba lagi!")
+            msg.reply_text(
+                "Terjadi kesalahan saat menyambungkan ke API. Silakan coba lagi!"
+            )
             return ""
     if res:
         name = res.get("name")
@@ -149,13 +155,17 @@ def manga(update: Update, context: CallbackContext):
     try:
         res = jikan.search("manga", query).get("results")[0].get("mal_id")
     except APIException:
-        msg.reply_text("Terjadi kesalahan saat menyambungkan ke API. Silakan coba lagi!")
+        msg.reply_text(
+            "Terjadi kesalahan saat menyambungkan ke API. Silakan coba lagi!"
+        )
         return ""
     if res:
         try:
             manga = jikan.manga(res)
         except APIException:
-            msg.reply_text("Terjadi kesalahan saat menyambungkan ke API. Silakan coba lagi!")
+            msg.reply_text(
+                "Terjadi kesalahan saat menyambungkan ke API. Silakan coba lagi!"
+            )
             return ""
         title = manga.get("title")
         japanese = manga.get("title_japanese")

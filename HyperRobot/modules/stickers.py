@@ -158,7 +158,7 @@ def kang(update, context):
                         packnum,
                         png_sticker=open("kangsticker.png", "rb"),
                     )
-                    
+
                 elif e.message == "Sticker_png_dimensions":
                     im.save(kangsticker, "PNG")
                     context.bot.add_sticker_to_set(
@@ -171,7 +171,8 @@ def kang(update, context):
                         [
                             [
                                 InlineKeyboardButton(
-                                    text="Lihat Paket", url=f"t.me/addstickers/{packname}"
+                                    text="Lihat Paket",
+                                    url=f"t.me/addstickers/{packname}",
                                 )
                             ]
                         ]
@@ -185,13 +186,16 @@ def kang(update, context):
                 elif e.message == "Stiker emoji tidak valid":
                     msg.reply_text("Emoji tidak valid(s).")
                 elif e.message == "Stickers_too_much":
-                    msg.reply_text("Ukuran paket maksimum tercapai. Tekan F untuk membayar respecc.")
+                    msg.reply_text(
+                        "Ukuran paket maksimum tercapai. Tekan F untuk membayar respecc."
+                    )
                 elif e.message == "Internal Server Error: sticker set not found (500)":
                     edited_keyboard = InlineKeyboardMarkup(
                         [
                             [
                                 InlineKeyboardButton(
-                                    text="Lihat Paket", url=f"t.me/addstickers/{packname}"
+                                    text="Lihat Paket",
+                                    url=f"t.me/addstickers/{packname}",
                                 )
                             ]
                         ]
@@ -260,7 +264,7 @@ def kang(update, context):
                         packnum,
                         tgs_sticker=open("kangsticker.tgs", "rb"),
                     )
-                    
+
                 elif e.message == "Invalid sticker emojis":
                     msg.reply_text("Emoji tidak valid(s).")
                 elif e.message == "Internal Server Error: sticker set not found (500)":
@@ -268,7 +272,8 @@ def kang(update, context):
                         [
                             [
                                 InlineKeyboardButton(
-                                    text="Lihat Paket", url=f"t.me/addstickers/{packname}"
+                                    text="Lihat Paket",
+                                    url=f"t.me/addstickers/{packname}",
                                 )
                             ]
                         ]
@@ -327,7 +332,8 @@ def kang(update, context):
                 ]
             )
             msg.reply_text(
-                f"<b>Stiker Anda telah ditambahkan!</b>" f"\nEmoji Is : {sticker_emoji}",
+                f"<b>Stiker Anda telah ditambahkan!</b>"
+                f"\nEmoji Is : {sticker_emoji}",
                 reply_markup=edited_keyboard,
                 parse_mode=ParseMode.HTML,
             )
@@ -347,7 +353,7 @@ def kang(update, context):
                     packnum,
                     png_sticker=open("kangsticker.png", "rb"),
                 )
-                
+
             elif e.message == "Sticker_png_dimensions":
                 im.save(kangsticker, "PNG")
                 context.bot.add_sticker_to_set(
@@ -374,7 +380,9 @@ def kang(update, context):
             elif e.message == "Invalid sticker emojis":
                 msg.reply_text("Emoji tidak valid(s).")
             elif e.message == "Stickers_too_much":
-                msg.reply_text("Ukuran paket maksimum tercapai. Tekan F untuk membayar respecc.")
+                msg.reply_text(
+                    "Ukuran paket maksimum tercapai. Tekan F untuk membayar respecc."
+                )
             elif e.message == "Internal Server Error: sticker set not found (500)":
                 msg.reply_text(
                     f"<b>Stiker Anda telah ditambahkan!</b>"
@@ -570,9 +578,8 @@ def delsticker(update, context):
         context.bot.delete_sticker_from_set(file_id)
         msg.reply_text("Dihapus!")
     else:
-        update.effective_message.reply_text(
-            "Mohon balas pesan stiker ke del stiker"
-        )
+        update.effective_message.reply_text("Mohon balas pesan stiker ke del stiker")
+
 
 __mod_name__ = "Stickers"
 
